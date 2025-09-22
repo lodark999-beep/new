@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Camera Products | AutoVision</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #ffffff;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a2a6c, #2b5876);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #4ecca3;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            color: #4ecca3;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(26, 42, 108, 0.8), rgba(43, 88, 118, 0.8)), url('https://images.unsplash.com/photo-1493238792000-8113da705763?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 5rem 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title.reverse {
+            color: #1a2a6c;
+        }
+        
+        .section-title.dvr {
+            color: #e74c3c;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #4ecca3;
+            border-radius: 2px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 2rem 0;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .product-image {
+            height: 180px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .product-image i {
+            font-size: 3rem;
+            color: #b8b8b8;
+        }
+        
+        .product-info {
+            padding: 1.5rem;
+        }
+        
+        .product-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1a2a6c;
+        }
+        
+        .product-specs {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        
+        .product-price {
+            color: #3498db;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        .note-section {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffeaa7;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 4px;
+        }
+        
+        .note-section h3 {
+            color: #856404;
+            margin-bottom: 0.5rem;
+        }
+        
+        .note-section p {
+            color: #856404;
+        }
+        
+        .sd-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 1.5rem;
+            display: flex;
+            align-items: center;
+            margin: 2rem 0;
+        }
+        
+        .sd-card-image {
+            width: 100px;
+            height: 100px;
+            background: linear-gradient(45deg, #1a2a6c, #e74c3c);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+        }
+        
+        .sd-card-image i {
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .sd-card-info {
+            flex: 1;
+        }
+        
+        .sd-card-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1a2a6c;
+        }
+        
+        .sd-card-price {
+            color: #3498db;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+        
+        footer {
+            background: #1a2a6c;
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #4ecca3;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: #4ecca3;
+        }
+        
+        .footer-links a {
+            display: block;
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #4ecca3;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            }
+            
+            .sd-card {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .sd-card-image {
+                margin-right: 0;
+                margin-bottom: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-car-camera"></i>
+                AutoVision
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Premium Car Camera Systems</h1>
+            <p>Enhance your driving safety with our high-quality camera solutions</p>
+        </div>
+
+        <h2 class="section-title reverse">Reverse Camera (6 Products)</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">AHD 170° 1080P</h3>
+                    <p class="product-specs">170° wide angle, 1080P resolution</p>
+                    <div class="product-price">$4.99</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">Sony Lens</h3>
+                    <p class="product-specs">AHD 170° 720P, Sony lens</p>
+                    <div class="product-price">$3.99</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">AHD 170° 1080P</h3>
+                    <p class="product-specs">170° wide angle, 1080P resolution</p>
+                    <div class="product-price">$11.49</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">AHD 158° 1080P</h3>
+                    <p class="product-specs">158° wide angle, 1080P resolution</p>
+                    <div class="product-price">$5.99</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">AHD 158° 1080P</h3>
+                    <p class="product-specs">158° wide angle, 1080P resolution</p>
+                    <div class="product-price">$9.99</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-camera"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">For AUDI AHD 140° 1080P</h3>
+                    <p class="product-specs">140° wide angle, 1080P resolution, Audi compatible</p>
+                    <div class="product-price">$7.99</div>
+                </div>
+            </div>
+        </div>
+
+        <h2 class="section-title dvr">DVR (7 Products)</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-video"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">U3 (USB)</h3>
+                    <p class="product-specs">USB connection, high performance</p>
+                    <div class="product-price">$9.99</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-video"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">U6 (USB)</h3>
+                    <p class="product-specs">USB connection, advanced features</p>
+                    <div class="product-price">$9.89</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-video"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">U2 (USB)</h3>
+                    <p class="product-specs">USB connection, basic model</p>
+                    <div class="product-price">$5.69</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-video"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">U5 (USB)</h3>
+                    <p class="product-specs">USB connection, premium model</p>
+                    <div class="product-price">$23.69</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-video"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">AHD 170° 1080P</h3>
+                    <p class="product-specs">170° wide angle, 1080P resolution</p>
+                    <div class="product-price">$4.99</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-video"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">AHD 158° 1080P</h3>
+                    <p class="product-specs">158° wide angle, 1080P resolution</p>
+                    <div class="product-price">$5.99</div>
+                </div>
+            </div>
+            
+            <div class="product-card">
+                <div class="product-image">
+                    <i class="fas fa-video"></i>
+                </div>
+                <div class="product-info">
+                    <h3 class="product-title">WiFi DVR</h3>
+                    <p class="product-specs">Wireless connectivity, mobile app support</p>
+                    <div class="product-price">$29.99</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="note-section">
+            <h3>Important Note</h3>
+            <p>The USB version is connected to the Android radio and the video can be viewed through the radio APP. The wifi version is connected to the car ACC and the video can be viewed through the mobile APP.</p>
+            <p>Note: FT card is not included in the quotation.</p>
+        </div>
+
+        <div class="sd-card">
+            <div class="sd-card-image">
+                <i class="fas fa-sd-card"></i>
+            </div>
+            <div class="sd-card-info">
+                <h3 class="sd-card-title">SanDisk 64GB Ultra MicroSDXC</h3>
+                <p>High-speed memory card for DVR systems</p>
+                <div class="sd-card-price">$12.99</div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>About AutoVision</h3>
+                <p>We specialize in high-quality car camera systems, offering solutions from倒车摄像头 to advanced DVR systems for all vehicle types.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> 1234 Camera Tech Park, Shenzhen, China</p>
+                    <p><i class="fas fa-phone"></i> +86 755 1234 5678</p>
+                    <p><i class="fas fa-envelope"></i> info@autovision.com</p>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <div class="footer-links">
+                    <a href="#">Home</a>
+                    <a href="#">Products</a>
+                    <a href="#">Support</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 AutoVision. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script to add to cart functionality
+        document.querySelectorAll('.product-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.querySelector('.product-title').textContent;
+                const price = this.querySelector('.product-price').textContent;
+                alert(`Added to cart: ${title} - ${price}`);
+            });
+        });
+    </script>
+</body>
+</html>

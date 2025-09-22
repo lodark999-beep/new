@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LODARK - Automotive Entertainment Systems</title>
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #165DFF;
+            --secondary: #363636;
+            --accent: #FF7D00;
+            --light: #F5F7FA;
+            --dark: #1a1a1a;
+            --text: #333333;
+            --text-light: #666666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: #fff;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles - Updated to match products.html */
+        header {
+            background: linear-gradient(135deg, #0e2b5c, #1a56db);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: #ff3a29;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 1.5rem;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/hero-bg.jpg') no-repeat center center;
+            background-size: cover;
+            padding: 150px 0 80px;
+            margin-top: 0;
+            color: white;
+        }
+        
+        .hero-content {
+            max-width: 600px;
+        }
+        
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero p {
+            font-size: 18px;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-right: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .btn:hover {
+            background-color: #0e4fd8;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(22, 93, 255, 0.3);
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            color: white;
+        }
+        
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--secondary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title p {
+            font-size: 18px;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Advantages Section */
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .advantage-card {
+            background-color: var(--light);
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+        
+        .advantage-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .advantage-icon {
+            width: 70px;
+            height: 70px;
+            background-color: rgba(22, 93, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+        }
+        
+        .advantage-icon i {
+            font-size: 28px;
+            color: var(--primary);
+        }
+        
+        .advantage-card h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--secondary);
+        }
+        
+        /* Products Section */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+        
+        .product-card {
+            background-color: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-10px);
+        }
+        
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .product-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .product-card:hover .product-image img {
+            transform: scale(1.1);
+        }
+        
+        .product-info {
+            padding: 20px;
+        }
+        
+        .product-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+        
+        .product-model {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+        
+        .product-specs {
+            margin-bottom: 15px;
+        }
+        
+        .product-specs span {
+            display: block;
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 5px;
+        }
+        
+        .product-price {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        /* Partners Section */
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .partner-logo {
+
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all 0.3s;
+            text-align: center;
+        }
+        
+        .partner-logo:hover {
+            filter: grayscale(0);
+            opacity: 1;
+
+        }
+        
+        .partner-logo img {
+            max-width: 100%;
+            max-height: 60px;
+        }
+        
+        /* Contact Section */
+        .contact-section {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+        }
+        
+        .contact-section h2 {
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .contact-section p {
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+        
+        .contact-methods {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .contact-method {
+            padding: 20px;
+        }
+        
+        .contact-method i {
+            font-size: 36px;
+            margin-bottom: 15px;
+        }
+        
+        .contact-method h4 {
+            margin-bottom: 10px;
+        }
+        
+        /* Footer - Updated to match products.html */
+        footer {
+            background: #0e2b5c;
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #ff3a29;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 36px;
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            section {
+                padding: 60px 0;
+            }
+            
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .btn {
+                display: block;
+                width: 100%;
+                margin-right: 0;
+                text-align: center;
+            }
+            
+            .hero {
+                padding: 120px 0 60px;
+                text-align: center;
+            }
+            
+            .hero-content {
+                margin: 0 auto;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">LOD<span>ARK</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="accessories.html" class="nav-link">Accessories</a></li>
+                    <li><a href="oem.html" class="nav-link">OEM/ODM</a></li>
+                    <li><a href="contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Premium Automotive Entertainment Systems</h1>
+                    <p>LODARK - Automotive Smart Terminal Expert with 9 Years of OEM Experience · IATF 16949 Certified · 50,000 Units/Month Capacity</p>
+                    <div>
+                        <a href="products.html" class="btn">Browse Products</a>
+                        <a href="contact.html" class="btn btn-outline">Contact Us</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Advantages Section -->
+        <section>
+            <div class="container">
+                <div class="section-title">
+                    <h2>Core Advantages</h2>
+                    <p>Why choose LODARK for your automotive entertainment needs</p>
+                </div>
+                
+                <div class="advantages-grid">
+                    <div class="advantage-card">
+                        <div class="advantage-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <h3>Certification & Capacity</h3>
+                        <p>IATF 16949, ISO 9001, 3C, CE certified. 50,000 units/month capacity, over 80 million units delivered.</p>
+                    </div>
+                    
+                    <div class="advantage-card">
+                        <div class="advantage-icon">
+                            <i class="fas fa-display"></i>
+                        </div>
+                        <h3>Multi-Size & Compatibility</h3>
+                        <p>7" to 13" sizes, universal and Toyota-specific models. Support CarPlay, Dual-band WiFi, 4G LTE.</p>
+                    </div>
+                    
+                    <div class="advantage-card">
+                        <div class="advantage-icon">
+                            <i class="fas fa-microchip"></i>
+                        </div>
+                        <h3>Tech Leadership</h3>
+                        <p>Unisoc high-performance chips, QLED HD screens, DSP audio algorithms. Full OEM/ODM customization.</p>
+                    </div>
+                    
+                    <div class="advantage-card">
+                        <div class="advantage-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Global Partnerships</h3>
+                        <p>Cooperation with Toyota, Dongfeng, Philips, Baidu. Products sold globally, "Shenzhen Top 500 Enterprises".</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Series Section -->
+        <section style="background-color: var(--light);">
+            <div class="container">
+                <div class="section-title">
+                    <h2>Popular Product Series</h2>
+                    <p>Choose the perfect system for your vehicle and needs</p>
+                </div>
+                
+                <div class="products-grid">
+                    <div class="product-card">
+                        <div class="product-badge">Entry-Level</div>
+                        <div class="product-image">
+                            <img src="images/home-e1.jpg" alt="E1 Series">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-model">E1 Series</h3>
+                            <div class="product-specs">
+                                <span>Quad-core 1.3GHz | 1GB+32GB</span>
+                                <span>Android 8.1 | IPS Display</span>
+                                <span>WiFi 2.4GHz | GPS Navigation</span>
+                            </div>
+                            <div class="product-price">From $29.99</div>
+                            <div class="product-actions">
+                                <a href="products.html#e1" class="btn">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-badge">Mid-Range</div>
+                        <div class="product-image">
+                            <img src="images/home-s1.jpg" alt="S1 Series">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-model">S1 Series</h3>
+                            <div class="product-specs">
+                                <span>Quad-core 1.6GHz | 2-4GB RAM</span>
+                                <span>Android 12 | IPS Display</span>
+                                <span>Dual-band WiFi | CarPlay/Android Auto</span>
+                            </div>
+                            <div class="product-price">From $44.23</div>
+                            <div class="product-actions">
+                                <a href="products.html#s1" class="btn">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-card">
+                        <div class="product-badge">Flagship</div>
+                        <div class="product-image">
+                            <img src="images/home-p3.jpg" alt="P2 Series">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-model">P2 Series</h3>
+                            <div class="product-specs">
+                                <span>Octa-core 2.0GHz | 4-8GB RAM</span>
+                                <span>Android 12 | QLED Display</span>
+                                <span>4G LTE | Premium Audio</span>
+                            </div>
+                            <div class="product-price">From $101.91</div>
+                            <div class="product-actions">
+                                <a href="products.html#p2" class="btn">View Details</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partners Section -->
+        <section>
+            <div class="container">
+                <div class="section-title">
+                    <h2>Our Partners</h2>
+                    <p>Trusted by leading brands worldwide</p>
+                </div>
+                
+                <div class="partners-grid">
+                    <div class="partner-logo">
+                        <img src="images/toyota.jpg" alt="Toyota">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="images/dongfeng.jpg" alt="Dongfeng">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="images/Philip.jpg" alt="Philips">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="images/baidu.jpg" alt="Baidu">
+                    </div>
+                    <div class="partner-logo">
+                        <img src="images/TEYES.jpg"
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact-section">
+            <div class="container">
+                <h2>Consult Now for Customized Solutions</h2>
+                <p>Support small-batch trial orders, tiered pricing for large quantities, fast response to custom needs</p>
+                
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <i class="fab fa-whatsapp"></i>
+                        <h4>WhatsApp</h4>
+                        <p>+86 13537885828</p>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <i class="fab fa-weixin"></i>
+                        <h4>WeChat</h4>
+                        <p>+86 13537885828</p>
+                    </div>
+                    
+                    <div class="contact-method">
+                        <i class="fas fa-envelope"></i>
+                        <h4>Email</h4>
+                        <p>lodark999@gmail.com</p>
+                    </div>
+                </div>
+                
+                <a href="contact.html" class="btn btn-outline" style="background-color: white; color: var(--primary);">Contact Us Now</a>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>LODARK is a leading manufacturer of automotive navigation systems, committed to providing high-quality products and services to global customers.</p>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Product Series</h3>
+                    <ul class="footer-links">
+                        <li><a href="products.html#e-series">E-Series (Entry-Level)</a></li>
+                        <li><a href="products.html#s-series">S-Series (Mid-Range)</a></li>
+                        <li><a href="products.html#p-series">P-Series (Flagship)</a></li>
+                        <li><a href="products.html#specialty">Specialty Series</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="accessories.html">Accessories</a></li>
+                        <li><a href="oem.html">OEM/ODM</a></li>
+                        <li><a href="contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 LODARK. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            const nav = document.querySelector('nav ul');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Responsive nav adjustment
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 992) {
+                document.querySelector('nav ul').style.display = 'flex';
+            } else {
+                document.querySelector('nav ul').style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Interface Plugs | AutoConnect</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1a2a6c, #2b5876);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: #4ecca3;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 1.5rem;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 8px 12px;
+            border-radius: 4px;
+        }
+        
+        nav ul li a:hover {
+            color: #4ecca3;
+            background: rgba(255, 255, 255, 0.1);
+        }
+        
+        .hero {
+            background: linear-gradient(rgba(26, 42, 108, 0.8), rgba(43, 88, 118, 0.8)), url('https://images.unsplash.com/photo-1493238792000-8113da705763?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover no-repeat;
+            color: white;
+            text-align: center;
+            padding: 5rem 1rem;
+            margin-bottom: 2rem;
+            border-radius: 0 0 15px 15px;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: #1a2a6c;
+            font-size: 2rem;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #4ecca3;
+            border-radius: 2px;
+        }
+        
+        .interface-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 2rem 0;
+        }
+        
+        .interface-card {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            border-top: 4px solid #1a2a6c;
+        }
+        
+        .interface-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .interface-image {
+            height: 120px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #eee;
+        }
+        
+        .interface-image i {
+            font-size: 2.5rem;
+            color: #1a2a6c;
+        }
+        
+        .interface-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .interface-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #1a2a6c;
+        }
+        
+        .interface-description {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .blue-bar {
+            background: #1a2a6c;
+            color: white;
+            padding: 1.5rem;
+            text-align: center;
+            margin: 3rem 0;
+            border-radius: 8px;
+        }
+        
+        .blue-bar h2 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .blue-bar p {
+            font-size: 1.1rem;
+        }
+        
+        .application-section {
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+            padding: 2rem;
+            margin: 3rem 0;
+        }
+        
+        .application-content {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+        
+        .application-image {
+            flex: 1;
+            height: 200px;
+            background: linear-gradient(45deg, #1a2a6c, #2b5876);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .application-image i {
+            font-size: 4rem;
+            color: white;
+        }
+        
+        .application-info {
+            flex: 1;
+        }
+        
+        .application-info h3 {
+            color: #1a2a6c;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .application-info p {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        footer {
+            background: #1a2a6c;
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 4rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #4ecca3;
+        }
+        
+        .footer-contact p {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .footer-contact i {
+            margin-right: 10px;
+            color: #4ecca3;
+        }
+        
+        .footer-links a {
+            display: block;
+            color: #ccc;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #4ecca3;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            nav ul li {
+                margin: 0.5rem;
+            }
+            
+            .interface-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .application-content {
+                flex-direction: column;
+            }
+            
+            .application-image {
+                margin-bottom: 1.5rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-plug"></i>
+                AutoConnect
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Products</a></li>
+                    <li><a href="#">Compatibility</a></li>
+                    <li><a href="#">Support</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="hero">
+            <h1>Car Interface Plugs & Connectors</h1>
+            <p>High-quality interface solutions for various car brands</p>
+        </div>
+
+        <h2 class="section-title">Compatible Interface Plugs</h2>
+        
+        <div class="interface-grid">
+            <div class="interface-card">
+                <div class="interface-image">
+                    <i class="fas fa-car"></i>
+                </div>
+                <div class="interface-info">
+                    <h3 class="interface-title">For Suzuki</h3>
+                    <p class="interface-description">Compatible interface plug for Suzuki vehicles</p>
+                </div>
+            </div>
+            
+            <div class="interface-card">
+                <div class="interface-image">
+                    <i class="fas fa-car"></i>
+                </div>
+                <div class="interface-info">
+                    <h3 class="interface-title">For Mitsubishi ASX</h3>
+                    <p class="interface-description">Compatible interface plug for Mitsubishi ASX</p>
+                </div>
+            </div>
+            
+            <div class="interface-card">
+                <div class="interface-image">
+                    <i class="fas fa-car"></i>
+                </div>
+                <div class="interface-info">
+                    <h3 class="interface-title">For IIO</h3>
+                    <p class="interface-description">Compatible interface plug for IIO vehicles</p>
+                </div>
+            </div>
+            
+            <div class="interface-card">
+                <div class="interface-image">
+                    <i class="fas fa-car"></i>
+                </div>
+                <div class="interface-info">
+                    <h3 class="interface-title">For Nissan</h3>
+                    <p class="interface-description">Compatible interface plug for Nissan vehicles</p>
+                </div>
+            </div>
+            
+            <div class="interface-card">
+                <div class="interface-image">
+                    <i class="fas fa-car"></i>
+                </div>
+                <div class="interface-info">
+                    <h3 class="interface-title">For KIA</h3>
+                    <p class="interface-description">Compatible interface plug for KIA vehicles</p>
+                </div>
+            </div>
+            
+            <div class="interface-card">
+                <div class="interface-image">
+                    <i class="fas fa-car"></i>
+                </div>
+                <div class="interface-info">
+                    <h3 class="interface-title">For Hyundai</h3>
+                    <p class="interface-description">Compatible interface plug for Hyundai vehicles</p>
+                </div>
+            </div>
+            
+            <div class="interface-card">
+                <div class="interface-image">
+                    <i class="fas fa-car"></i>
+                </div>
+                <div class="interface-info">
+                    <h3 class="interface-title">For KIA</h3>
+                    <p class="interface-description">Compatible interface plug for KIA vehicles</p>
+                </div>
+            </div>
+            
+            <div class="interface-card">
+                <div class="interface-image">
+                    <i class="fas fa-car"></i>
+                </div>
+                <div class="interface-info">
+                    <h3 class="interface-title">For Honda</h3>
+                    <p class="interface-description">Compatible interface plug for Honda vehicles</p>
+                </div>
+            </div>
+            
+            <div class="interface-card">
+                <div class="interface-image">
+                    <i class="fas fa-car"></i>
+                </div>
+                <div class="interface-info">
+                    <h3 class="interface-title">For Old Fit</h3>
+                    <p class="interface-description">Compatible interface plug for older Fit models</p>
+                </div>
+            </div>
+            
+            <div class="interface-card">
+                <div class="interface-image">
+                    <i class="fas fa-car"></i>
+                </div>
+                <div class="interface-info">
+                    <h3 class="interface-title">For Hyundai</h3>
+                    <p class="interface-description">Compatible interface plug for Hyundai vehicles</p>
+                </div>
+            </div>
+            
+            <div class="interface-card">
+                <div class="interface-image">
+                    <i class="fas fa-car"></i>
+                </div>
+                <div class="interface-info">
+                    <h3 class="interface-title">For Toyota</h3>
+                    <p class="interface-description">Compatible interface plug for Toyota vehicles</p>
+                </div>
+            </div>
+            
+            <div class="interface-card">
+                <div class="interface-image">
+                    <i class="fas fa-car"></i>
+                </div>
+                <div class="interface-info">
+                    <h3 class="interface-title">For Mitsubishi</h3>
+                    <p class="interface-description">Compatible interface plug for Mitsubishi vehicles</p>
+                </div>
+            </div>
+            
+            <div class="interface-card">
+                <div class="interface-image">
+                    <i class="fas fa-car"></i>
+                </div>
+                <div class="interface-info">
+                    <h3 class="interface-title">For KIA</h3>
+                    <p class="interface-description">Compatible interface plug for KIA vehicles</p>
+                </div>
+            </div>
+            
+            <div class="interface-card">
+                <div class="interface-image">
+                    <i class="fas fa-car"></i>
+                </div>
+                <div class="interface-info">
+                    <h3 class="interface-title">For KIA</h3>
+                    <p class="interface-description">Compatible interface plug for KIA vehicles</p>
+                </div>
+            </div>
+            
+            <div class="interface-card">
+                <div class="interface-image">
+                    <i class="fas fa-car"></i>
+                </div>
+                <div class="interface-info">
+                    <h3 class="interface-title">For Mitsubishi</h3>
+                    <p class="interface-description">Compatible interface plug for Mitsubishi vehicles</p>
+                </div>
+            </div>
+            
+            <div class="interface-card">
+                <div class="interface-image">
+                    <i class="fas fa-car"></i>
+                </div>
+                <div class="interface-info">
+                    <h3 class="interface-title">For Old Suzuki</h3>
+                    <p class="interface-description">Compatible interface plug for older Suzuki models</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="blue-bar">
+            <h2>Interface to plug-in</h2>
+            <p>Power cables and CAN bus</p>
+        </div>
+
+        <div class="application-section">
+            <h2 class="section-title">Application & Usage</h2>
+            <div class="application-content">
+                <div class="application-image">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <div class="application-info">
+                    <h3>Seamless Integration</h3>
+                    <p>Our interface plugs are designed for easy connection between your car's electrical system and aftermarket devices. They provide seamless integration for power cables and CAN bus systems, ensuring reliable performance and compatibility with your vehicle's electronics.</p>
+                    <p>These plugs are essential for installing multimedia systems, navigation units, and other electronic accessories without compromising your car's original wiring.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-section">
+                <h3>About AutoConnect</h3>
+                <p>We specialize in high-quality interface plugs and connectors for various car brands, ensuring seamless integration of aftermarket devices with your vehicle's electrical system.</p>
+            </div>
+            <div class="footer-section">
+                <h3>Contact Us</h3>
+                <div class="footer-contact">
+                    <p><i class="fas fa-map-marker-alt"></i> 1234 Auto Tech Park, Shenzhen, China</p>
+                    <p><i class="fas fa-phone"></i> +86 755 1234 5678</p>
+                    <p><i class="fas fa-envelope"></i> info@autoconnect.com</p>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <div class="footer-links">
+                    <a href="#">Home</a>
+                    <a href="#">Products</a>
+                    <a href="#">Compatibility</a>
+                    <a href="#">Support</a>
+                    <a href="#">Contact</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 AutoConnect. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple script to add interaction to product cards
+        document.querySelectorAll('.interface-card').forEach(card => {
+            card.addEventListener('click', function() {
+                const title = this.querySelector('.interface-title').textContent;
+                alert(`Selected: ${title}\nThis interface plug is compatible with your vehicle's electrical system.`);
+            });
+        });
+    </script>
+</body>
+</html>
