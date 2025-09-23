@@ -3,9 +3,412 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>OEM/ODM Services - LODARK Automotive Systems</title>
+    <title>Products - LODARK Automotive Systems</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* 基础样式 */
+        :root {
+            --primary: #1a56db;
+            --primary-dark: #0e2b5c;
+            --accent: #ff3a29;
+            --light: #f3f4f6;
+            --dark: #1f2937;
+            --gray: #6b7280;
+            --success: #10b981;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f9fafb;
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: var(--accent);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav li {
+            margin-left: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+        }
+
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .breadcrumb {
+            padding: 1rem 0;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .breadcrumb a {
+            color: var(--primary);
+            text-decoration: none;
+        }
+
+        .breadcrumb span {
+            color: var(--gray);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--gray);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* 产品分类选项卡样式 */
+        .series-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .series-tab {
+            padding: 15px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            background: white;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .series-tab i {
+            margin-right: 8px;
+        }
+
+        .series-tab.active {
+            color: white;
+        }
+
+        .series-tab.e-series {
+            border-left: 4px solid #6c757d;
+        }
+
+        .series-tab.e-series.active {
+            background-color: #6c757d;
+        }
+
+        .series-tab.s-series {
+            border-left: 4px solid #0d6efd;
+        }
+
+        .series-tab.s-series.active {
+            background-color: #0d6efd;
+        }
+
+        .series-tab.p-series {
+            border-left: 4px solid #6f42c1;
+        }
+
+        .series-tab.p-series.active {
+            background-color: #6f42c1;
+        }
+
+        .series-tab.specialty {
+            border-left: 4px solid #ffc107;
+        }
+
+        .series-tab.specialty.active {
+            background-color: #ffc107;
+            color: #212529;
+        }
+
+        .series-tab.addons {
+            border-left: 4px solid #198754;
+        }
+
+        .series-tab.addons.active {
+            background-color: #198754;
+        }
+
+        /* 产品网格样式 */
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .product-card {
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            background: white;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            padding: 5px 10px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            color: white;
+        }
+
+        .product-badge {
+            background-color: #6c757d;
+        }
+
+        .product-card[data-series="s-series"] .product-badge {
+            background-color: #0d6efd;
+        }
+
+        .product-card[data-series="p-series"] .product-badge {
+            background-color: #6f42c1;
+        }
+
+        .product-card[data-series="specialty"] .product-badge {
+            background-color: #ffc107;
+            color: #212529;
+        }
+
+        .product-card[data-series="addons"] .product-badge {
+            background-color: #198754;
+        }
+
+        .product-image {
+            height: 200px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #f8f9fa;
+        }
+
+        .product-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-model {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #212529;
+        }
+
+        .product-specs {
+            margin-bottom: 15px;
+        }
+
+        .product-specs span {
+            display: block;
+            font-size: 14px;
+            color: #6c757d;
+            margin-bottom: 5px;
+        }
+
+        .product-price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0d6efd;
+            margin-bottom: 15px;
+        }
+
+        .product-actions .btn {
+            width: 100%;
+            text-align: center;
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .product-actions .btn:hover {
+            background: #e02919;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* 隐藏非活动系列的产品 */
+        .product-card {
+            display: block;
+        }
+
+        /* 响应式调整 */
+        @media (max-width: 768px) {
+            .series-tabs {
+                flex-direction: column;
+                align-items: stretch;
+            }
+            
+            .series-tab {
+                margin: 0 0 10px 0;
+                text-align: center;
+                justify-content: center;
+            }
+            
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+        }
+
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: var(--accent);
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -14,9 +417,9 @@
             <nav>
                 <ul>
                     <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="products.html" class="nav-link active">Products</a></li>
                     <li><a href="accessories.html" class="nav-link">Accessories</a></li>
-                    <li><a href="oem.html" class="nav-link active">OEM/ODM</a></li>
+                    <li><a href="oem.html" class="nav-link">OEM/ODM</a></li>
                     <li><a href="Contact.html" class="nav-link">Contact</a></li>
                 </ul>
             </nav>
@@ -27,115 +430,383 @@
     <main>
         <div class="container">
             <div class="breadcrumb">
-                <a href="index.html">Home</a> > <span>OEM/ODM Services</span>
+                <a href="index.html">Home</a> > <span>Products</span>
             </div>
 
             <div class="section-title">
-                <h2>OEM/ODM Services</h2>
-                <p>We have 11 years of OEM factory experience and are an IATF 16949 certified enterprise</p>
+                <h2>Product Catalog</h2>
+                <p>Browse our complete range of automotive entertainment systems</p>
             </div>
 
-            <div class="oem-content">
-                <div class="oem-intro">
-                    <h3>Company Introduction</h3>
-                    <p>Nouda Ark Electronic Technology Co., Ltd. (LODARK) was established in 2014 and is a manufacturer dedicated to the driving safety technology industry, serving as an excellent platform company in the auto parts industry.</p>
-                    
-                    <h3>Production Capabilities</h3>
-                    <div class="capabilities-grid">
-                        <div class="capability-item">
-                            <i class="fas fa-industry"></i>
-                            <h4>Factory Area</h4>
-                            <p>2,000 square feet</p>
-                        </div>
-                        <div class="capability-item">
-                            <i class="fas fa-users"></i>
-                            <h4>Employees</h4>
-                            <p>100 people</p>
-                        </div>
-                        <div class="capability-item">
-                            <i class="fas fa-tachometer-alt"></i>
-                            <h4>Monthly Capacity</h4>
-                            <p>50,000 Android head units</p>
-                        </div>
-                        <div class="capability-item">
-                            <i class="fas fa-certificate"></i>
-                            <h4>Certifications</h4>
-                            <p>IATF 16949 Certified</p>
-                        </div>
-                    </div>
-                    
-                    <h3>Intellectual Property</h3>
-                    <ul>
-                        <li>Multiple invention patents</li>
-                        <li>Utility model patents</li>
-                        <li>12 design patents</li>
-                    </ul>
+            <div class="series-tabs">
+                <div class="series-tab e-series active" data-series="all">
+                    <i class="fas fa-layer-group"></i>
+                    All Products
                 </div>
-
-                <div class="partner-brands">
-                    <h3>Partner Brands</h3>
-                    <p>We cooperate with Toyota, Dongfeng and other car factories, and provide OEM services for brands such as Teyes, Baidu, Roadshow and Philips.</p>
-                    
-                    <div class="brands-grid">
-                        <div class="brand-item">
-                            <img src="images/toyota.jpg" alt="Toyota">
-                            <span>Toyota</span>
-                        </div>
-                        <div class="brand-item">
-                            <img src="images/dongfeng.jpg" alt="Dongfeng">
-                            <span>Dongfeng</span>
-                        </div>
-                        <div class="brand-item">
-                            <img src="images/TEYES.jpg" alt="Teyes">
-                            <span>Teyes</span>
-                        </div>
-                        <div class="brand-item">
-                            <img src="images/baidu.jpg" alt="Baidu">
-                            <span>Baidu</span>
-                        </div>
-                        <div class="brand-item">
-                            <img src="images/luc.jpg" alt="ROAD ROVER">
-                            <span>Roadshow</span>
-                        </div>
-                        <div class="brand-item">
-                            <img src="images/Philip.jpg" alt="Philips">
-                            <span>Philips</span>
-                        </div>
-                    </div>
+                <div class="series-tab e-series" data-series="e-series">
+                    <i class="fas fa-layer-group"></i>
+                    E-Series (Entry-Level)
                 </div>
-
-                <div class="oem-services">
-                    <h3>Our OEM/ODM Services</h3>
-                    <div class="services-grid">
-                        <div class="service-item">
-                            <i class="fas fa-pencil-alt"></i>
-                            <h4>Custom Design</h4>
-                            <p>We can customize the design to match your brand identity and specifications.</p>
-                        </div>
-                        <div class="service-item">
-                            <i class="fas fa-microchip"></i>
-                            <h4>Hardware Customization</h4>
-                            <p>Tailor the hardware components to meet your specific requirements.</p>
-                        </div>
-                        <div class="service-item">
-                            <i class="fas fa-code"></i>
-                            <h4>Software Customization</h4>
-                            <p>Customize the software interface and functionality to match your needs.</p>
-                        </div>
-                        <div class="service-item">
-                            <i class="fas fa-box"></i>
-                            <h4>Private Labeling</h4>
-                            <p>We can manufacture products under your brand name.</p>
-                        </div>
-                    </div>
+                <div class="series-tab s-series" data-series="s-series">
+                    <i class="fas fa-balance-scale"></i>
+                    S-Series (Mid-Range)
                 </div>
-
-                <div class="contact-cta">
-                    <h3>Interested in Our OEM/ODM Services?</h3>
-                    <p>Contact us today to discuss how we can work together to create custom automotive entertainment solutions for your brand.</p>
-                    <a href="contact.html" class="btn">Contact Us Now</a>
+                <div class="series-tab p-series" data-series="p-series">
+                    <i class="fas fa-crown"></i>
+                    P-Series (Flagship)
+                </div>
+                <div class="series-tab specialty" data-series="specialty">
+                    <i class="fas fa-star"></i>
+                    Specialty Series
+                </div>
+                <div class="series-tab addons" data-series="addons">
+                    <i class="fas fa-plus-circle"></i>
+                    Add-ons
                 </div>
             </div>
+
+            <div class="products-grid">
+                <!-- E-Series Products -->
+                <div class="product-card" data-series="e-series" id="e1">
+                    <div class="product-badge">Entry-Level</div>
+                    <div class="product-image">
+                        <img src="images/home-e1.jpg" alt="E1 Series">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-model">E1 Series</h3>
+                        <div class="product-specs">
+                            <span>Quad-core 1.3GHz | 1GB+32GB</span>
+                            <span>Android 8.1 | IPS Display</span>
+                            <span>WiFi 2.4GHz | GPS Navigation</span>
+                        </div>
+                        <div class="product-price">From $29.99</div>
+                        <div class="product-actions">
+                            <a href="E1.html" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-series="e-series" id="e2">
+                    <div class="product-badge">Entry-Level</div>
+                    <div class="product-image">
+                        <img src="images/E2.jpg" alt="E2 Series">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-model">E2 Series</h3>
+                        <div class="product-specs">
+                            <span>Quad-core 1.3GHz | 2GB+32GB</span>
+                            <span>Android 8.1 | IPS Display</span>
+                            <span>WiFi 2.4GHz | CarPlay/Android Auto</span>
+                        </div>
+                        <div class="product-price">From $32.29</div>
+                        <div class="product-actions">
+                            <a href="E2.html" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-series="e-series" id="e3">
+                    <div class="product-badge">Entry-Level</div>
+                    <div class="product-image">
+                        <img src="images/E3.jpg" alt="E3 Series">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-model">E3 Series</h3>
+                        <div class="product-specs">
+                            <span>Quad-core 1.5GHz | 2GB+64GB</span>
+                            <span>Android 9.0 | IPS Display</span>
+                            <span>Dual-band WiFi | CarPlay/Android Auto</span>
+                        </div>
+                        <div class="product-price">From $38.73</div>
+                        <div class="product-actions">
+                            <a href="E3.html" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- S-Series Products -->
+                <div class="product-card" data-series="s-series" id="s1">
+                    <div class="product-badge">Mid-Range</div>
+                    <div class="product-image">
+                        <img src="images/S1.jpg" alt="S1 Series">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-model">S1 Series</h3>
+                        <div class="product-specs">
+                            <span>Quad-core 1.6GHz | 2-4GB RAM</span>
+                            <span>Android 12 | IPS Display</span>
+                            <span>Dual-band WiFi | CarPlay/Android Auto</span>
+                        </div>
+                        <div class="product-price">From $44.23</div>
+                        <div class="product-actions">
+                            <a href="S1.html" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-series="s-series" id="s2">
+                    <div class="product-badge">Mid-Range</div>
+                    <div class="product-image">
+                        <img src="images/S2.jpg" alt="S2 Series">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-model">S2 Series</h3>
+                        <div class="product-specs">
+                            <span>Octa-core 1.8GHz | 6GB+128GB</span>
+                            <span>Android 11 | IPS Display</span>
+                            <span>Dual-band WiFi | Premium Audio</span>
+                        </div>
+                        <div class="product-price">From $69.21</div>
+                        <div class="product-actions">
+                            <a href="S2.html" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-series="s-series" id="s3">
+                    <div class="product-badge">Mid-Range</div>
+                    <div class="product-image">
+                        <img src="images/S3.jpg" alt="S3 Series">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-model">S3 Series</h3>
+                        <div class="product-specs">
+                            <span>Octa-core 1.6GHz | 2-4GB RAM</span>
+                            <span>Android 10 | IPS Display</span>
+                            <span>Dual-band WiFi | CarPlay/Android Auto</span>
+                        </div>
+                        <div class="product-price">From $43.29</div>
+                        <div class="product-actions">
+                            <a href="S3.html" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- P-Series Products -->
+                <div class="product-card" data-series="p-series" id="p1">
+                    <div class="product-badge">Flagship</div>
+                    <div class="product-image">
+                        <img src="images/P1.jpg" alt="P1 Series">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-model">P1 Series</h3>
+                        <div class="product-specs">
+                            <span>Octa-core 1.6GHz | 4GB RAM</span>
+                            <span>Android 10 | QLED Display</span>
+                            <span>4G LTE | Premium Audio</span>
+                        </div>
+                        <div class="product-price">From $76.33</div>
+                        <div class="product-actions">
+                            <a href="p1.html" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-series="p-series" id="p2">
+                    <div class="product-badge">Flagship</div>
+                    <div class="product-image">
+                        <img src="images/p2.jpg" alt="P2 Series">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-model">P2 Series</h3>
+                        <div class="product-specs">
+                            <span>Octa-core 2.0GHz | 4-8GB RAM</span>
+                            <span>Android 12 | QLED Display</span>
+                            <span>4G LTE | Premium Audio</span>
+                        </div>
+                        <div class="product-price">From $101.91</div>
+                        <div class="product-actions">
+                            <a href="P2.html" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-series="p-series" id="p3">
+                    <div class="product-badge">Flagship</div>
+                    <div class="product-image">
+                        <img src="images/p3.jpg" alt="P3 Series">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-model">P3 Series</h3>
+                        <div class="product-specs">
+                            <span>Octa-core 2.7GHz | 6-12GB RAM</span>
+                            <span>Android 13 | QLED Display</span>
+                            <span>4G LTE | Premium Audio</span>
+                        </div>
+                        <div class="product-price">From $158.83</div>
+                        <div class="product-actions">
+                            <a href="P3.html" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Specialty Series Products -->
+                <div class="product-card" data-series="specialty">
+                    <div class="product-badge">Specialty</div>
+                    <div class="product-image">
+                        <img src="images/TSs3.jpg" alt="Specialty Series S3">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-model">Specialty Series S3</h3>
+                        <div class="product-specs">
+                            <span>Various configurations | Specialty design</span>
+                            <span>Android 10-13 | QLED Display</span>
+                            <span>4G LTE | Premium Audio</span>
+                        </div>
+                        <div class="product-price">From $85.91</div>
+                        <div class="product-actions">
+                            <a href="Specialty Series s3.html" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-series="specialty">
+                    <div class="product-badge">Specialty</div>
+                    <div class="product-image">
+                        <img src="images/TSp1.jpg" alt="Specialty Series P1">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-model">Specialty Series P1</h3>
+                        <div class="product-specs">
+                            <span>Various configurations | Specialty design</span>
+                            <span>Android 10-13 | QLED Display</span>
+                            <span>4G LTE | Premium Audio</span>
+                        </div>
+                        <div class="product-price">From $95.91</div>
+                        <div class="product-actions">
+                            <a href="Specialty Series P1.html" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-series="specialty">
+                    <div class="product-badge">Specialty</div>
+                    <div class="product-image">
+                        <img src="images/TSp2.jpg" alt="Specialty Series P2">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-model">Specialty Series P2</h3>
+                        <div class="product-specs">
+                            <span>Various configurations | Specialty design</span>
+                            <span>Android 10-13 | QLED Display</span>
+                            <span>4G LTE | Premium Audio</span>
+                        </div>
+                        <div class="product-price">From $105.91</div>
+                        <div class="product-actions">
+                            <a href="Specialty Series P2.html" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-series="specialty">
+                    <div class="product-badge">Specialty</div>
+                    <div class="product-image">
+                        <img src="images/TSp3.jpg" alt="Specialty Series P3">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-model">Specialty Series P3</h3>
+                        <div class="product-specs">
+                            <span>Various configurations | Specialty design</span>
+                            <span>Android 10-13 | QLED Display</span>
+                            <span>4G LTE | Premium Audio</span>
+                        </div>
+                        <div class="product-price">From $115.91</div>
+                        <div class="product-actions">
+                            <a href="Specialty Series P3.html" class="btn">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-series="specialty">
+                    <div class="product-badge">Specialty</div>
+                    <div class="product-image">
+                        <img src="images/1112111.jpg" alt="Specialty Series P3">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-model">Dual Screen P3</h3>
+                        <div class="product-specs">
+                            <span>Various configurations | Specialty design</span>
+                            <span>Android 10-13 | QLED Display</span>
+                            <span>4G LTE | Premium Audio</span>
+                        </div>
+                        <div class="product-price">From $221.35</div>
+                        <div class="product-actions">
+                          <a href="dual screen P3.html" class="btn">View Details</a>
+                        </div>
+                  </div>
+                </div>
+
+                <!-- Add-ons Products (Screen Upgrades) -->
+                <div class="product-card" data-series="addons">
+                    <div class="product-badge">Add-on</div>
+                    <div class="product-image">
+                        <img src="images/IPS.jpg" alt="IPS to QLED Upgrade">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-model">IPS to QLED Upgrade</h3>
+                        <div class="product-specs">
+                            <span>Upgrade your display to QLED</span>
+                            <span>Better colors and contrast</span>
+                        </div>
+                        <div class="product-price">From $1.5</div>
+                        <div class="product-actions">
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-series="addons">
+                    <div class="product-badge">Add-on</div>
+                    <div class="product-image">
+                        <img src="images/2K.jpg" alt="2K Resolution Upgrade">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-model">2K Resolution Upgrade</h3>
+                        <div class="product-specs">
+                            <span>Enhanced resolution</span>
+                            <span>Sharper image quality</span>
+                        </div>
+                        <div class="product-price">$20.00</div>
+                        <div class="product-actions">
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="product-card" data-series="addons">
+                    <div class="product-badge">Add-on</div>
+                    <div class="product-image">
+                        <img src="images/360.jpg" alt="360 Chip Installation">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-model">360 Chip Installation</h3>
+                        <div class="product-specs">
+                            <span>Add 360° camera functionality</span>
+                            <span>Compatible with most systems</span>
+                        </div>
+                        <div class="product-price">$8.00</div>
+                        <div class="product-actions">
+                            <a href="#" class="btn">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="product-card" data-series="addons">
+<div class="product-image">
+                        <div class="contact-icon">
+                            <i class="fab fa-whatsapp"></i>
+                        </div>
+          </div>
+                    <div class="product-info">
+                        <h3 class="product-model">More Products</h3>
+                        <div class="product-specs">
+                            <span>For more products: Please contact me</span>
+                            <span>WhatsApp: 86 13537885828</span>
+                        </div>
+                        <div class="product-price">$0.01</div>
+                        <div class="product-actions">
+                            <a href="Contact.html" class="btn">Learn More</a>
+                        </div>
+                  </div>
+          </div>            </div>
         </div>
     </main>
 
@@ -161,8 +832,8 @@
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
                         <li><a href="index.html">Home</a></li>
-                        <li><a href="products.html">Products</a></li>
                         <li><a href="accessories.html">Accessories</a></li>
+                        <li><a href="oem.html">OEM/ODM</a></li>
                         <li><a href="Contact.html">Contact Us</a></li>
                     </ul>
                 </div>
@@ -174,6 +845,80 @@
         </div>
     </footer>
 
-    <script src="js/main.js"></script>
+    <script>
+        // 页面加载完成后执行
+        document.addEventListener('DOMContentLoaded', function() {
+            // 移动端菜单功能
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('nav ul');
+            
+            if (mobileMenuBtn) {
+                mobileMenuBtn.addEventListener('click', function() {
+                    nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+                });
+            }
+            
+            // 产品系列选项卡功能
+            const seriesTabs = document.querySelectorAll('.series-tab');
+            
+            if (seriesTabs.length > 0) {
+                seriesTabs.forEach(tab => {
+                    tab.addEventListener('click', function() {
+                        const series = this.getAttribute('data-series');
+                        
+                        // 更新活动标签
+                        seriesTabs.forEach(t => t.classList.remove('active'));
+                        this.classList.add('active');
+                        
+                        // 筛选产品
+                        filterProductsBySeries(series);
+                    });
+                });
+            }
+            
+            // 默认显示所有产品
+            filterProductsBySeries('all');
+        });
+
+        // 按系列筛选产品
+        function filterProductsBySeries(series) {
+            const productCards = document.querySelectorAll('.product-card');
+            
+            productCards.forEach(card => {
+                const cardSeries = card.getAttribute('data-series');
+                
+                if (series === 'all' || cardSeries === series) {
+                    card.style.display = 'block';
+                    // 添加淡入动画
+                    card.style.animation = 'fadeIn 0.5s forwards';
+                } else {
+                    // 添加淡出动画后再隐藏
+                    card.style.animation = 'fadeOut 0.3s forwards';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
+
+        // 添加CSS动画
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+            }
+            
+            @keyframes fadeOut {
+                from { opacity: 1; transform: translateY(0); }
+                to { opacity: 0; transform: translateY(20px); }
+            }
+            
+            .product-card {
+                animation: fadeIn 0.5s forwards;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
 </body>
 </html>
