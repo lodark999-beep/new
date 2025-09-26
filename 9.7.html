@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>P2 Car Stereo - Professional Pricing Table</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 导航栏样式 */
+        .site-header {
+            background: linear-gradient(135deg, #2c6fd0 0%, #15428a 100%);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .logo span {
+            color: #ffcc00;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav a:hover, nav a.active {
+            color: #ffcc00;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* 网站底栏样式 */
+        .site-footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            color: #ffcc00;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ffcc00;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #4a5568;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+
+        /* 原有样式保持不变 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #2c6fd0 0%, #15428a 100%);
+            color: white;
+            padding: 25px 30px;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+
+        .product-showcase {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            padding: 30px;
+        }
+
+        .product-images {
+            position: relative;
+            width: 100%;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .main-image-container {
+            position: relative;
+            width: 100%;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background: #f8f9fa;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e0e9f8;
+        }
+
+        .main-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .main-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: opacity 0.3s ease;
+        }
+
+        .image-navigation {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            padding: 0 20px;
+            z-index: 10;
+        }
+
+        .nav-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-btn:hover {
+            background: white;
+            transform: scale(1.1);
+        }
+
+        .thumbnail-container {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 20px;
+            padding: 10px;
+        }
+
+        .thumbnail {
+            width: 60px;
+            height: 60px;
+            border-radius: 5px;
+            cursor: pointer;
+            overflow: hidden;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+
+        .thumbnail.active {
+            border-color: #2c6fd0;
+        }
+
+        .thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 30px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .highlights {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .highlight {
+            text-align: center;
+            padding: 20px;
+            background: #f1f7ff;
+            border-radius: 8px;
+        }
+
+        .highlight i {
+            font-size: 2.5rem;
+            color: #2c6fd0;
+            margin-bottom: 10px;
+        }
+
+        .highlight p {
+            font-weight: 600;
+            font-size: 1rem;
+        }
+
+        /* 规格参数区域样式 */
+        .specs-container {
+            margin: 30px 0;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .specs-header {
+            padding: 15px 20px;
+            background: #2c6fd0;
+            color: white;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #15428a;
+        }
+        
+        .specs-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+        }
+        
+        .specs-column {
+            padding: 20px;
+        }
+        
+        .specs-column:first-child {
+            border-right: 1px solid #eee;
+            background: #f9fbfe;
+        }
+        
+        .specs-category {
+            font-weight: 600;
+            color: #2c6fd0;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #e0e9f8;
+            font-size: 1.1rem;
+        }
+        
+        .specs-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #f0f4f9;
+        }
+        
+        .specs-item:last-child {
+            border-bottom: none;
+        }
+        
+        .specs-label {
+            font-weight: 600;
+            color: #555;
+            flex: 1;
+        }
+        
+        .specs-value {
+            flex: 1;
+            text-align: right;
+            color: #333;
+        }
+
+        /* 价格表样式 - 优化移动端显示 */
+        .price-table-container {
+            margin: 30px 0;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1rem;
+            min-width: 800px;
+        }
+
+        .price-table caption {
+            padding: 15px;
+            text-align: left;
+            background: #2c6fd0;
+            color: white;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #15428a;
+        }
+
+        .price-table th,
+        .price-table td {
+            padding: 12px;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+            vertical-align: middle;
+        }
+
+        .price-table th {
+            background: #f9f9f9;
+            font-weight: 600;
+            color: #2c6fd0;
+        }
+
+        .price-table tbody tr:nth-child(even) {
+            background: #f1f7ff;
+        }
+
+        .model-header {
+            background: #f9f9f9;
+            font-weight: 600;
+            color: #2c6fd0;
+            vertical-align: middle;
+        }
+
+        .price-highlight {
+            color: #15428a;
+            font-weight: 700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #f5f7fa;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* 移动端优化 */
+        @media (max-width: 900px) {
+            .price-table {
+                min-width: 700px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 15px;
+            }
+            
+            nav {
+                display: none;
+                width: 100%;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            .product-showcase {
+                padding: 15px;
+            }
+            
+            .product-info {
+                padding: 20px;
+            }
+            
+            .highlights {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 15px;
+            }
+            
+            .highlight {
+                padding: 15px 10px;
+            }
+            
+            .highlight i {
+                font-size: 2rem;
+            }
+            
+            .highlight p {
+                font-size: 0.9rem;
+            }
+            
+            /* 价格表移动端优化 */
+            .price-table {
+                min-width: 100%;
+                font-size: 0.85rem;
+            }
+            
+            .price-table caption {
+                font-size: 1rem;
+                padding: 12px 15px;
+            }
+            
+            .price-table th, 
+            .price-table td {
+                padding: 10px 12px;
+            }
+            
+            .price-table .model-header {
+                font-size: 0.9rem;
+            }
+            
+            /* 规格参数区域移动端优化 */
+            .specs-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .specs-column:first-child {
+                border-right: none;
+                border-bottom: 1px solid #eee;
+            }
+            
+            .specs-item {
+                flex-direction: column;
+            }
+            
+            .specs-value {
+                text-align: left;
+                margin-top: 5px;
+                padding-left: 15px;
+            }
+            
+            .thumbnail {
+                width: 50px;
+                height: 50px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            
+            .price-table {
+                font-size: 0.8rem;
+            }
+            
+            .price-table th, 
+            .price-table td {
+                padding: 8px 10px;
+            }
+            
+            .price-table caption {
+                font-size: 0.95rem;
+                padding: 10px 12px;
+            }
+            
+            .specs-header {
+                font-size: 1rem;
+                padding: 12px 15px;
+            }
+            
+            .specs-column {
+                padding: 15px;
+            }
+            
+            .specs-category {
+                font-size: 1rem;
+            }
+            
+            .highlight i {
+                font-size: 1.8rem;
+            }
+            
+            .highlight p {
+                font-size: 0.85rem;
+            }
+            
+            .thumbnail {
+                width: 45px;
+                height: 45px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="site-header">
+        <div class="header-content">
+            <div class="logo">LOD<span>ARK</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="products.html" class="nav-link active">Products</a></li>
+                    <li><a href="accessories.html" class="nav-link">Accessories</a></li>
+                    <li><a href="oem.html" class="nav-link">OEM/ODM</a></li>
+                    <li><a href="Contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <div class="container">
+        <header>
+            <h1>9.7 inch</h1>
+</header>
+
+        <div class="product-showcase">
+            <div class="product-images">
+                <div class="main-image-container">
+                    <div class="main-image">
+                        <img src="images/T9.7-S3.jpg" alt="9.7" id="main-img">
+                    </div>
+                    <div class="image-navigation">
+                        <button class="nav-btn prev-btn">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <button class="nav-btn next-btn">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="thumbnail-container">
+                    <div class="thumbnail active" data-index="0">
+                        <img src="images/T9.7-S3.jpg" alt="Thumbnail 1">
+                    </div>
+
+                    <div class="thumbnail" data-index="1">
+                        <img src="images/T9.7.jpg" alt="Thumbnail 2">
+                    </div>
+                    <div class="thumbnail" data-index="2">
+                        <img src="images/T9.7.jpg" alt="Thumbnail 3">
+                    </div>
+                    <div class="thumbnail" data-index="3">
+                        <img src="images/T9.7.jpg" alt="Thumbnail 4">
+                    </div>
+                    <div class="thumbnail" data-index="4">
+
+                  </div>
+                </div>
+
+                <div class="product-info"> <!-- 价格表模块 - 已更新 -->
+                    <div class="price-table-container">
+                        <div class="table-wrapper">
+                            <table class="price-table">
+                                <caption>EXW Pricing (USD $) - 9.7 inch Flagship Model</caption>
+                                <thead>
+                                    <tr>
+                                        <th class="model-header">Screen Type</th>
+                                        <th>Quantity</th>
+                                        <th>2GB+32GB EXW Price</th>
+                                        <th>4GB+64GB EXW Price</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td rowspan="3" class="model-header">9.7" ( S3)</td>
+                                        <td>≥200</td>
+                                        <td class="price-highlight">&nbsp;$72.31</td>
+                                        <td class="price-highlight">$78.19</td>
+                                        <td class="price-highlight">&nbsp;</td>
+                                        <td class="price-highlight">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>20~199</td>
+                                        <td class="price-highlight">&nbsp;$73.31</td>
+                                        <td class="price-highlight">$79.19</td>
+                                        <td class="price-highlight">&nbsp;</td>
+                                        <td class="price-highlight">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2~19</td>
+                                        <td class="price-highlight">&nbsp;$75.31</td>
+                                        <td class="price-highlight">$81.19</td>
+                                        <td class="price-highlight">&nbsp;</td>
+                                        <td class="price-highlight">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="model-header">Screen Type</th>
+                                        <th>Quantity</th>
+                                        <th>4GB+32GB EXW Price</th>
+                                        <th>4GB+64GB EXW Price</th>
+                                        <th></th>
+                                        <th></th>
+                                    </tr>
+                                  <tr>
+                                        <td rowspan="3" class="model-header">9.7" ( P1)</td>
+                                        <td>≥200</td>
+                                        <td class="price-highlight">$100.25</td>
+                                        <td class="price-highlight">$102.46</td>
+                                        <td class="price-highlight"></td>
+                                        <td class="price-highlight"></td>
+                                    </tr>
+                                    <tr>
+                                        <td>20~199</td>
+                                        <td class="price-highlight">$101.25</td>
+                                        <td class="price-highlight">$103.46</td>
+                                        <td class="price-highlight">&nbsp;</td>
+                                        <td class="price-highlight">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2~19</td>
+                                        <td class="price-highlight">$103.25</td>
+                                        <td class="price-highlight">$105.46</td>
+                                        <td class="price-highlight">&nbsp;</td>
+                                        <td class="price-highlight">&nbsp;</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="model-header">Screen Type</th>
+                                        <th>Quantity</th>
+                                        <th>4GB+64GB EXW Price</th>
+                                        <th>6GB+128GB EXW Price</th>
+                                        <th>8GB+128GB EXW Price</th>
+                                        <th>8GB+256GB EXW Price</th>
+                                    </tr>
+                                  <tr>
+                                        <td rowspan="3" class="model-header">9.7" ( P2)</td>
+                                        <td>≥200</td>
+                                        <td class="price-highlight">$120.69</td>
+                                        <td class="price-highlight">$135.4</td>
+                                        <td class="price-highlight">$142.75</td>
+                                        <td class="price-highlight">$163.34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>20~199</td>
+                                        <td class="price-highlight">$121.69</td>
+                                        <td class="price-highlight">$136.4</td>
+                                        <td class="price-highlight">$143.75</td>
+                                        <td class="price-highlight">$164.34</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2~19</td>
+                                        <td class="price-highlight">$123.69</td>
+                                        <td class="price-highlight">$138.4</td>
+                                        <td class="price-highlight">$145.75</td>
+                                        <td class="price-highlight">$166.34</td>
+                                    </tr>
+                                    <tr>
+                                        <th class="model-header">Screen Type</th>
+                                        <th>Quantity</th>
+                                        <th>6GB+128GB EXW Price</th>
+                                        <th>8GB+128GB EXW Price</th>
+                                        <th>8GB+256GB EXW Price</th>
+                                        <th>12GB+256GB EXW Price</th>
+                                    </tr>
+                                  <tr>
+                                        <td rowspan="3" class="model-header">9.7" ( P2)</td>
+                                        <td>≥200</td>
+                                        <td class="price-highlight">$169.74</td>
+                                        <td class="price-highlight">$182.97</td>
+                                        <td class="price-highlight">$185.91</td>
+                                        <td class="price-highlight">$215.32</td>
+                                    </tr>
+                                    <tr>
+                                        <td>20~199</td>
+                                        <td class="price-highlight">$170.74</td>
+                                        <td class="price-highlight">$183.97</td>
+                                        <td class="price-highlight">$186.91</td>
+                                        <td class="price-highlight">$216.32</td>
+                                    </tr>
+                                    <tr>
+                                        <td>2~19</td>
+                                        <td class="price-highlight">$172.74</td>
+                                        <td class="price-highlight">$185.97</td>
+                                        <td class="price-highlight">$188.91</td>
+                                        <td class="price-highlight">$218.32</td>
+                                    </tr>
+                                    <tr>
+                                        
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+              </div>
+          </div>
+      </div>
+</div>
+
+    <!-- 网站底栏 -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>LODARK is a leading manufacturer of automotive navigation systems, committed to providing high-quality products and services to global customers.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Product Series</h3>
+                <ul class="footer-links">
+                    <li><a href="products.html#e-series">E-Series (Entry-Level)</a></li>
+                    <li><a href="products.html#s-series">S-Series (Mid-Range)</a></li>
+                    <li><a href="products.html#p-series">P-Series (Flagship)</a></li>
+                    <li><a href="products.html#specialty">Specialty Series</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="accessories.html">Accessories</a></li>
+                    <li><a href="oem.html">OEM/ODM</a></li>
+                    <li><a href="Contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 LODARK. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const images = [
+                'images/T9.7-S3.jpg',
+                'images/T9.7.jpg',
+                'images/T9.7.jpg',
+                'images/T9.7.jpg',
+            ];
+            
+            const alts = [
+                'P2 Car Stereo Front View',
+                'P2 Car Stereo Dashboard View',
+                'P2 Car Stereo Installation View',
+                'P2 Car Stereo Rear View',
+                'P2 Car Stereo Connection Options'
+            ];
+            
+            let currentIndex = 0;
+            const mainImg = document.getElementById('main-img');
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            
+            // 更新主图和激活的缩略图
+            function updateGallery(index) {
+                mainImg.src = images[index];
+                mainImg.alt = alts[index];
+                
+                // 更新激活的缩略图
+                thumbnails.forEach((thumb, i) => {
+                    if (i === index) {
+                        thumb.classList.add('active');
+                    } else {
+                        thumb.classList.remove('active');
+                    }
+                });
+                
+                currentIndex = index;
+            }
+            
+            // 下一张图片
+            function nextImage() {
+                let nextIndex = currentIndex + 1;
+                if (nextIndex >= images.length) {
+                    nextIndex = 0;
+                }
+                updateGallery(nextIndex);
+            }
+            
+            // 上一张图片
+            function prevImage() {
+                let prevIndex = currentIndex - 1;
+                if (prevIndex < 0) {
+                    prevIndex = images.length - 1;
+                }
+                updateGallery(prevIndex);
+            }
+            
+            // 添加事件监听器
+            nextBtn.addEventListener('click', nextImage);
+            prevBtn.addEventListener('click', prevImage);
+            
+            // 缩略图点击事件
+            thumbnails.forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    const index = parseInt(this.getAttribute('data-index'));
+                    updateGallery(index);
+                });
+            });
+            
+            // 自动轮播
+            let autoplay = setInterval(nextImage, 5000);
+            
+            // 鼠标悬停时暂停自动轮播
+            const imageContainer = document.querySelector('.product-images');
+            imageContainer.addEventListener('mouseenter', function() {
+                clearInterval(autoplay);
+                this.style.cursor = 'pointer';
+            });
+            
+            imageContainer.addEventListener('mouseleave', function() {
+                autoplay = setInterval(nextImage, 5000);
+                this.style.cursor = 'default';
+            });
+            
+            // 移动端菜单切换
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('nav');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                nav.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
