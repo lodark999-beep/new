@@ -408,6 +408,21 @@
             font-size: 0.9rem;
             color: #9ca3af;
         }
+
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(20px); }
+        }
+        
+        .product-card {
+            animation: fadeIn 0.5s forwards;
+        }
     </style>
 </head>
 <body>
@@ -838,10 +853,10 @@
                 <div class="footer-section">
                     <h3>Product Series</h3>
                     <ul class="footer-links">
-                        <li><a href="products.html#e-series">E-Series (Entry-Level)</a></li>
-                        <li><a href="products.html#s-series">S-Series (Mid-Range)</a></li>
-                        <li><a href="products.html#p-series">P-Series (Flagship)</a></li>
-                        <li><a href="products.html#specialty">Specialty Series</a></li>
+                        <li><a href="products.html#e-series" class="series-nav-link">E-Series (Entry-Level)</a></li>
+                        <li><a href="products.html#s-series" class="series-nav-link">S-Series (Mid-Range)</a></li>
+                        <li><a href="products.html#p-series" class="series-nav-link">P-Series (Flagship)</a></li>
+                        <li><a href="products.html#specialty" class="series-nav-link">Specialty Series</a></li>
                     </ul>
                 </div>
                 
@@ -893,8 +908,46 @@
                 });
             }
             
-            // 默认显示所有产品
-            filterProductsBySeries('all');
+            // 处理页脚中的产品系列导航链接
+            const seriesNavLinks = document.querySelectorAll('.series-nav-link');
+            seriesNavLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    // 提取系列值（如从#e-series中获取e-series）
+                    const series = this.getAttribute('href').split('#')[1];
+                    
+                    // 如果是当前页面，则阻止默认跳转，直接筛选
+                    if (window.location.pathname.endsWith('products.html') || 
+                        window.location.pathname === '/') {
+                        e.preventDefault();
+                        
+                        // 更新选项卡状态
+                        seriesTabs.forEach(tab => {
+                            if (tab.getAttribute('data-series') === series) {
+                                tab.click(); // 触发对应选项卡的点击事件
+                            }
+                        });
+                        
+                        // 滚动到产品区域
+                        document.querySelector('.products-grid').scrollIntoView({
+                            behavior: 'smooth'
+                        });
+                    }
+                    // 如果是其他页面，允许默认跳转（会跳转到products.html并触发下面的锚点处理）
+                });
+            });
+            
+            // 处理URL中的锚点（如products.html#e-series）
+            if (window.location.hash) {
+                const seriesFromHash = window.location.hash.slice(1); // 去除#
+                // 查找对应的选项卡并点击
+                const targetTab = document.querySelector(`.series-tab[data-series="${seriesFromHash}"]`);
+                if (targetTab) {
+                    targetTab.click();
+                }
+            } else {
+                // 默认显示所有产品
+                filterProductsBySeries('all');
+            }
         });
 
         // 按系列筛选产品
@@ -917,26 +970,6 @@
                 }
             });
         }
-
-        // 添加CSS动画
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes fadeIn {
-                from { opacity: 0; transform: translateY(20px); }
-                to { opacity: 1; transform: translateY(0); }
-            }
-            
-            @keyframes fadeOut {
-                from { opacity: 1; transform: translateY(0); }
-                to { opacity: 0; transform: translateY(20px); }
-            }
-            
-            .product-card {
-                animation: fadeIn 0.5s forwards;
-            }
-        `;
-        document.head.appendChild(style);
     </script>
 </body>
 </html>
-
