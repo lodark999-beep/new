@@ -417,6 +417,32 @@
             font-size: 0.9rem;
         }
 
+        /* 社交媒体样式 */
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: var(--accent);
+            transform: translateY(-3px);
+        }		
         /* 移动端优化 */
         @media (max-width: 768px) {
             .header-content {
@@ -792,7 +818,18 @@
             <div class="footer-section">
                 <h3>About Us</h3>
                 <p>LODARK is a leading manufacturer of automotive navigation systems, committed to providing high-quality products and services to global customers.</p>
-            </div>
+                    <!-- 社交媒体链接 -->
+                    <div class="social-media">
+                        <a href="https://www.youtube.com/@Lodark18" class="social-icon" target="_blank" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61573217336403" class="social-icon" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/lodark_car_player/" class="social-icon" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>                        </div>
             
             <div class="footer-section">
                 <h3>Product Series</h3>
