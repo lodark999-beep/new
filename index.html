@@ -302,7 +302,6 @@
         }
         
         .partner-logo {
-
             filter: grayscale(100%);
             opacity: 0.7;
             transition: all 0.3s;
@@ -312,7 +311,6 @@
         .partner-logo:hover {
             filter: grayscale(0);
             opacity: 1;
-
         }
         
         .partner-logo img {
@@ -357,7 +355,7 @@
             margin-bottom: 10px;
         }
         
-        /* Footer - Updated to match products.html */
+        /* Footer - Updated to match contact.html */
         footer {
             background: #0e2b5c;
             color: white;
@@ -414,6 +412,43 @@
             font-size: 0.9rem;
             color: #9ca3af;
         }
+
+        /* 社交媒体样式 */
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: #ff3a29;
+            transform: translateY(-3px);
+        }
+
+        /* 阿里巴巴本地图标样式 */
+        .alibaba-icon {
+            width: 20px;
+            height: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm4 0h-2v-6h2v6zm-6-8c0-.55.45-1 1-1s1 .45 1 1-.45 1-1 1-1-.45-1-1zm8 0c0-.55.45-1 1-1s1 .45 1 1-.45 1-1 1-1-.45-1-1z"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
         
         /* Responsive Design */
         @media (max-width: 992px) {
@@ -468,6 +503,10 @@
             
             nav li {
                 margin: 0.5rem 0;
+            }
+
+            .social-media {
+                flex-wrap: wrap;
             }
         }
     </style>
@@ -639,7 +678,8 @@
                         <img src="images/baidu.jpg" alt="Baidu">
                     </div>
                     <div class="partner-logo">
-                        <img src="images/TEYES.jpg"
+                        <img src="images/TEYES.jpg" alt="Teyes">
+                    </div>
                 </div>
             </div>
         </section>
@@ -681,6 +721,22 @@
                 <div class="footer-section">
                     <h3>About Us</h3>
                     <p>LODARK is a leading manufacturer of automotive navigation systems, committed to providing high-quality products and services to global customers.</p>
+                    <!-- 社交媒体链接 -->
+                    <div class="social-media">
+                        <a href="https://www.youtube.com/@Lodark18" class="social-icon" target="_blank" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61573217336403" class="social-icon" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/lodark_car_player/" class="social-icon" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://lodark.en.alibaba.com/" class="social-icon" target="_blank" aria-label="Alibaba">
+                            <!-- 使用本地阿里巴巴图标 -->
+                            <div class="alibaba-icon"></div>
+                        </a>
+                    </div>
                 </div>
                 
                 <div class="footer-section">
@@ -697,6 +753,7 @@
                     <h3>Quick Links</h3>
                     <ul class="footer-links">
                         <li><a href="index.html">Home</a></li>
+                        <li><a href="products.html">Products</a></li>
                         <li><a href="accessories.html">Accessories</a></li>
                         <li><a href="oem.html">OEM/ODM</a></li>
                         <li><a href="Contact.html">Contact Us</a></li>
