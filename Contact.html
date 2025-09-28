@@ -190,6 +190,14 @@
             color: var(--gray);
         }
 
+        /* 点击提示样式 */
+        .click-hint {
+            font-size: 0.8rem;
+            color: var(--accent);
+            margin-top: 5px;
+            font-style: italic;
+        }
+
         /* FAQ样式 */
         .faq-section {
             margin-top: 3rem;
@@ -452,8 +460,8 @@
 
             <div class="contact-content">
                 <div class="contact-info">
-                    <!-- WhatsApp 链接 -->
-                    <a href="https://wa.me/8613537885828" target="_blank" class="contact-item contact-link">
+                    <!-- WhatsApp 项 -->
+                    <div class="contact-item contact-link" onclick="openWhatsApp()">
                         <div class="contact-icon">
                             <i class="fab fa-whatsapp"></i>
                         </div>
@@ -462,26 +470,22 @@
                             <p>+86 13537885828</p>
                             <p class="click-hint">Click to start a conversation</p>
                         </div>
-                    </a>
+                    </div>
                     
                     <!-- WeChat 项 -->
-                    <div class="contact-item contact-link wechat-item">
+                    <div class="contact-item contact-link" onclick="copyWeChat()">
                         <div class="contact-icon">
                             <i class="fab fa-weixin"></i>
                         </div>
                         <div class="contact-details">
                             <h3>WeChat</h3>
                             <p>+86 13537885828</p>
-                            <p class="click-hint">Click to view QR code</p>
-                            <div class="wechat-qr">
-                                <img src="weixin.jpg" alt="WeChat QR Code">
-                                <p>Scan to add on WeChat</p>
-                            </div>
+                            <p class="click-hint">Click to copy WeChat ID</p>
                         </div>
                     </div>
                     
-                    <!-- 邮箱链接 -->
-                    <a href="mailto:lodark999@gmail.com" class="contact-item contact-link">
+                    <!-- 邮箱项 -->
+                    <div class="contact-item contact-link" onclick="sendEmail()">
                         <div class="contact-icon">
                             <i class="fas fa-envelope"></i>
                         </div>
@@ -490,7 +494,7 @@
                             <p>lodark999@gmail.com</p>
                             <p class="click-hint">Click to send an email</p>
                         </div>
-                    </a>
+                    </div>
                     
                     <!-- 公司信息 -->
                     <div class="contact-item">
@@ -667,19 +671,35 @@
                     item.classList.toggle('active');
                 });
             });
-            
-            // WeChat 二维码显示功能
-            const wechatItem = document.querySelector('.wechat-item');
-            if (wechatItem) {
-                wechatItem.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const qrCode = this.querySelector('.wechat-qr');
-                    qrCode.style.display = qrCode.style.display === 'block' ? 'none' : 'block';
-                });
-            }
         });
+
+        // WhatsApp function
+        function openWhatsApp() {
+            const phoneNumber = "+8613537885828";
+            const message = "Hello LODARK, I'm interested in your automotive entertainment systems. Could you please provide more information?";
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+        }
+
+        // WeChat copy function
+        function copyWeChat() {
+            const wechatId = "+86 13537885828";
+            navigator.clipboard.writeText(wechatId).then(() => {
+                alert(`WeChat ID "${wechatId}" has been copied to clipboard. Please add us on WeChat.`);
+            }).catch(err => {
+                console.error('Failed to copy WeChat ID: ', err);
+                alert(`Please manually copy the WeChat ID: ${wechatId}`);
+            });
+        }
+
+        // Email function
+        function sendEmail() {
+            const email = "lodark999@gmail.com";
+            const subject = "Inquiry about LODARK Automotive Entertainment Systems";
+            const body = "Dear LODARK Team,\n\nI am interested in your automotive entertainment systems. Could you please provide more information about your products and pricing?\n\nThank you.";
+            const mailtoURL = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoURL;
+        }
     </script>
 </body>
 </html>
-
-
