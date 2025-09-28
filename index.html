@@ -345,6 +345,14 @@
         
         .contact-method {
             padding: 20px;
+            transition: all 0.3s;
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        
+        .contact-method:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
         }
         
         .contact-method i {
@@ -692,19 +700,20 @@
                 <p>Support small-batch trial orders, tiered pricing for large quantities, fast response to custom needs</p>
                 
                 <div class="contact-methods">
-                    <div class="contact-method">
+                    <div class="contact-method" onclick="openWhatsApp()">
                         <i class="fab fa-whatsapp"></i>
                         <h4>WhatsApp</h4>
                         <p>+86 13537885828</p>
                     </div>
                     
-                    <div class="contact-method">
+                    <div class="contact-method" onclick="copyWeChat()">
                         <i class="fab fa-weixin"></i>
                         <h4>WeChat</h4>
                         <p>+86 13537885828</p>
+                        <p style="font-size: 0.8rem; margin-top: 5px;">(Click to copy)</p>
                     </div>
                     
-                    <div class="contact-method">
+                    <div class="contact-method" onclick="sendEmail()">
                         <i class="fas fa-envelope"></i>
                         <h4>Email</h4>
                         <p>lodark999@gmail.com</p>
@@ -779,7 +788,34 @@
                 document.querySelector('nav ul').style.display = 'none';
             }
         });
+
+        // WhatsApp function
+        function openWhatsApp() {
+            const phoneNumber = "+8613537885828";
+            const message = "Hello LODARK, I'm interested in your automotive entertainment systems. Could you please provide more information?";
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+        }
+
+        // WeChat copy function
+        function copyWeChat() {
+            const wechatId = "+86 13537885828";
+            navigator.clipboard.writeText(wechatId).then(() => {
+                alert(`WeChat ID "${wechatId}" has been copied to clipboard. Please add us on WeChat.`);
+            }).catch(err => {
+                console.error('Failed to copy WeChat ID: ', err);
+                alert(`Please manually copy the WeChat ID: ${wechatId}`);
+            });
+        }
+
+        // Email function
+        function sendEmail() {
+            const email = "lodark999@gmail.com";
+            const subject = "Inquiry about LODARK Automotive Entertainment Systems";
+            const body = "Dear LODARK Team,\n\nI am interested in your automotive entertainment systems. Could you please provide more information about your products and pricing?\n\nThank you.";
+            const mailtoURL = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoURL;
+        }
     </script>
 </body>
 </html>
-
