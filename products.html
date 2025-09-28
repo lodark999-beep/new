@@ -6,7 +6,7 @@
     <title>Products - LODARK Automotive Systems</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        /* 基础样式 */
+        /* 基础样式保持不变 */
         :root {
             --primary: #1a56db;
             --primary-dark: #0e2b5c;
@@ -196,7 +196,7 @@
             background-color: #198754;
         }
 
-        /* 产品网格样式 */
+        /* 产品网格样式 - 优化布局 */
         .products-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -211,6 +211,9 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             background: white;
+            display: flex;
+            flex-direction: column;
+            height: 100%; /* 确保所有卡片高度一致 */
         }
 
         .product-card:hover {
@@ -267,6 +270,9 @@
 
         .product-info {
             padding: 20px;
+            flex-grow: 1; /* 让产品信息区域填充剩余空间 */
+            display: flex;
+            flex-direction: column;
         }
 
         .product-model {
@@ -277,6 +283,7 @@
 
         .product-specs {
             margin-bottom: 15px;
+            flex-grow: 1; /* 规格信息填充空间，保持按钮在底部 */
         }
 
         .product-specs span {
@@ -312,11 +319,6 @@
             background: #e02919;
             transform: translateY(-2px);
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-        }
-
-        /* 隐藏非活动系列的产品 */
-        .product-card {
-            display: block;
         }
 
         /* 响应式调整 */
@@ -611,14 +613,14 @@
                         <div class="product-price">From $76.33</div>
                         <div class="product-actions">
                             <a href="p1.html" class="btn">View Details</a>
-                        </div>   
-                    </div>               
-				</div>
-					
+                        </div>
+                    </div>
+                </div>
+
                 <div class="product-card" data-series="s-series" id="s3">
                     <div class="product-badge">Mid-Range</div>
                     <div class="product-image">
-                      <img src="images/S3.jpg" alt="S3 Series">
+                        <img src="images/S3.jpg" alt="S3 Series">
                     </div>
                     <div class="product-info">
                         <h3 class="product-model">S3 Series</h3>
@@ -630,9 +632,11 @@
                         <div class="product-price">From $43.29</div>
                         <div class="product-actions">
                             <a href="S3.html" class="btn">View Details</a>
-                        </div>   
-                    </div>               
-				</div>                <!-- P-Series Products -->
+                        </div>
+                    </div>
+                </div>
+
+                <!-- P-Series Products -->
                 <div class="product-card" data-series="p-series" id="p1">
                     <div class="product-badge">Flagship</div>
                     <div class="product-image">
@@ -766,10 +770,11 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="product-card" data-series="specialty">
                     <div class="product-badge">Specialty</div>
                     <div class="product-image">
-                        <img src="images/1112111.jpg" alt="Specialty Series P3">
+                        <img src="images/1112111.jpg" alt="Dual Screen P3">
                     </div>
                     <div class="product-info">
                         <h3 class="product-model">Dual Screen P3</h3>
@@ -780,14 +785,15 @@
                         </div>
                         <div class="product-price">From $221.35</div>
                         <div class="product-actions">
-                          <a href="dual screen P3.html" class="btn">View Details</a>
+                            <a href="dual screen P3.html" class="btn">View Details</a>
                         </div>
-                  </div>
+                    </div>
                 </div>
-<div class="product-card" data-series="specialty">
+
+                <div class="product-card" data-series="specialty">
                     <div class="product-badge">Specialty</div>
                     <div class="product-image">
-                        <img src="images/T9.7.jpg" alt="Specialty Series P3">
+                        <img src="images/T9.7.jpg" alt="9.7 inch">
                     </div>
                     <div class="product-info">
                         <h3 class="product-model">9.7 inch</h3>
@@ -798,10 +804,11 @@
                         </div>
                         <div class="product-price">From $72.31</div>
                         <div class="product-actions">
-                          <a href="9.7.html" class="btn">View Details</a>
+                            <a href="9.7.html" class="btn">View Details</a>
                         </div>
-        </div>
-              </div>
+                    </div>
+                </div>
+
                 <!-- Add-ons Products (Screen Upgrades) -->
                 <div class="product-card" data-series="addons">
                     <div class="product-badge">Add-on</div>
@@ -858,6 +865,7 @@
                 </div>
 
                 <div class="product-card" data-series="addons">
+                    <div class="product-badge">Add-on</div>
                     <div class="product-image">
                         <img src="images/WhatsApp.jpg" alt="Contact for more products">
                     </div>
