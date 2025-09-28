@@ -211,9 +211,6 @@
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             position: relative;
             background: white;
-            display: flex;
-            flex-direction: column;
-            height: 100%;
         }
 
         .product-card:hover {
@@ -230,7 +227,6 @@
             font-size: 12px;
             font-weight: 600;
             color: white;
-            z-index: 2;
         }
 
         .product-badge {
@@ -261,37 +257,26 @@
             align-items: center;
             justify-content: center;
             background-color: #f8f9fa;
-            position: relative;
         }
 
         .product-image img {
             max-width: 100%;
             max-height: 100%;
             object-fit: contain;
-            transition: transform 0.5s ease;
-        }
-
-        .product-card:hover .product-image img {
-            transform: scale(1.05);
         }
 
         .product-info {
             padding: 20px;
-            display: flex;
-            flex-direction: column;
-            flex-grow: 1;
         }
 
         .product-model {
             font-size: 18px;
             margin-bottom: 15px;
             color: #212529;
-            line-height: 1.3;
         }
 
         .product-specs {
             margin-bottom: 15px;
-            flex-grow: 1;
         }
 
         .product-specs span {
@@ -330,8 +315,8 @@
         }
 
         /* 隐藏非活动系列的产品 */
-        .product-card.hidden {
-            display: none;
+        .product-card {
+            display: block;
         }
 
         /* 响应式调整 */
@@ -475,54 +460,6 @@
             background-repeat: no-repeat;
             background-position: center;
         }
-
-        /* 新增样式：产品计数和排序 */
-        .products-controls {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        .product-count {
-            font-size: 14px;
-            color: var(--gray);
-        }
-
-        .sort-options {
-            display: flex;
-            gap: 10px;
-        }
-
-        .sort-btn {
-            padding: 8px 15px;
-            background: white;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .sort-btn.active {
-            background: var(--primary);
-            color: white;
-            border-color: var(--primary);
-        }
-
-        .sort-btn:hover:not(.active) {
-            background: #f5f5f5;
-        }
-
-        /* 新增样式：无产品提示 */
-        .no-products {
-            grid-column: 1 / -1;
-            text-align: center;
-            padding: 40px;
-            color: var(--gray);
-            font-size: 18px;
-        }
     </style>
 </head>
 <body>
@@ -580,18 +517,9 @@
                 </div>
             </div>
 
-            <div class="products-controls">
-                <div class="product-count">Showing <span id="product-count">0</span> products</div>
-                <div class="sort-options">
-                    <button class="sort-btn active" data-sort="default">Default</button>
-                    <button class="sort-btn" data-sort="price-asc">Price: Low to High</button>
-                    <button class="sort-btn" data-sort="price-desc">Price: High to Low</button>
-                </div>
-            </div>
-
             <div class="products-grid">
                 <!-- E-Series Products -->
-                <div class="product-card" data-series="e-series" data-price="29.99">
+                <div class="product-card" data-series="e-series" id="e1">
                     <div class="product-badge">Entry-Level</div>
                     <div class="product-image">
                         <img src="images/home-e1.jpg" alt="E1 Series">
@@ -610,7 +538,7 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-series="e-series" data-price="32.29">
+                <div class="product-card" data-series="e-series" id="e2">
                     <div class="product-badge">Entry-Level</div>
                     <div class="product-image">
                         <img src="images/E2.jpg" alt="E2 Series">
@@ -629,7 +557,7 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-series="e-series" data-price="38.73">
+                <div class="product-card" data-series="e-series" id="e3">
                     <div class="product-badge">Entry-Level</div>
                     <div class="product-image">
                         <img src="images/E3.jpg" alt="E3 Series">
@@ -649,7 +577,7 @@
                 </div>
 
                 <!-- S-Series Products -->
-                <div class="product-card" data-series="s-series" data-price="44.23">
+                <div class="product-card" data-series="s-series" id="s1">
                     <div class="product-badge">Mid-Range</div>
                     <div class="product-image">
                         <img src="images/S1.jpg" alt="S1 Series">
@@ -668,7 +596,7 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-series="s-series" data-price="76.33">
+                <div class="product-card" data-series="s-series" id="s2">
                     <div class="product-badge">Mid-Range</div>
                     <div class="product-image">
                         <img src="images/S2.jpg" alt="S2 Series">
@@ -683,14 +611,14 @@
                         <div class="product-price">From $76.33</div>
                         <div class="product-actions">
                             <a href="p1.html" class="btn">View Details</a>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="product-card" data-series="s-series" data-price="43.29">
+                        </div>   
+                    </div>               
+				</div>
+					
+                <div class="product-card" data-series="s-series" id="s3">
                     <div class="product-badge">Mid-Range</div>
                     <div class="product-image">
-                        <img src="images/S3.jpg" alt="S3 Series">
+                      <img src="images/S3.jpg" alt="S3 Series">
                     </div>
                     <div class="product-info">
                         <h3 class="product-model">S3 Series</h3>
@@ -702,12 +630,10 @@
                         <div class="product-price">From $43.29</div>
                         <div class="product-actions">
                             <a href="S3.html" class="btn">View Details</a>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- P-Series Products -->
-                <div class="product-card" data-series="p-series" data-price="76.33">
+                        </div>   
+                    </div>               
+				</div>                <!-- P-Series Products -->
+                <div class="product-card" data-series="p-series" id="p1">
                     <div class="product-badge">Flagship</div>
                     <div class="product-image">
                         <img src="images/P1.jpg" alt="P1 Series">
@@ -726,7 +652,7 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-series="p-series" data-price="101.91">
+                <div class="product-card" data-series="p-series" id="p2">
                     <div class="product-badge">Flagship</div>
                     <div class="product-image">
                         <img src="images/p2.jpg" alt="P2 Series">
@@ -745,7 +671,7 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-series="p-series" data-price="158.83">
+                <div class="product-card" data-series="p-series" id="p3">
                     <div class="product-badge">Flagship</div>
                     <div class="product-image">
                         <img src="images/p3.jpg" alt="P3 Series">
@@ -765,7 +691,7 @@
                 </div>
 
                 <!-- Specialty Series Products -->
-                <div class="product-card" data-series="specialty" data-price="85.91">
+                <div class="product-card" data-series="specialty">
                     <div class="product-badge">Specialty</div>
                     <div class="product-image">
                         <img src="images/TSs3.jpg" alt="Specialty Series S3">
@@ -784,7 +710,7 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-series="specialty" data-price="95.91">
+                <div class="product-card" data-series="specialty">
                     <div class="product-badge">Specialty</div>
                     <div class="product-image">
                         <img src="images/TSp1.jpg" alt="Specialty Series P1">
@@ -803,7 +729,7 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-series="specialty" data-price="105.91">
+                <div class="product-card" data-series="specialty">
                     <div class="product-badge">Specialty</div>
                     <div class="product-image">
                         <img src="images/TSp2.jpg" alt="Specialty Series P2">
@@ -822,7 +748,7 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-series="specialty" data-price="115.91">
+                <div class="product-card" data-series="specialty">
                     <div class="product-badge">Specialty</div>
                     <div class="product-image">
                         <img src="images/TSp3.jpg" alt="Specialty Series P3">
@@ -840,11 +766,10 @@
                         </div>
                     </div>
                 </div>
-
-                <div class="product-card" data-series="specialty" data-price="221.35">
+                <div class="product-card" data-series="specialty">
                     <div class="product-badge">Specialty</div>
                     <div class="product-image">
-                        <img src="images/1112111.jpg" alt="Dual Screen P3">
+                        <img src="images/1112111.jpg" alt="Specialty Series P3">
                     </div>
                     <div class="product-info">
                         <h3 class="product-model">Dual Screen P3</h3>
@@ -855,32 +780,30 @@
                         </div>
                         <div class="product-price">From $221.35</div>
                         <div class="product-actions">
-                            <a href="dual screen P3.html" class="btn">View Details</a>
+                          <a href="dual screen P3.html" class="btn">View Details</a>
                         </div>
-                    </div>
+                  </div>
                 </div>
-
-                <div class="product-card" data-series="specialty" data-price="72.31">
+<div class="product-card" data-series="specialty">
                     <div class="product-badge">Specialty</div>
                     <div class="product-image">
-                        <img src="images/T9.7.jpg" alt="9.7 inch">
+                        <img src="images/T9.7.jpg" alt="Specialty Series P3">
                     </div>
                     <div class="product-info">
                         <h3 class="product-model">9.7 inch</h3>
                         <div class="product-specs">
                             <span>S3/P1/P2/P3</span>
                             <span>Android 10-13 | QLED Display</span>
-                            <span>carplay & android auto</span>
+                            <span>carplay &amp; android auto&nbsp;</span>
                         </div>
                         <div class="product-price">From $72.31</div>
                         <div class="product-actions">
-                            <a href="9.7.html" class="btn">View Details</a>
+                          <a href="9.7.html" class="btn">View Details</a>
                         </div>
-                    </div>
-                </div>
-
+        </div>
+              </div>
                 <!-- Add-ons Products (Screen Upgrades) -->
-                <div class="product-card" data-series="addons" data-price="1.5">
+                <div class="product-card" data-series="addons">
                     <div class="product-badge">Add-on</div>
                     <div class="product-image">
                         <img src="images/IPS.jpg" alt="IPS to QLED Upgrade">
@@ -898,7 +821,7 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-series="addons" data-price="20.00">
+                <div class="product-card" data-series="addons">
                     <div class="product-badge">Add-on</div>
                     <div class="product-image">
                         <img src="images/2K.jpg" alt="2K Resolution Upgrade">
@@ -916,7 +839,7 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-series="addons" data-price="8.00">
+                <div class="product-card" data-series="addons">
                     <div class="product-badge">Add-on</div>
                     <div class="product-image">
                         <img src="images/360.jpg" alt="360 Chip Installation">
@@ -934,7 +857,7 @@
                     </div>
                 </div>
 
-                <div class="product-card" data-series="addons" data-price="0.01">
+                <div class="product-card" data-series="addons">
                     <div class="product-image">
                         <img src="images/WhatsApp.jpg" alt="Contact for more products">
                     </div>
@@ -949,7 +872,7 @@
                             <a href="Contact.html" class="btn">Learn More</a>
                         </div>
                     </div>
-                </div>
+                </div>            
             </div>
         </div>
     </main>
@@ -1016,12 +939,6 @@
             
             // 产品系列选项卡功能
             const seriesTabs = document.querySelectorAll('.series-tab');
-            const sortButtons = document.querySelectorAll('.sort-btn');
-            let currentSeries = 'all';
-            let currentSort = 'default';
-            
-            // 初始化产品计数
-            updateProductCount();
             
             if (seriesTabs.length > 0) {
                 seriesTabs.forEach(tab => {
@@ -1032,31 +949,11 @@
                         seriesTabs.forEach(t => t.classList.remove('active'));
                         this.classList.add('active');
                         
-                        // 更新当前系列
-                        currentSeries = series;
-                        
                         // 筛选产品
                         filterProductsBySeries(series);
                     });
                 });
             }
-            
-            // 排序功能
-            sortButtons.forEach(button => {
-                button.addEventListener('click', function() {
-                    const sortType = this.getAttribute('data-sort');
-                    
-                    // 更新活动排序按钮
-                    sortButtons.forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    
-                    // 更新当前排序
-                    currentSort = sortType;
-                    
-                    // 排序产品
-                    sortProducts(sortType);
-                });
-            });
             
             // 处理页脚中的产品系列导航链接
             const seriesNavLinks = document.querySelectorAll('.series-nav-link');
@@ -1098,108 +995,28 @@
                 // 默认显示所有产品
                 filterProductsBySeries('all');
             }
-            
-            // 按系列筛选产品
-            function filterProductsBySeries(series) {
-                const productCards = document.querySelectorAll('.product-card');
-                let visibleCount = 0;
-                
-                productCards.forEach(card => {
-                    const cardSeries = card.getAttribute('data-series');
-                    
-                    if (series === 'all' || cardSeries === series) {
-                        card.classList.remove('hidden');
-                        visibleCount++;
-                    } else {
-                        card.classList.add('hidden');
-                    }
-                });
-                
-                // 更新产品计数
-                updateProductCount();
-                
-                // 重新排序可见产品
-                sortProducts(currentSort);
-                
-                // 如果没有产品，显示提示
-                showNoProductsMessage(visibleCount === 0);
-            }
-            
-            // 排序产品
-            function sortProducts(sortType) {
-                const productGrid = document.querySelector('.products-grid');
-                const productCards = Array.from(document.querySelectorAll('.product-card:not(.hidden)'));
-                
-                // 根据排序类型排序
-                switch(sortType) {
-                    case 'price-asc':
-                        productCards.sort((a, b) => {
-                            const priceA = parseFloat(a.getAttribute('data-price'));
-                            const priceB = parseFloat(b.getAttribute('data-price'));
-                            return priceA - priceB;
-                        });
-                        break;
-                    case 'price-desc':
-                        productCards.sort((a, b) => {
-                            const priceA = parseFloat(a.getAttribute('data-price'));
-                            const priceB = parseFloat(b.getAttribute('data-price'));
-                            return priceB - priceA;
-                        });
-                        break;
-                    case 'default':
-                    default:
-                        // 默认排序：按系列和产品名称排序
-                        productCards.sort((a, b) => {
-                            const seriesA = a.getAttribute('data-series');
-                            const seriesB = b.getAttribute('data-series');
-                            const modelA = a.querySelector('.product-model').textContent;
-                            const modelB = b.querySelector('.product-model').textContent;
-                            
-                            // 先按系列排序
-                            if (seriesA !== seriesB) {
-                                const seriesOrder = ['e-series', 's-series', 'p-series', 'specialty', 'addons'];
-                                return seriesOrder.indexOf(seriesA) - seriesOrder.indexOf(seriesB);
-                            }
-                            
-                            // 同系列内按型号排序
-                            return modelA.localeCompare(modelB);
-                        });
-                        break;
-                }
-                
-                // 清空产品网格
-                productGrid.innerHTML = '';
-                
-                // 添加排序后的产品
-                productCards.forEach(card => {
-                    productGrid.appendChild(card);
-                });
-            }
-            
-            // 更新产品计数
-            function updateProductCount() {
-                const visibleProducts = document.querySelectorAll('.product-card:not(.hidden)').length;
-                document.getElementById('product-count').textContent = visibleProducts;
-            }
-            
-            // 显示/隐藏无产品提示
-            function showNoProductsMessage(show) {
-                let message = document.querySelector('.no-products');
-                
-                if (show) {
-                    if (!message) {
-                        message = document.createElement('div');
-                        message.className = 'no-products';
-                        message.innerHTML = '<p>No products found in this category.</p>';
-                        document.querySelector('.products-grid').appendChild(message);
-                    }
-                } else {
-                    if (message) {
-                        message.remove();
-                    }
-                }
-            }
         });
+
+        // 按系列筛选产品
+        function filterProductsBySeries(series) {
+            const productCards = document.querySelectorAll('.product-card');
+            
+            productCards.forEach(card => {
+                const cardSeries = card.getAttribute('data-series');
+                
+                if (series === 'all' || cardSeries === series) {
+                    card.style.display = 'block';
+                    // 添加淡入动画
+                    card.style.animation = 'fadeIn 0.5s forwards';
+                } else {
+                    // 添加淡出动画后再隐藏
+                    card.style.animation = 'fadeOut 0.3s forwards';
+                    setTimeout(() => {
+                        card.style.display = 'none';
+                    }, 300);
+                }
+            });
+        }
     </script>
 </body>
 </html>
