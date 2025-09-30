@@ -792,7 +792,7 @@
             background-position: center;
         }
         
-        /* Responsive Design - 修复移动端布局问题 */
+        /* Responsive Design */
         @media (max-width: 992px) {
             .hero h1 {
                 font-size: 36px;
@@ -801,7 +801,6 @@
             .about-section {
                 grid-template-columns: 1fr;
                 text-align: center;
-                gap: 30px;
             }
             
             .about-stats {
@@ -836,10 +835,6 @@
                 font-size: 28px;
             }
             
-            .section-title {
-                margin-bottom: 40px;
-            }
-            
             .btn {
                 display: block;
                 width: 100%;
@@ -865,31 +860,14 @@
                 margin-top: 1rem;
                 flex-direction: column;
                 align-items: center;
-                width: 100%;
             }
             
             nav li {
                 margin: 0.5rem 0;
-                width: 100%;
-                text-align: center;
-            }
-            
-            nav a {
-                display: block;
-                padding: 0.8rem 1rem;
             }
 
             .about-stats {
                 grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            
-            .stat-item {
-                padding: 15px;
-            }
-            
-            .stat-number {
-                font-size: 28px;
             }
 
             .social-media {
@@ -898,100 +876,6 @@
             
             .certifications-grid {
                 grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            
-            .certification-item {
-                padding: 15px;
-            }
-            
-            /* 修复双列布局内部元素在移动端的显示 */
-            .feature-item,
-            .service-item {
-                flex-direction: column;
-                text-align: center;
-                padding: 20px 15px;
-            }
-            
-            .feature-icon,
-            .service-icon {
-                margin-right: 0;
-                margin-bottom: 15px;
-            }
-            
-            .review-item {
-                padding: 15px;
-            }
-            
-            .review-author {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .review-avatar {
-                margin-right: 0;
-                margin-bottom: 10px;
-            }
-            
-            .contact-methods {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            
-            .contact-method {
-                padding: 15px;
-            }
-        }
-        
-        @media (max-width: 480px) {
-            .hero h1 {
-                font-size: 28px;
-            }
-            
-            .hero p {
-                font-size: 16px;
-            }
-            
-            .section-title h2 {
-                font-size: 24px;
-            }
-            
-            .section-title p {
-                font-size: 16px;
-            }
-            
-            .about-content h3,
-            .why-choose-us-section .about-content h3,
-            .customized-services-section .about-content h3,
-            .certifications-section .about-content h3,
-            .customer-reviews-section .about-content h3 {
-                font-size: 22px;
-            }
-            
-            .about-content p,
-            .why-choose-us-section .about-content p,
-            .customized-services-section .about-content p,
-            .certifications-section .about-content p,
-            .customer-reviews-section .about-content p {
-                font-size: 16px;
-            }
-            
-            .feature-text h4,
-            .service-text h4 {
-                font-size: 16px;
-            }
-            
-            .feature-text p,
-            .service-text p {
-                font-size: 14px;
-            }
-            
-            .product-model {
-                font-size: 18px;
-            }
-            
-            .product-price {
-                font-size: 20px;
             }
         }
     </style>
@@ -1038,15 +922,15 @@
                 
                 <div class="about-section">
                     <div class="about-image">
-                        <img src="images/about-us.jpg" alt="LODARK Factory and Team">
+                        <img src="images/about us.jpg" alt="LODARK Factory and Team">
                     </div>
                     <div class="about-content">
-                        <h3>Your Trusted Automotive Entertainment Partner</h3>
-                        <p>Founded in 2013, LODARK has grown to become a leading manufacturer of automotive entertainment systems with a strong focus on innovation, quality, and customer satisfaction.</p>
+                      <h3>Your Trusted Automotive Entertainment Partner</h3>
+                        <p>Founded in 2014, LODARK has grown to become a leading manufacturer of automotive entertainment systems with a strong focus on innovation, quality, and customer satisfaction.</p>
                         <p>With over 11 years of OEM experience, we specialize in designing and producing high-quality car audio systems, navigation units, and multimedia solutions for global markets.</p>
                         <p>Our state-of-the-art manufacturing facility spans over 20,000 square meters and is equipped with advanced production lines and testing equipment to ensure the highest quality standards.</p>
                         
-                        <div class="about-stats">
+                      <div class="about-stats">
                             <div class="stat-item">
                                 <div class="stat-number">11+</div>
                                 <div class="stat-text">Years Experience</div>
@@ -1069,13 +953,13 @@
         <section class="why-choose-us-section">
             <div class="container">
                 <div class="section-title">
-                    <h2>Why Choose Us</h2>
+                    <h2>Why Choose LODARK</h2>
                     <p>Discover what sets LODARK apart from the competition</p>
                 </div>
                 
                 <div class="about-section">
                     <div class="about-image">
-                        <img src="images/why-choose-us.jpg" alt="Why Choose LODARK">
+                        <img src="images/Why Choose Us.jpg" alt="Why Choose LODARK">
                     </div>
                     <div class="about-content">
                         <h3>Excellence in Automotive Entertainment</h3>
@@ -1123,7 +1007,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                  </div>
                 </div>
             </div>
         </section>
@@ -1138,7 +1022,7 @@
                 
                 <div class="about-section">
                     <div class="about-image">
-                        <img src="images/customized-services.jpg" alt="Customized Services">
+                        <img src="images/Customized Services.jpg" alt="Customized Services">
                     </div>
                     <div class="about-content">
                         <h3>Flexible Solutions for Your Business</h3>
@@ -1201,40 +1085,13 @@
                 
                 <div class="about-section">
                     <div class="about-image">
-                        <img src="images/certifications.jpg" alt="LODARK Certifications">
+                        <img src="images/Our Certifications.jpg" alt="LODARK Certifications">
                     </div>
                     <div class="about-content">
                         <h3>Quality Standards and Compliance</h3>
                         <p>LODARK is proud to hold multiple international certifications that demonstrate our commitment to quality, safety, and environmental responsibility.</p>
-                        <p>Our certifications ensure that our products meet the highest industry standards and regulatory requirements, giving our customers confidence in the quality and reliability of our automotive entertainment systems.</p>
-                        
-                        <div class="certifications-grid">
-                            <div class="certification-item">
-                                <img src="images/iatf-16949.jpg" alt="IATF 16949 Certification">
-                                <h4>IATF 16949</h4>
-                            </div>
-                            <div class="certification-item">
-                                <img src="images/iso-9001.jpg" alt="ISO 9001 Certification">
-                                <h4>ISO 9001</h4>
-                            </div>
-                            <div class="certification-item">
-                                <img src="images/ccc-certification.jpg" alt="3C Certification">
-                                <h4>3C Certification</h4>
-                            </div>
-                            <div class="certification-item">
-                                <img src="images/ce-certification.jpg" alt="CE Certification">
-                                <h4>CE Certification</h4>
-                            </div>
-                            <div class="certification-item">
-                                <img src="images/rohs-certification.jpg" alt="RoHS Certification">
-                                <h4>RoHS Certification</h4>
-                            </div>
-                            <div class="certification-item">
-                                <img src="images/fcc-certification.jpg" alt="FCC Certification">
-                                <h4>FCC Certification</h4>
-                            </div>
-                        </div>
-                    </div>
+                      <p>Our certifications ensure that our products meet the highest industry standards and regulatory requirements, giving our customers confidence in the quality and reliability of our automotive entertainment systems.</p>
+</div>
                 </div>
             </div>
         </section>
@@ -1249,7 +1106,7 @@
                 
                 <div class="about-section">
                     <div class="about-image">
-                        <img src="images/customer-reviews.jpg" alt="Customer Reviews">
+                        <img src="images/Customer Reviews.jpg" alt="Customer Reviews">
                     </div>
                     <div class="about-content">
                         <h3>Trusted by Customers Worldwide</h3>
@@ -1269,15 +1126,12 @@
                                     "The P2 Series unit I purchased for my Toyota has exceeded my expectations. The screen quality is excellent and the Android Auto integration works flawlessly."
                                 </div>
                                 <div class="review-author">
-                                    <div class="review-avatar">
-                                        <img src="images/customer1.jpg" alt="Michael Johnson">
-                                    </div>
-                                    <div class="review-details">
-                                        <h4>Michael Johnson</h4>
+<div class="review-details">
+                  <h4>Michael Johnson</h4>
                                         <p>Automotive Retailer, USA</p>
-                                    </div>
-                                </div>
-                            </div>
+                                  </div>
+                              </div>
+                          </div>
                             
                             <div class="review-item">
                                 <div class="review-rating">
@@ -1291,14 +1145,11 @@
                                     "We've been partnering with LODARK for over 3 years for our OEM requirements. Their product quality and customer service are outstanding."
                                 </div>
                                 <div class="review-author">
-                                    <div class="review-avatar">
-                                        <img src="images/customer2.jpg" alt="Sarah Chen">
-                                    </div>
-                                    <div class="review-details">
-                                        <h4>Sarah Chen</h4>
+<div class="review-details">
+                  <h4>Sarah Chen</h4>
                                         <p>Procurement Manager, Singapore</p>
-                                    </div>
-                                </div>
+                                  </div>
+                              </div>
                             </div>
                             
                             <div class="review-item">
@@ -1313,14 +1164,11 @@
                                     "The technical support team at LODARK was incredibly helpful during our customization process. They understood our requirements perfectly."
                                 </div>
                                 <div class="review-author">
-                                    <div class="review-avatar">
-                                        <img src="images/customer3.jpg" alt="David Wilson">
-                                    </div>
-                                    <div class="review-details">
-                                        <h4>David Wilson</h4>
+<div class="review-details">
+                  <h4>David Wilson</h4>
                                         <p>Business Owner, Australia</p>
-                                    </div>
-                                </div>
+                                  </div>
+                              </div>
                             </div>
                             
                             <div class="review-item">
@@ -1335,14 +1183,11 @@
                                     "Excellent products at competitive prices. The delivery was faster than expected and the installation was straightforward."
                                 </div>
                                 <div class="review-author">
-                                    <div class="review-avatar">
-                                        <img src="images/customer4.jpg" alt="Emma Rodriguez">
-                                    </div>
-                                    <div class="review-details">
-                                        <h4>Emma Rodriguez</h4>
+<div class="review-details">
+                  <h4>Emma Rodriguez</h4>
                                         <p>Car Enthusiast, Spain</p>
-                                    </div>
-                                </div>
+                                  </div>
+                              </div>
                             </div>
                         </div>
                     </div>
@@ -1406,12 +1251,12 @@
                     <div class="product-card">
                         <div class="product-badge">Entry-Level</div>
                         <div class="product-image">
-                            <img src="images/home-e1.jpg" alt="E1 Series">
+                            <img src="images/home-e2.jpg" alt="E2 Series">
                         </div>
                         <div class="product-info">
-                            <h3 class="product-model">E1 Series</h3>
+                            <h3 class="product-model">E2 Series</h3>
                             <div class="product-specs">
-                                <span>Quad-core 1.3GHz | 1GB+32GB</span>
+                                <span>Quad-core 1.3GHz | 2GB+32GB</span>
                                 <span>Android 8.1 | IPS Display</span>
                                 <span>WiFi 2.4GHz | GPS Navigation</span>
                             </div>
@@ -1425,16 +1270,16 @@
                     <div class="product-card">
                         <div class="product-badge">Mid-Range</div>
                         <div class="product-image">
-                            <img src="images/home-s1.jpg" alt="S1 Series">
+                            <img src="images/home-s2.jpg" alt="S1 Series">
                         </div>
                         <div class="product-info">
-                            <h3 class="product-model">S1 Series</h3>
+                            <h3 class="product-model">S2 Series</h3>
                             <div class="product-specs">
-                                <span>Quad-core 1.6GHz | 2-4GB RAM</span>
-                                <span>Android 12 | IPS Display</span>
+                                <span>Octa-core 1.8GHz | 6GB+128GB</span>
+                                <span>Android 11 | IPS Display</span>
                                 <span>Dual-band WiFi | CarPlay/Android Auto</span>
                             </div>
-                            <div class="product-price">From $44.23</div>
+                            <div class="product-price">From $76.33</div>
                             <div class="product-actions">
                                 <a href="products.html#s1" class="btn">View Details</a>
                             </div>
