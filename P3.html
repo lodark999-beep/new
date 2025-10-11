@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>p3 Car Stereo - Professional Pricing Table</title>
-
-     <!-- 优化的标签栏图标代码 -->
+    <title>P3 Car Stereo - Professional Pricing Table</title>
+	
+    <!-- 优化的标签栏图标代码 -->
     <!-- 基础图标（必选） -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
     
@@ -30,7 +30,7 @@
     <meta name="msapplication-TileImage" content="/mstile-144x144.png">
     
     <!-- 主题颜色（移动浏览器） -->
-    <meta name="theme-color" content="#165DFF">   
+    <meta name="theme-color" content="#165DFF">	
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* 导航栏样式 */
@@ -287,6 +287,76 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
+        /* 产品亮点区域样式 */
+        .highlights-container {
+            margin: 30px 0;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        .highlights-header {
+            padding: 15px 20px;
+            background: #2c6fd0;
+            color: white;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #15428a;
+        }
+        
+        .highlights-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 25px;
+        }
+        
+        .highlight-card {
+            display: flex;
+            align-items: flex-start;
+            padding: 15px;
+            background: #f9fbfe;
+            border-radius: 8px;
+            border-left: 4px solid #2c6fd0;
+            transition: transform 0.3s ease;
+        }
+        
+        .highlight-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .highlight-icon {
+            flex-shrink: 0;
+            width: 50px;
+            height: 50px;
+            background: #e0e9f8;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            color: #2c6fd0;
+            font-size: 1.5rem;
+        }
+        
+        .highlight-text {
+            flex: 1;
+        }
+        
+        .highlight-title {
+            font-weight: 600;
+            color: #2c6fd0;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+        }
+        
+        .highlight-desc {
+            color: #555;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+
         .highlights {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -418,7 +488,7 @@
         .price-table th {
             background: #f9f9f9;
             font-weight: 600;
-            color: 2c6fd0;
+            color: #2c6fd0;
         }
 
         .price-table tbody tr:nth-child(even) {
@@ -530,6 +600,22 @@
             
             .highlight p {
                 font-size: 0.9rem;
+            }
+            
+            /* 产品亮点区域移动端优化 */
+            .highlights-content {
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+            
+            .highlight-card {
+                padding: 12px;
+            }
+            
+            .highlight-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.3rem;
             }
             
             /* 价格表移动端优化 */
@@ -659,14 +745,14 @@
     <div class="container">
         <header>
             <h1>P3(Flagship) Original N6 model</h1>
-            <p class="subtitle">High-end chipset, QLED screen, 4G networking, premium sound effects.</p>
+            <p class="subtitle">L880A Mainboard with UIS7870SC processor, 4K video support, and premium audio processing</p>
         </header>
 
         <div class="product-showcase">
             <div class="product-images">
                 <div class="main-image-container">
                     <div class="main-image">
-                        <img src="images/p3-stereo-1.jpg" alt="p3 Car Stereo Front View" id="main-img">
+                        <img src="images/p3-stereo-1.jpg" alt="P3 Car Stereo Front View" id="main-img">
                     </div>
                     <div class="image-navigation">
                         <button class="nav-btn prev-btn">
@@ -695,204 +781,308 @@
                         <img src="images/p3-stereo-thumb-5.jpg" alt="Thumbnail 5">
                     </div>
                 </div>
+            </div>
 
-                <div class="product-info">
-                    <div class="specs-container">
-                        <div class="specs-header">
-                            Product Specifications
-                        </div>
-                        <div class="specs-content">
-                            <div class="specs-column">
-                                <div class="specs-category">Hardware Specifications</div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Processor</span>
-                                    <span class="specs-value">Octa-core 2.7Ghz 64-bit unisoc UIS7870SC 8*A76 6nm</span>
-                                </div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Memory & Storage</span>
-                                    <span class="specs-value">6+128GB\8+128GB\8+256GB\12+256GB</span>
-                                </div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Amplifier Chip</span>
-                                    <span class="specs-value">TDA7851 Amplifier chip,TDA7708 Radio</span>
-                                </div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Audio Processing</span>
-                                    <span class="specs-value">36-band Equalizer</span>
-                                </div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Connectivity</span>
-                                    <span class="specs-value">3 x USB 2.0, Bluetooth 5.0 Module</span>
-                                </div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Audio Output</span>
-                                    <span class="specs-value">Supports 2.0 Channel Output</span>
-                                </div>
+            <div class="product-info">
+                <!-- 产品亮点区域 -->
+                <div class="highlights-container">
+                    <div class="highlights-header">
+                        Product Highlights
+                    </div>
+                    <div class="highlights-content">
+                        <div class="highlight-card">
+                            <div class="highlight-icon">
+                                <i class="fas fa-microchip"></i>
                             </div>
-                            <div class="specs-column">
-                                <div class="specs-category">Display & Features</div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Operating System</span>
-                                    <span class="specs-value">Android 13</span>
-                                </div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Screen</span>
-                                    <span class="specs-value">QLED IPS 2.5D Glass Touchscreen</span>
-                                </div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Network</span>
-                                    <span class="specs-value">Dual-band WiFi (2.4GHz + 5GHz) + 4G LTE network</span>
-                                </div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Navigation System</span>
-                                    <span class="specs-value">GPS + BeiDou + GLONASS</span>
-                                </div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Rear View Camera</span>
-                                    <span class="specs-value">Supports AHD 1920×1080 Rear Camera</span>
-                                </div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Smartphone Connectivity</span>
-                                    <span class="specs-value">Supports CarPlay & Android Auto</span>
-                                </div>
+                            <div class="highlight-text">
+                                <div class="highlight-title">Advanced Processor</div>
+                                <div class="highlight-desc">UIS7870SC Octa-core (1×A76 @2.7GHz + 3×A76 @2.3GHz + 4×A55 @2.1GHz) with 6nm EUV process</div>
                             </div>
                         </div>
-                  </div>
-
-                    <!-- 价格表模块 - 已更新 -->
-                    <div class="price-table-container">
-                        <div class="table-wrapper">
-                            <table class="price-table">
-                                <caption>EXW Pricing (USD $) - p3 Flagship Model</caption>
-                                <thead>
-                                    <tr>
-                                        <th class="model-header">Screen Type</th>
-                                        <th>Quantity</th>
-                                        <th>6GB+128GB EXW Price</th>
-                                        <th>8GB+128GB EXW Price</th>
-                                        <th>8GB+256GB EXW Price</th>
-                                        <th>12GB+256GB EXW Price</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td rowspan="3" class="model-header">9/10" (Frame Type)</td>
-                                        <td>≥200</td>
-                                        <td class="price-highlight">$158.83</td>
-                                        <td class="price-highlight">$172.06</td>
-                                        <td class="price-highlight">$180.88</td>
-                                        <td class="price-highlight">$226.47</td>
-                                    </tr>
-                                    <tr>
-                                        <td>20~199</td>
-                                        <td class="price-highlight">$159.83</td>
-                                        <td class="price-highlight">$173.06</td>
-                                        <td class="price-highlight">$181.88</td>
-                                        <td class="price-highlight">$227.47</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2~19</td>
-                                        <td class="price-highlight">$161.83</td>
-                                        <td class="price-highlight">$175.06</td>
-                                        <td class="price-highlight">$183.88</td>
-                                        <td class="price-highlight">$229.47</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="3" class="model-header">1 Din 9/10" (Frame Type)</td>
-                                        <td>≥200</td>
-                                        <td class="price-highlight">$160.33</td>
-                                        <td class="price-highlight">$173.56</td>
-                                        <td class="price-highlight">$182.38</td>
-                                        <td class="price-highlight">$227.97</td>
-                                    </tr>
-                                    <tr>
-                                        <td>20~199</td>
-                                        <td class="price-highlight">$161.33</td>
-                                        <td class="price-highlight">$174.56</td>
-                                        <td class="price-highlight">$183.38</td>
-                                        <td class="price-highlight">$228.97</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2~19</td>
-                                        <td class="price-highlight">$163.33</td>
-                                        <td class="price-highlight">$176.56</td>
-                                        <td class="price-highlight">$185.38</td>
-                                        <td class="price-highlight">$230.97</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="3" class="model-header">7" (Universal)</td>
-                                        <td>≥200</td>
-                                        <td class="price-highlight">$160.17</td>
-                                        <td class="price-highlight">$173.40</td>
-                                        <td class="price-highlight">$182.22</td>
-                                        <td class="price-highlight">$227.81</td>
-                                    </tr>
-                                    <tr>
-                                        <td>20~199</td>
-                                        <td class="price-highlight">$161.17</td>
-                                        <td class="price-highlight">$174.40</td>
-                                        <td class="price-highlight">$183.22</td>
-                                        <td class="price-highlight">$228.81</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2~19</td>
-                                        <td class="price-highlight">$163.17</td>
-                                        <td class="price-highlight">$176.40</td>
-                                        <td class="price-highlight">$185.22</td>
-                                        <td class="price-highlight">$230.81</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="3" class="model-header">7" (Toyota)</td>
-                                        <td>≥200</td>
-                                        <td class="price-highlight">$163.85</td>
-                                        <td class="price-highlight">$177.08</td>
-                                        <td class="price-highlight">$185.90</td>
-                                        <td class="price-highlight">$231.49</td>
-                                    </tr>
-                                    <tr>
-                                        <td>20~199</td>
-                                        <td class="price-highlight">$164.85</td>
-                                        <td class="price-highlight">$178.08</td>
-                                        <td class="price-highlight">$186.90</td>
-                                        <td class="price-highlight">$232.49</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2~19</td>
-                                        <td class="price-highlight">$166.85</td>
-                                        <td class="price-highlight">$180.08</td>
-                                        <td class="price-highlight">$188.90</td>
-                                        <td class="price-highlight">$234.49</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="3" class="model-header">9" for VW</td>
-                                        <td>≥200</td>
-                                        <td class="price-highlight">$169.83</td>
-                                        <td class="price-highlight">$183.06</td>
-                                        <td class="price-highlight">$191.88</td>
-                                        <td class="price-highlight">$237.47</td>
-                                    </tr>
-                                    <tr>
-                                        <td>20~199</td>
-                                        <td class="price-highlight">$170.83</td>
-                                        <td class="price-highlight">$184.06</td>
-                                        <td class="price-highlight">$192.88</td>
-                                        <td class="price-highlight">$238.47</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2~19</td>
-                                        <td class="price-highlight">$172.83</td>
-                                        <td class="price-highlight">$186.06</td>
-                                        <td class="price-highlight">$194.88</td>
-                                        <td class="price-highlight">$240.47</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">
+                                <i class="fas fa-memory"></i>
+                            </div>
+                            <div class="highlight-text">
+                                <div class="highlight-title">High-Speed Memory & Storage</div>
+                                <div class="highlight-desc">6GB LPDDR4X RAM (expandable to 12GB) with 128GB UFS 3.0 storage (expandable to 256GB)</div>
+                            </div>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">
+                                <i class="fas fa-desktop"></i>
+                            </div>
+                            <div class="highlight-text">
+                                <div class="highlight-title">4K Ultra HD Support</div>
+                                <div class="highlight-desc">Supports up to 3840×2160 (4K) resolution with H.265 4K@60fps video playback</div>
+                            </div>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">
+                                <i class="fas fa-broadcast-tower"></i>
+                            </div>
+                            <div class="highlight-text">
+                                <div class="highlight-title">Advanced Connectivity</div>
+                                <div class="highlight-desc">Dual-band Wi-Fi (2.4/5GHz), Bluetooth 5.0 LE, and built-in 4G with multi-band support</div>
+                            </div>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">
+                                <i class="fas fa-volume-up"></i>
+                            </div>
+                            <div class="highlight-text">
+                                <div class="highlight-title">Premium Audio Processing</div>
+                                <div class="highlight-desc">36-band EQ, Surround Sound, Bass Enhancement with multi-channel audio output</div>
+                            </div>
+                        </div>
+                        <div class="highlight-card">
+                            <div class="highlight-icon">
+                                <i class="fas fa-car"></i>
+                            </div>
+                            <div class="highlight-text">
+                                <div class="highlight-title">Smart Integration</div>
+                                <div class="highlight-desc">Full support for CarPlay and Android Auto with 4-ch 360 AVM video input</div>
+                            </div>
                         </div>
                     </div>
-              </div>
-          </div>
-      </div>
-</div>
+                </div>
+
+                <!-- 规格参数区域 -->
+                <div class="specs-container">
+                    <div class="specs-header">
+                        Product Specifications
+                    </div>
+                    <div class="specs-content">
+                        <div class="specs-column">
+                            <div class="specs-category">Hardware Specifications</div>
+                            <div class="specs-item">
+                                <span class="specs-label">Product Model</span>
+                                <span class="specs-value">L880A Mainboard</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Processor (CPU)</span>
+                                <span class="specs-value">UIS7870SC (Octa-core: 1×A76 @2.7GHz + 3×A76 @2.3GHz + 4×A55 @2.1GHz)</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Process</span>
+                                <span class="specs-value">6nm EUV</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Operating System</span>
+                                <span class="specs-value">Android 13</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">RAM</span>
+                                <span class="specs-value">LPDDR4X 6GB (expandable to 12GB)</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Internal Storage</span>
+                                <span class="specs-value">UFS 3.0 128GB (expandable to 256GB)</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Display Interface</span>
+                                <span class="specs-value">MIPI</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Supported Resolutions</span>
+                                <span class="specs-value">1024×600, 1024×768, 720×1280, 1920×1080, 1200×2000, 3840×2160 (4K)</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Touch Screen</span>
+                                <span class="specs-value">Capacitive</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Operating Voltage</span>
+                                <span class="specs-value">9V – 16V</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Operating Temperature</span>
+                                <span class="specs-value">-40°C to +85°C</span>
+                            </div>
+                        </div>
+                        <div class="specs-column">
+                            <div class="specs-category">Connectivity & Features</div>
+                            <div class="specs-item">
+                                <span class="specs-label">Positioning (GNSS)</span>
+                                <span class="specs-value">GPS, BeiDou, GLONASS</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Wireless Connectivity</span>
+                                <span class="specs-value">Wi-Fi: Dual-band 2.4/5 GHz, 802.11 a/b/g/n/ac<br>Bluetooth: v5.0 LE (Optional external)<br>Cellular: Built-in 4G (Multi-band support)</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Phone Link</span>
+                                <span class="specs-value">CarPlay, Android Auto Supported</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Video Playback</span>
+                                <span class="specs-value">Supports H.265 4K@60fps, H.264, VP9, etc.</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Video Input</span>
+                                <span class="specs-value">4-ch CVBS/Analog HD / 4-ch 360 AVM</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Video Output</span>
+                                <span class="specs-value">DPI.4 to HDMI</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Audio Input</span>
+                                <span class="specs-value">4-ch Analog Input with DSP</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Audio Output</span>
+                                <span class="specs-value">I2S Output, supports multi-channel (Front/Rear/Center/Subwoofer)</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Audio DSP</span>
+                                <span class="specs-value">36-band EQ, Surround Sound, Bass Enhancement</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">USB</span>
+                                <span class="specs-value">1× USB 2.0 (Expandable Hub), supports USB 3.0</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Standby Current</span>
+                                <span class="specs-value">Sleep: ≤ 8mA; Deep Standby: ≤ 3mA</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 价格表模块 -->
+                <div class="price-table-container">
+                    <div class="table-wrapper">
+                        <table class="price-table">
+                            <caption>EXW Pricing (USD $) - P3 Flagship Model</caption>
+                            <thead>
+                                <tr>
+                                    <th class="model-header">Screen Type</th>
+                                    <th>Quantity</th>
+                                    <th>6GB+128GB EXW Price</th>
+                                    <th>8GB+128GB EXW Price</th>
+                                    <th>8GB+256GB EXW Price</th>
+                                    <th>12GB+256GB EXW Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td rowspan="3" class="model-header">9/10" (Frame Type)</td>
+                                    <td>≥200</td>
+                                    <td class="price-highlight">$158.83</td>
+                                    <td class="price-highlight">$172.06</td>
+                                    <td class="price-highlight">$180.88</td>
+                                    <td class="price-highlight">$226.47</td>
+                                </tr>
+                                <tr>
+                                    <td>20~199</td>
+                                    <td class="price-highlight">$159.83</td>
+                                    <td class="price-highlight">$173.06</td>
+                                    <td class="price-highlight">$181.88</td>
+                                    <td class="price-highlight">$227.47</td>
+                                </tr>
+                                <tr>
+                                    <td>2~19</td>
+                                    <td class="price-highlight">$161.83</td>
+                                    <td class="price-highlight">$175.06</td>
+                                    <td class="price-highlight">$183.88</td>
+                                    <td class="price-highlight">$229.47</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3" class="model-header">1 Din 9/10" (Frame Type)</td>
+                                    <td>≥200</td>
+                                    <td class="price-highlight">$160.33</td>
+                                    <td class="price-highlight">$173.56</td>
+                                    <td class="price-highlight">$182.38</td>
+                                    <td class="price-highlight">$227.97</td>
+                                </tr>
+                                <tr>
+                                    <td>20~199</td>
+                                    <td class="price-highlight">$161.33</td>
+                                    <td class="price-highlight">$174.56</td>
+                                    <td class="price-highlight">$183.38</td>
+                                    <td class="price-highlight">$228.97</td>
+                                </tr>
+                                <tr>
+                                    <td>2~19</td>
+                                    <td class="price-highlight">$163.33</td>
+                                    <td class="price-highlight">$176.56</td>
+                                    <td class="price-highlight">$185.38</td>
+                                    <td class="price-highlight">$230.97</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3" class="model-header">7" (Universal)</td>
+                                    <td>≥200</td>
+                                    <td class="price-highlight">$160.17</td>
+                                    <td class="price-highlight">$173.40</td>
+                                    <td class="price-highlight">$182.22</td>
+                                    <td class="price-highlight">$227.81</td>
+                                </tr>
+                                <tr>
+                                    <td>20~199</td>
+                                    <td class="price-highlight">$161.17</td>
+                                    <td class="price-highlight">$174.40</td>
+                                    <td class="price-highlight">$183.22</td>
+                                    <td class="price-highlight">$228.81</td>
+                                </tr>
+                                <tr>
+                                    <td>2~19</td>
+                                    <td class="price-highlight">$163.17</td>
+                                    <td class="price-highlight">$176.40</td>
+                                    <td class="price-highlight">$185.22</td>
+                                    <td class="price-highlight">$230.81</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3" class="model-header">7" (Toyota)</td>
+                                    <td>≥200</td>
+                                    <td class="price-highlight">$163.85</td>
+                                    <td class="price-highlight">$177.08</td>
+                                    <td class="price-highlight">$185.90</td>
+                                    <td class="price-highlight">$231.49</td>
+                                </tr>
+                                <tr>
+                                    <td>20~199</td>
+                                    <td class="price-highlight">$164.85</td>
+                                    <td class="price-highlight">$178.08</td>
+                                    <td class="price-highlight">$186.90</td>
+                                    <td class="price-highlight">$232.49</td>
+                                </tr>
+                                <tr>
+                                    <td>2~19</td>
+                                    <td class="price-highlight">$166.85</td>
+                                    <td class="price-highlight">$180.08</td>
+                                    <td class="price-highlight">$188.90</td>
+                                    <td class="price-highlight">$234.49</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3" class="model-header">9" for VW</td>
+                                    <td>≥200</td>
+                                    <td class="price-highlight">$169.83</td>
+                                    <td class="price-highlight">$183.06</td>
+                                    <td class="price-highlight">$191.88</td>
+                                    <td class="price-highlight">$237.47</td>
+                                </tr>
+                                <tr>
+                                    <td>20~199</td>
+                                    <td class="price-highlight">$170.83</td>
+                                    <td class="price-highlight">$184.06</td>
+                                    <td class="price-highlight">$192.88</td>
+                                    <td class="price-highlight">$238.47</td>
+                                </tr>
+                                <tr>
+                                    <td>2~19</td>
+                                    <td class="price-highlight">$172.83</td>
+                                    <td class="price-highlight">$186.06</td>
+                                    <td class="price-highlight">$194.88</td>
+                                    <td class="price-highlight">$240.47</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- 网站底栏 -->
     <footer class="site-footer">
@@ -950,11 +1140,11 @@
             ];
             
             const alts = [
-                'p3 Car Stereo Front View',
-                'p3 Car Stereo Dashboard View',
-                'p3 Car Stereo Installation View',
-                'p3 Car Stereo Rear View',
-                'p3 Car Stereo Connection Options'
+                'P3 Car Stereo Front View',
+                'P3 Car Stereo Dashboard View',
+                'P3 Car Stereo Installation View',
+                'P3 Car Stereo Rear View',
+                'P3 Car Stereo Connection Options'
             ];
             
             let currentIndex = 0;
@@ -1036,4 +1226,3 @@
     </script>
 </body>
 </html>
-
