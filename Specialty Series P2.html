@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Specialty Series-p2 Car Stereo - Professional Pricing Table</title>
-
+    
     <!-- 优化的标签栏图标代码 -->
     <!-- 基础图标（必选） -->
     <link rel="icon" href="/favicon.ico" type="image/x-icon">
@@ -30,7 +30,7 @@
     <meta name="msapplication-TileImage" content="/mstile-144x144.png">
     
     <!-- 主题颜色（移动浏览器） -->
-    <meta name="theme-color" content="#165DFF">    
+    <meta name="theme-color" content="#165DFF">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* 导航栏样式 */
@@ -289,29 +289,58 @@
             box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
         }
 
+        /* 产品亮点样式 */
+        .product-highlights {
+            margin-bottom: 30px;
+        }
+
+        .highlights-header {
+            font-size: 1.5rem;
+            color: #2c6fd0;
+            margin-bottom: 20px;
+            text-align: center;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e0e9f8;
+        }
+
         .highlights {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 20px;
             margin-bottom: 30px;
         }
 
         .highlight {
             text-align: center;
-            padding: 20px;
+            padding: 25px 20px;
             background: #f1f7ff;
             border-radius: 8px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e0e9f8;
+        }
+
+        .highlight:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
 
         .highlight i {
             font-size: 2.5rem;
             color: #2c6fd0;
+            margin-bottom: 15px;
+        }
+
+        .highlight h3 {
+            font-size: 1.2rem;
             margin-bottom: 10px;
+            color: #15428a;
         }
 
         .highlight p {
-            font-weight: 600;
-            font-size: 1rem;
+            font-weight: 500;
+            font-size: 0.95rem;
+            line-height: 1.5;
+            color: #555;
         }
 
         /* 规格参数区域样式 */
@@ -472,7 +501,8 @@
         .social-icon:hover {
             background: var(--accent);
             transform: translateY(-3px);
-        }		
+        }
+		
         /* 移动端优化 */
         @media (max-width: 768px) {
             .header-content {
@@ -512,16 +542,20 @@
             }
             
             .highlights {
-                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
                 gap: 15px;
             }
             
             .highlight {
-                padding: 15px 10px;
+                padding: 20px 15px;
             }
             
             .highlight i {
                 font-size: 2rem;
+            }
+            
+            .highlight h3 {
+                font-size: 1.1rem;
             }
             
             .highlight p {
@@ -623,6 +657,10 @@
                 font-size: 1.8rem;
             }
             
+            .highlight h3 {
+                font-size: 1rem;
+            }
+            
             .highlight p {
                 font-size: 0.85rem;
             }
@@ -699,278 +737,352 @@
                         <img src="images/Specialty Series-p2-thumb-8.jpg" alt="Thumbnail 8">
                     </div>
                 </div>
+            </div>
 
-                <div class="product-info">
-                    <div class="specs-container">
-                        <div class="specs-header">
-                            Product Specifications
+            <div class="product-info">
+                <!-- 产品亮点区域 -->
+                <div class="product-highlights">
+                    <h2 class="highlights-header">Product Highlights</h2>
+                    <div class="highlights">
+                        <div class="highlight">
+                            <i class="fas fa-microchip"></i>
+                            <h3>Advanced Octa-Core CPU</h3>
+                            <p>1.8GHz Dual A75 + Hexa A55 processor with Dual-core ARM Mali-G52 GPU for superior performance and graphics.</p>
                         </div>
-                        <div class="specs-content">
-                            <div class="specs-column">
-                                <div class="specs-category">Hardware Specifications</div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Processor</span>
-                                    <span class="specs-value">Octa-core 2.0GHz 64-bit Unisoc UIS7862S 2*A75+6*A55 ARM 12NM</span>
-                                </div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Memory & Storage</span>
-                                    <span class="specs-value">4GB RAM + 64GB ROM / 6GB RAM + 128GB ROM / 8GB RAM + 128GB ROM / 8GB RAM + 256GB ROM</span>
-                                </div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Amplifier Chip</span>
-                                    <span class="specs-value">TDA7851 Amplifier chip</span>
-                                </div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Audio Processing</span>
-                                    <span class="specs-value">16*2 EQ, ROHM 32107 DSP</span>
-                                </div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Connectivity</span>
-                                    <span class="specs-value">3 x USB 2.0, Realtek8761 module Bluetooth</span>
-                                </div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Audio Output</span>
-                                    <span class="specs-value">Supports 4.1 Channel Output</span>
-                                </div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Radio Chip</span>
-                                    <span class="specs-value">TDA7708 Radio</span>
-                                </div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Network</span>
-                                    <span class="specs-value">WIFI (2.4G+5G)+4G LTE network</span>
-                                </div>
-                            </div>
-                            <div class="specs-column">
-                                <div class="specs-category">Display & Features</div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Operating System</span>
-                                    <span class="specs-value">Android 12.0 API=31</span>
-                                </div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Screen</span>
-                                    <span class="specs-value">QLED+2.5D screen, 1280*720/1920*1200 pixels</span>
-                                </div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Navigation System</span>
-                                    <span class="specs-value">GPS + BeiDou + GLONASS</span>
-                                </div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Rear View Camera</span>
-                                    <span class="specs-value">Supports AHD 1920×1080 Rear Camera</span>
-                                </div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Smartphone Connectivity</span>
-                                    <span class="specs-value">Supports CarPlay & Android Auto</span>
-                                </div>
-                                <div class="specs-item">
-                                    <span class="specs-label">Additional Features</span>
-                                    <span class="specs-value">Support split screen, Support steering wheel button, RGB light touch button</span>
-                                </div>
-                            </div>
+                        <div class="highlight">
+                            <i class="fas fa-memory"></i>
+                            <h3>Expandable Memory</h3>
+                            <p>4GB LPDDR4 RAM (expandable to 8GB) and 64GB eMMC storage (expandable to 256GB) for smooth operation and ample space.</p>
                         </div>
-                  </div>
-
-                    <!-- 价格表模块 - 已更新 -->
-                    <div class="price-table-container">
-                        <div class="table-wrapper">
-                            <table class="price-table">
-                                <caption>EXW Pricing (USD $) - Specialty Series-p2 Premium Model</caption>
-                                <thead>
-                                    <tr>
-                                        <th class="model-header">Screen Type</th>
-                                        <th>Quantity</th>
-                                        <th>4+64GB EXW Price</th>
-                                        <th>6+128GB EXW Price</th>
-                                        <th>8+128GB EXW Price</th>
-                                        <th>8+256GB EXW Price</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td rowspan="3" class="model-header">12.3 inch</td>
-                                        <td>≥200</td>
-                                        <td class="price-highlight">$128.26</td>
-                                        <td class="price-highlight">$142.97</td>
-                                        <td class="price-highlight">$150.32</td>
-                                        <td class="price-highlight">$170.91</td>
-                                    </tr>
-                                    <tr>
-                                        <td>20~199</td>
-                                        <td class="price-highlight">$129.26</td>
-                                        <td class="price-highlight">$143.97</td>
-                                        <td class="price-highlight">$151.32</td>
-                                        <td class="price-highlight">$171.91</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1~19</td>
-                                        <td class="price-highlight">$131.26</td>
-                                        <td class="price-highlight">$145.97</td>
-                                        <td class="price-highlight">$153.32</td>
-                                        <td class="price-highlight">$173.91</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="3" class="model-header">10inch (single knob)</td>
-                                        <td>≥200</td>
-                                        <td class="price-highlight">$125.30</td>
-                                        <td class="price-highlight">$140.00</td>
-                                        <td class="price-highlight">$147.36</td>
-                                        <td class="price-highlight">$167.94</td>
-                                    </tr>
-                                    <tr>
-                                        <td>20~199</td>
-                                        <td class="price-highlight">$126.30</td>
-                                        <td class="price-highlight">$141.00</td>
-                                        <td class="price-highlight">$148.36</td>
-                                        <td class="price-highlight">$168.94</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1~19</td>
-                                        <td class="price-highlight">$128.30</td>
-                                        <td class="price-highlight">$143.00</td>
-                                        <td class="price-highlight">$150.36</td>
-                                        <td class="price-highlight">$170.94</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="3" class="model-header">12.5 inch</td>
-                                        <td>≥200</td>
-                                        <td class="price-highlight">$132.46</td>
-                                        <td class="price-highlight">$147.16</td>
-                                        <td class="price-highlight">$154.51</td>
-                                        <td class="price-highlight">$175.10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>20~199</td>
-                                        <td class="price-highlight">$133.46</td>
-                                        <td class="price-highlight">$148.16</td>
-                                        <td class="price-highlight">$155.51</td>
-                                        <td class="price-highlight">$176.10</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1~19</td>
-                                        <td class="price-highlight">$135.46</td>
-                                        <td class="price-highlight">$150.16</td>
-                                        <td class="price-highlight">$157.51</td>
-                                        <td class="price-highlight">$178.10</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="3" class="model-header">11 inch</td>
-                                        <td>≥200</td>
-                                        <td class="price-highlight">$128.26</td>
-                                        <td class="price-highlight">$142.97</td>
-                                        <td class="price-highlight">$150.32</td>
-                                        <td class="price-highlight">$170.91</td>
-                                    </tr>
-                                    <tr>
-                                        <td>20~199</td>
-                                        <td class="price-highlight">$129.26</td>
-                                        <td class="price-highlight">$143.97</td>
-                                        <td class="price-highlight">$151.32</td>
-                                        <td class="price-highlight">$171.91</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1~19</td>
-                                        <td class="price-highlight">$131.26</td>
-                                        <td class="price-highlight">$145.97</td>
-                                        <td class="price-highlight">$153.32</td>
-                                        <td class="price-highlight">$173.91</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="3" class="model-header">11.5inch (Double knob)</td>
-                                        <td>≥200</td>
-                                        <td class="price-highlight">$137.43</td>
-                                        <td class="price-highlight">$149.19</td>
-                                        <td class="price-highlight">$159.49</td>
-                                        <td class="price-highlight">$180.08</td>
-                                    </tr>
-                                    <tr>
-                                        <td>20~199</td>
-                                        <td class="price-highlight">$138.43</td>
-                                        <td class="price-highlight">$150.19</td>
-                                        <td class="price-highlight">$160.49</td>
-                                        <td class="price-highlight">$181.08</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1~19</td>
-                                        <td class="price-highlight">$140.43</td>
-                                        <td class="price-highlight">$152.19</td>
-                                        <td class="price-highlight">$162.49</td>
-                                        <td class="price-highlight">$183.08</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="3" class="model-header">13inch (Button + single knob)</td>
-                                        <td>≥200</td>
-                                        <td class="price-highlight">$185.37</td>
-                                        <td class="price-highlight">$200.08</td>
-                                        <td class="price-highlight">$207.43</td>
-                                        <td class="price-highlight">$228.02</td>
-                                    </tr>
-                                    <tr>
-                                        <td>20~199</td>
-                                        <td class="price-highlight">$186.37</td>
-                                        <td class="price-highlight">$201.08</td>
-                                        <td class="price-highlight">$208.43</td>
-                                        <td class="price-highlight">$229.02</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1~19</td>
-                                        <td class="price-highlight">$188.37</td>
-                                        <td class="price-highlight">$203.08</td>
-                                        <td class="price-highlight">$210.43</td>
-                                        <td class="price-highlight">$231.02</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="3" class="model-header">13 inch</td>
-                                        <td>≥200</td>
-                                        <td class="price-highlight">$145.18</td>
-                                        <td class="price-highlight">$159.88</td>
-                                        <td class="price-highlight">$167.24</td>
-                                        <td class="price-highlight">$187.82</td>
-                                    </tr>
-                                    <tr>
-                                        <td>20~199</td>
-                                        <td class="price-highlight">$146.18</td>
-                                        <td class="price-highlight">$160.88</td>
-                                        <td class="price-highlight">$168.24</td>
-                                        <td class="price-highlight">$188.82</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1~19</td>
-                                        <td class="price-highlight">$148.18</td>
-                                        <td class="price-highlight">$162.88</td>
-                                        <td class="price-highlight">$170.24</td>
-                                        <td class="price-highlight">$190.82</td>
-                                    </tr>
-                                    <tr>
-                                        <td rowspan="3" class="model-header">11.5inch (Single knob)</td>
-                                        <td>≥200</td>
-                                        <td class="price-highlight">$153.31</td>
-                                        <td class="price-highlight">$168.02</td>
-                                        <td class="price-highlight">$175.37</td>
-                                        <td class="price-highlight">$190.48</td>
-                                    </tr>
-                                    <tr>
-                                        <td>20~199</td>
-                                        <td class="price-highlight">$154.31</td>
-                                        <td class="price-highlight">$169.02</td>
-                                        <td class="price-highlight">$176.37</td>
-                                        <td class="price-highlight">$191.48</td>
-                                    </tr>
-                                    <tr>
-                                        <td>1~19</td>
-                                        <td class="price-highlight">$156.31</td>
-                                        <td class="price-highlight">$171.02</td>
-                                        <td class="price-highlight">$178.37</td>
-                                        <td class="price-highlight">$193.48</td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <div class="highlight">
+                            <i class="fas fa-wifi"></i>
+                            <h3>Built-in 4G Connectivity</h3>
+                            <p>Integrated 4G LTE modem supporting multiple bands for reliable internet connectivity on the go.</p>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-volume-up"></i>
+                            <h3>Premium Audio System</h3>
+                            <p>TDA7851 amplifier, built-in DSP with 32-band EQ, surround sound, and bass enhancement for exceptional audio quality.</p>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-car"></i>
+                            <h3>360° Surround View</h3>
+                            <p>Supports 4-channel video input for comprehensive 360° surround view monitoring system.</p>
+                        </div>
+                        <div class="highlight">
+                            <i class="fas fa-broadcast-tower"></i>
+                            <h3>Enhanced Connectivity</h3>
+                            <p>Dual-band Wi-Fi, Bluetooth 5.0 LE, and multiple interfaces for seamless device integration.</p>
                         </div>
                     </div>
-              </div>
-          </div>
-      </div>
-</div>
+                </div>
+
+                <!-- 规格参数区域 -->
+                <div class="specs-container">
+                    <div class="specs-header">
+                        Product Specifications
+                    </div>
+                    <div class="specs-content">
+                        <div class="specs-column">
+                            <div class="specs-category">Hardware Specifications</div>
+                            <div class="specs-item">
+                                <span class="specs-label">Processor</span>
+                                <span class="specs-value">Octa-core 1.8GHz (Dual A75 + Hexa A55) - UIS7862 (12nm)</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">GPU</span>
+                                <span class="specs-value">Dual-core ARM Mali-G52 (614.4MHz)</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Memory</span>
+                                <span class="specs-value">4GB LPDDR4 (Expandable to 8GB)</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Internal Storage</span>
+                                <span class="specs-value">64GB eMMC (Expandable to 256GB)</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Audio Amplifier IC</span>
+                                <span class="specs-value">TDA7851</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Radio Tuner IC</span>
+                                <span class="specs-value">TDA7708</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Audio Processing</span>
+                                <span class="specs-value">Built-in DSP, 32-band EQ, Surround Sound, Bass Enhancement</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Output Power</span>
+                                <span class="specs-value">30W (at 14.4V)</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Audio Output</span>
+                                <span class="specs-value">4-ch + Subwoofer</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Key Interfaces</span>
+                                <span class="specs-value">1×USB 2.0 (Expandable), 1×SD Card, 1×UART</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Operating Voltage</span>
+                                <span class="specs-value">9V ~ 16V</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Operating Temperature</span>
+                                <span class="specs-value">-40℃ ~ +85℃</span>
+                            </div>
+                        </div>
+                        <div class="specs-column">
+                            <div class="specs-category">Display & Features</div>
+                            <div class="specs-item">
+                                <span class="specs-label">Operating System</span>
+                                <span class="specs-value">Android 10.0</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Display Size</span>
+                                <span class="specs-value">5~13 inches</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Resolution</span>
+                                <span class="specs-value">800×480, 1024×600, 1024×768, 1280×720, 1920×1080</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Display Interface</span>
+                                <span class="specs-value">LVDS / MIPI</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Touch Screen</span>
+                                <span class="specs-value">Capacitive</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Cellular Network</span>
+                                <span class="specs-value">Built-in 4G (TDD-LTE, FDD-LTE, TD-SCDMA, WCDMA, GSM)</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Navigation</span>
+                                <span class="specs-value">GPS, Beidou, GLONASS</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Wi-Fi / Bluetooth</span>
+                                <span class="specs-value">802.11 b/g/n (5GHz) / Bluetooth 5.0 LE</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Video Input</span>
+                                <span class="specs-value">Supports 4-ch CVBS/Analog HD (360 Surround View)</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Smartphone Connectivity</span>
+                                <span class="specs-value">CarPlay, Android Auto Supported</span>
+                            </div>
+                            <div class="specs-item">
+                                <span class="specs-label">Additional Features</span>
+                                <span class="specs-value">Support split screen, Support steering wheel button, RGB light touch button</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 价格表模块 -->
+                <div class="price-table-container">
+                    <div class="table-wrapper">
+                        <table class="price-table">
+                            <caption>EXW Pricing (USD $) - Specialty Series-p2 Premium Model</caption>
+                            <thead>
+                                <tr>
+                                    <th class="model-header">Screen Type</th>
+                                    <th>Quantity</th>
+                                    <th>4+64GB EXW Price</th>
+                                    <th>6+128GB EXW Price</th>
+                                    <th>8+128GB EXW Price</th>
+                                    <th>8+256GB EXW Price</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td rowspan="3" class="model-header">12.3 inch</td>
+                                    <td>≥200</td>
+                                    <td class="price-highlight">$128.26</td>
+                                    <td class="price-highlight">$142.97</td>
+                                    <td class="price-highlight">$150.32</td>
+                                    <td class="price-highlight">$170.91</td>
+                                </tr>
+                                <tr>
+                                    <td>20~199</td>
+                                    <td class="price-highlight">$129.26</td>
+                                    <td class="price-highlight">$143.97</td>
+                                    <td class="price-highlight">$151.32</td>
+                                    <td class="price-highlight">$171.91</td>
+                                </tr>
+                                <tr>
+                                    <td>1~19</td>
+                                    <td class="price-highlight">$131.26</td>
+                                    <td class="price-highlight">$145.97</td>
+                                    <td class="price-highlight">$153.32</td>
+                                    <td class="price-highlight">$173.91</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3" class="model-header">10inch (single knob)</td>
+                                    <td>≥200</td>
+                                    <td class="price-highlight">$125.30</td>
+                                    <td class="price-highlight">$140.00</td>
+                                    <td class="price-highlight">$147.36</td>
+                                    <td class="price-highlight">$167.94</td>
+                                </tr>
+                                <tr>
+                                    <td>20~199</td>
+                                    <td class="price-highlight">$126.30</td>
+                                    <td class="price-highlight">$141.00</td>
+                                    <td class="price-highlight">$148.36</td>
+                                    <td class="price-highlight">$168.94</td>
+                                </tr>
+                                <tr>
+                                    <td>1~19</td>
+                                    <td class="price-highlight">$128.30</td>
+                                    <td class="price-highlight">$143.00</td>
+                                    <td class="price-highlight">$150.36</td>
+                                    <td class="price-highlight">$170.94</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3" class="model-header">12.5 inch</td>
+                                    <td>≥200</td>
+                                    <td class="price-highlight">$132.46</td>
+                                    <td class="price-highlight">$147.16</td>
+                                    <td class="price-highlight">$154.51</td>
+                                    <td class="price-highlight">$175.10</td>
+                                </tr>
+                                <tr>
+                                    <td>20~199</td>
+                                    <td class="price-highlight">$133.46</td>
+                                    <td class="price-highlight">$148.16</td>
+                                    <td class="price-highlight">$155.51</td>
+                                    <td class="price-highlight">$176.10</td>
+                                </tr>
+                                <tr>
+                                    <td>1~19</td>
+                                    <td class="price-highlight">$135.46</td>
+                                    <td class="price-highlight">$150.16</td>
+                                    <td class="price-highlight">$157.51</td>
+                                    <td class="price-highlight">$178.10</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3" class="model-header">11 inch</td>
+                                    <td>≥200</td>
+                                    <td class="price-highlight">$128.26</td>
+                                    <td class="price-highlight">$142.97</td>
+                                    <td class="price-highlight">$150.32</td>
+                                    <td class="price-highlight">$170.91</td>
+                                </tr>
+                                <tr>
+                                    <td>20~199</td>
+                                    <td class="price-highlight">$129.26</td>
+                                    <td class="price-highlight">$143.97</td>
+                                    <td class="price-highlight">$151.32</td>
+                                    <td class="price-highlight">$171.91</td>
+                                </tr>
+                                <tr>
+                                    <td>1~19</td>
+                                    <td class="price-highlight">$131.26</td>
+                                    <td class="price-highlight">$145.97</td>
+                                    <td class="price-highlight">$153.32</td>
+                                    <td class="price-highlight">$173.91</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3" class="model-header">11.5inch (Double knob)</td>
+                                    <td>≥200</td>
+                                    <td class="price-highlight">$137.43</td>
+                                    <td class="price-highlight">$149.19</td>
+                                    <td class="price-highlight">$159.49</td>
+                                    <td class="price-highlight">$180.08</td>
+                                </tr>
+                                <tr>
+                                    <td>20~199</td>
+                                    <td class="price-highlight">$138.43</td>
+                                    <td class="price-highlight">$150.19</td>
+                                    <td class="price-highlight">$160.49</td>
+                                    <td class="price-highlight">$181.08</td>
+                                </tr>
+                                <tr>
+                                    <td>1~19</td>
+                                    <td class="price-highlight">$140.43</td>
+                                    <td class="price-highlight">$152.19</td>
+                                    <td class="price-highlight">$162.49</td>
+                                    <td class="price-highlight">$183.08</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3" class="model-header">13inch (Button + single knob)</td>
+                                    <td>≥200</td>
+                                    <td class="price-highlight">$185.37</td>
+                                    <td class="price-highlight">$200.08</td>
+                                    <td class="price-highlight">$207.43</td>
+                                    <td class="price-highlight">$228.02</td>
+                                </tr>
+                                <tr>
+                                    <td>20~199</td>
+                                    <td class="price-highlight">$186.37</td>
+                                    <td class="price-highlight">$201.08</td>
+                                    <td class="price-highlight">$208.43</td>
+                                    <td class="price-highlight">$229.02</td>
+                                </tr>
+                                <tr>
+                                    <td>1~19</td>
+                                    <td class="price-highlight">$188.37</td>
+                                    <td class="price-highlight">$203.08</td>
+                                    <td class="price-highlight">$210.43</td>
+                                    <td class="price-highlight">$231.02</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3" class="model-header">13 inch</td>
+                                    <td>≥200</td>
+                                    <td class="price-highlight">$145.18</td>
+                                    <td class="price-highlight">$159.88</td>
+                                    <td class="price-highlight">$167.24</td>
+                                    <td class="price-highlight">$187.82</td>
+                                </tr>
+                                <tr>
+                                    <td>20~199</td>
+                                    <td class="price-highlight">$146.18</td>
+                                    <td class="price-highlight">$160.88</td>
+                                    <td class="price-highlight">$168.24</td>
+                                    <td class="price-highlight">$188.82</td>
+                                </tr>
+                                <tr>
+                                    <td>1~19</td>
+                                    <td class="price-highlight">$148.18</td>
+                                    <td class="price-highlight">$162.88</td>
+                                    <td class="price-highlight">$170.24</td>
+                                    <td class="price-highlight">$190.82</td>
+                                </tr>
+                                <tr>
+                                    <td rowspan="3" class="model-header">11.5inch (Single knob)</td>
+                                    <td>≥200</td>
+                                    <td class="price-highlight">$153.31</td>
+                                    <td class="price-highlight">$168.02</td>
+                                    <td class="price-highlight">$175.37</td>
+                                    <td class="price-highlight">$190.48</td>
+                                </tr>
+                                <tr>
+                                    <td>20~199</td>
+                                    <td class="price-highlight">$154.31</td>
+                                    <td class="price-highlight">$169.02</td>
+                                    <td class="price-highlight">$176.37</td>
+                                    <td class="price-highlight">$191.48</td>
+                                </tr>
+                                <tr>
+                                    <td>1~19</td>
+                                    <td class="price-highlight">$156.31</td>
+                                    <td class="price-highlight">$171.02</td>
+                                    <td class="price-highlight">$178.37</td>
+                                    <td class="price-highlight">$193.48</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- 网站底栏 -->
     <footer class="site-footer">
@@ -989,7 +1101,8 @@
                         <a href="https://www.instagram.com/lodark_car_player/" class="social-icon" target="_blank" aria-label="Instagram">
                             <i class="fab fa-instagram"></i>
                         </a>
-                    </div>                        </div>
+                    </div>
+            </div>
             
             <div class="footer-section">
                 <h3>Product Series</h3>
@@ -1118,4 +1231,3 @@
     </script>
 </body>
 </html>
-
