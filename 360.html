@@ -1,0 +1,1569 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lodark 360° Car AHD Rear View Camera - Professional OEM Manufacturer</title>
+    
+    <!-- 标签栏图标代码 -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" href="/logo.svg" type="image/svg+xml">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#165DFF">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+    <meta name="theme-color" content="#165DFF">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333; /* 默认文字颜色设置为深灰色 */
+            line-height: 1.6;
+            background-color: #f9f9f9;
+        }
+        
+        /* 导航栏样式 */
+        .site-header {
+            background: linear-gradient(135deg, #2c6fd0 0%, #15428a 100%);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #fff; /* 确保白色文字在深色背景上 */
+        }
+
+        .logo span {
+            color: #ffcc00;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav a:hover, nav a.active {
+            color: #ffcc00;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        .section {
+            margin: 40px 0;
+            padding: 30px 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            color: #2c3e50;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 4px;
+            background: #e74c3c;
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: #e74c3c;
+            color: white;
+            padding: 14px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            margin: 10px;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        .cta-button:hover {
+            background: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+        }
+        
+        .cta-button.secondary {
+            background: #3498db;
+        }
+        
+        .cta-button.secondary:hover {
+            background: #2980b9;
+        }
+        
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+        }
+        
+        .feature-item {
+            text-align: center;
+            padding: 30px 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.12);
+        }
+        
+        .feature-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+            color: #3498db;
+        }
+        
+        .feature-item h3 {
+            font-size: 20px;
+            margin-bottom: 12px;
+            color: #2c3e50;
+        }
+        
+        .feature-item p {
+            color: #555; /* 中等深度的灰色，确保可读性 */
+        }
+        
+        .comparison {
+            display: flex;
+            justify-content: space-between;
+            margin: 40px 0;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .comparison-item {
+            text-align: center;
+            flex: 1;
+            padding: 25px;
+            min-width: 300px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+        }
+        
+        .comparison-item h3 {
+            font-size: 22px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        .comparison-item p {
+            color: #555;
+        }
+        
+        .spec-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .spec-table th, .spec-table td {
+            border: 1px solid #e0e0e0;
+            padding: 15px;
+            text-align: left;
+        }
+        
+        .spec-table th {
+            background-color: #2c3e50;
+            color: white;
+            font-weight: 600;
+        }
+        
+        .spec-table td {
+            color: #333; /* 深色表格数据文字 */
+        }
+        
+        .spec-table tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+        
+        /* 价格表样式 */
+        .price-table-container {
+            margin: 30px 0;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 1rem;
+            min-width: 600px;
+        }
+
+        .price-table caption {
+            padding: 15px;
+            text-align: left;
+            background: #2c6fd0;
+            color: white;
+            font-size: 1.2rem;
+            border-bottom: 2px solid #15428a;
+        }
+
+        .price-table th,
+        .price-table td {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            text-align: left;
+            vertical-align: middle;
+            color: #333; /* 深色表格文字 */
+        }
+
+        .price-table th {
+            background: #f9f9f9;
+            font-weight: 600;
+            color: #2c6fd0;
+        }
+
+        .price-table tbody tr:nth-child(even) {
+            background: #f1f7ff;
+        }
+
+        .model-header {
+            background: #f9f9f9;
+            font-weight: 600;
+            color: #2c6fd0;
+            vertical-align: middle;
+        }
+
+        .price-highlight {
+            color: #15428a;
+            font-weight: 700;
+        }
+        
+        /* 轮播图样式 */
+        .carousel-section {
+            background: linear-gradient(135deg, #1a2a3a, #2c3e50);
+            color: white;
+            padding: 50px 0;
+        }
+        
+        .carousel-section .section-title {
+            color: #fff; /* 白色标题在深色背景上 */
+        }
+        
+        .carousel-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            overflow: hidden;
+            border-radius: 12px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+        }
+        
+        .carousel {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+            height: 500px;
+        }
+        
+        .carousel-slide {
+            min-width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 40px;
+            background: white;
+            color: #333;
+        }
+        
+        .carousel-image {
+            flex: 1;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-radius: 8px;
+            background: #f5f5f5;
+        }
+        
+        .carousel-image img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+        
+        .carousel-content {
+            flex: 1;
+            padding: 0 40px;
+            color: #333; /* 深色文字在白色背景上 */
+        }
+        
+        .carousel-content h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #2c3e50; /* 深蓝色标题 */
+        }
+        
+        .carousel-content p {
+            margin-bottom: 20px;
+            font-size: 17px;
+            line-height: 1.7;
+            color: #444; /* 深灰色段落文字 */
+        }
+        
+        .carousel-content ul {
+            margin-left: 20px;
+            margin-bottom: 25px;
+        }
+        
+        .carousel-content li {
+            margin-bottom: 10px;
+            font-size: 16px;
+            color: #444; /* 深灰色列表项 */
+        }
+        
+        .carousel-indicators {
+            display: flex;
+            justify-content: center;
+            margin-top: 25px;
+        }
+        
+        .carousel-indicator {
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.5);
+            margin: 0 8px;
+            cursor: pointer;
+            transition: background 0.3s, transform 0.3s;
+        }
+        
+        .carousel-indicator.active {
+            background: white;
+            transform: scale(1.2);
+        }
+        
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.6);
+            color: white;
+            border: none;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+            z-index: 10;
+        }
+        
+        .carousel-nav:hover {
+            background: rgba(0,0,0,0.8);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        .carousel-prev {
+            left: 20px;
+        }
+        
+        .carousel-next {
+            right: 20px;
+        }
+        
+        .carousel-cta {
+            text-align: center;
+            margin-top: 40px;
+        }
+        
+        /* 产品展示区域 */
+        .product-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin: 40px 0;
+        }
+        
+        .product-item {
+            text-align: center;
+            margin: 20px;
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        .product-image {
+            width: 200px;
+            height: 150px;
+            background: #e0e0e0;
+            border-radius: 8px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 16px;
+        }
+        
+        /* 认证区域 */
+        .certifications {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .cert-item {
+            margin: 15px;
+            padding: 25px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+            text-align: center;
+            min-width: 200px;
+        }
+        
+        .cert-icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+            color: #27ae60;
+        }
+        
+        .cert-item h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .cert-item p {
+            color: #555;
+        }
+        
+        /* 公司信息 */
+        .company-info {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+        }
+        
+        .company-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .company-text h3 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            color: #2c3e50;
+        }
+        
+        .company-text ul {
+            margin-left: 20px;
+            font-size: 17px;
+        }
+        
+        .company-text li {
+            margin-bottom: 12px;
+            color: #333; /* 深色列表项文字 */
+        }
+        
+        .company-image {
+            flex: 1;
+            min-width: 300px;
+            height: 300px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .company-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* 包装区域 */
+        .packaging {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .pack-item {
+            margin: 15px;
+            text-align: center;
+        }
+        
+        .pack-image {
+            width: 200px;
+            height: 150px;
+            border-radius: 8px;
+            margin: 0 auto 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+        
+        .pack-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        /* 最终行动号召 */
+        .final-cta {
+            background: linear-gradient(135deg, #2c3e50, #1a2a3a);
+            color: white;
+            text-align: center;
+            padding: 60px 0;
+        }
+        
+        .final-cta h2 {
+            font-size: 36px;
+            margin-bottom: 20px;
+            color: #fff; /* 确保白色文字在深色背景上 */
+        }
+        
+        .final-cta p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #fff; /* 确保白色文字在深色背景上 */
+        }
+        
+        /* 5种辅助模式区域 */
+        .assistive-modes {
+            background: #f5f7fa;
+            padding: 60px 0;
+        }
+        
+        .modes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .mode-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mode-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+        }
+        
+        .mode-header {
+            padding: 25px 25px 15px;
+            background: #2c3e50;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        
+        .mode-icon {
+            font-size: 36px;
+            margin-right: 15px;
+            width: 60px;
+            height: 60px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .mode-title {
+            font-size: 22px;
+            font-weight: 600;
+        }
+        
+        .mode-content {
+            padding: 25px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .mode-description {
+            margin-bottom: 20px;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #444; /* 深灰色描述文字 */
+        }
+        
+        .mode-features {
+            margin-top: auto;
+        }
+        
+        .mode-features ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        
+        .mode-features li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+            color: #333;
+        }
+        
+        .mode-features li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #27ae60;
+            font-weight: bold;
+        }
+        
+        .mode-image {
+            height: 180px;
+            background: #f8f9fa;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            border-top: 1px solid #eee;
+        }
+        
+        .mode-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .modes-highlight {
+            background: linear-gradient(135deg, #2c3e50, #1a2a3a);
+            color: white;
+            padding: 60px 20px;
+            border-radius: 12px;
+            text-align: center;
+            margin-top: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+        
+        .modes-highlight h2 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+        
+        .modes-highlight p {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            color: #fff;
+        }
+        
+        /* 网站底栏样式 */
+        .site-footer {
+            background: #2c3e50;
+            color: white;
+            padding: 40px 0 20px;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            padding: 0 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+            color: #ffcc00;
+        }
+
+        .footer-section p {
+            color: #ddd;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #ffcc00;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #4a5568;
+            color: #aaa;
+            font-size: 0.9rem;
+        }
+		
+        /* 社交媒体样式 */
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: #ff3a29;
+            transform: translateY(-3px);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .feature-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .carousel-slide {
+                flex-direction: column;
+                height: auto;
+                padding: 30px;
+            }
+            
+            .carousel-content {
+                padding: 30px 0 0;
+            }
+            
+            .carousel {
+                height: auto;
+            }
+            
+            .modes-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 28px;
+            }
+            
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .cta-button {
+                display: block;
+                margin: 15px auto;
+                text-align: center;
+                width: 80%;
+            }
+            
+            .carousel-content h2 {
+                font-size: 26px;
+            }
+            
+            .modes-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            /* 导航栏移动端优化 */
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+                position: absolute;
+                right: 20px;
+                top: 15px;
+            }
+            
+            nav {
+                display: none;
+                width: 100%;
+            }
+            
+            nav.active {
+                display: block;
+            }
+            
+            /* 价格表移动端优化 */
+            .price-table {
+                min-width: 100%;
+                font-size: 0.85rem;
+            }
+            
+            .price-table caption {
+                font-size: 1rem;
+                padding: 12px 15px;
+            }
+            
+            .price-table th, 
+            .price-table td {
+                padding: 10px 12px;
+            }
+            
+            .price-table .model-header {
+                font-size: 0.9rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .section {
+                margin: 30px 0;
+                padding: 20px 0;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .carousel-nav {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+            
+            .carousel-prev {
+                left: 10px;
+            }
+            
+            .carousel-next {
+                right: 10px;
+            }
+            
+            .price-table {
+                font-size: 0.8rem;
+            }
+            
+            .price-table th, 
+            .price-table td {
+                padding: 8px 10px;
+            }
+            
+            .price-table caption {
+                font-size: 0.95rem;
+                padding: 10px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header class="site-header">
+        <div class="header-content">
+            <div class="logo">LOD<span>ARK</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="products.html" class="nav-link active">Products</a></li>
+                    <li><a href="accessories.html" class="nav-link">Accessories</a></li>
+                    <li><a href="oem.html" class="nav-link">OEM/ODM</a></li>
+                    <li><a href="Contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <!-- 轮播图区域 -->
+    <div class="carousel-section">
+      <div class="container">
+        <h2 class="section-title">Lodark 360° Car Camera System</h2>
+        <div class="carousel-container">
+          <div class="carousel">
+                    <!-- 幻灯片1 -->
+            <div class="carousel-slide">
+                        <div class="carousel-image">
+                            <img src="images/3605.jpg" alt="360° Panoramic Camera Product Image">
+                        </div>
+              <div class="carousel-content">
+                <h2>360° Panoramic View</h2>
+                            <p>Lodark 360° Car AHD Rear View Camera provides a complete view of your vehicle's surroundings, eliminating blind spots and making reversing and parking safer and easier.</p>
+                            <ul>
+                                <li>Seamless stitching of four camera views</li>
+                                <li>Bird's eye view for intuitive vehicle positioning</li>
+                                <li>Designed for complex parking environments</li>
+                                <li>Real-time monitoring of all sides</li>
+                            </ul>
+</div>
+                    </div>
+                    
+                    <!-- 幻灯片2 -->
+                    <div class="carousel-slide">
+                        <div class="carousel-image">
+                            <img src="images/3601.jpg" alt="AHD HD Night Vision Effect">
+                        </div>
+                        <div class="carousel-content">
+                            <h2>AHD High Definition Night Vision</h2>
+                            <p>Using advanced AHD technology, our camera delivers 1080P high-definition video even at night or in low-light conditions, ensuring you always have a clear view.</p>
+                            <ul>
+                                <li>1080P Full HD resolution</li>
+                                <li>Excellent low-light performance</li>
+                                <li>True color reproduction</li>
+                                <li>Superior image clarity</li>
+                            </ul>
+</div>
+                    </div>
+                    
+                    <!-- 幻灯片3 -->
+                    <div class="carousel-slide">
+                        <div class="carousel-image">
+                            <img src="images/3604.jpg" alt="Waterproof Test Demonstration">
+                        </div>
+                        <div class="carousel-content">
+                            <h2>IP69K Superior Waterproof</h2>
+                            <p>Rigorously tested, Lodark cameras achieve IP69K protection rating, fearless of heavy rain, car washing, or any harsh weather conditions, ensuring long-term stable operation.</p>
+                            <ul>
+                                <li>Highest level of waterproof and dustproof</li>
+                                <li>High-temperature resistant, anti-aging materials</li>
+                                <li>Suitable for various climate conditions</li>
+                                <li>Durable and long-lasting construction</li>
+                            </ul>
+</div>
+                    </div>
+                    
+                    <!-- 幻灯片4 -->
+                    <div class="carousel-slide">
+                        <div class="carousel-image">
+                            <img src="images/3606.jpg" alt="Installation Diagram">
+                        </div>
+                        <div class="carousel-content">
+                            <h2>Easy Installation</h2>
+                            <p>Vehicle-specific cable design, plug and play, no professional tools or complex modifications required. Ordinary users can complete installation within 30 minutes.</p>
+                            <ul>
+                                <li>Vehicle-specific wiring harness</li>
+                                <li>No wire cutting or modification needed</li>
+                                <li>Detailed installation guide included</li>
+                                <li>Universal compatibility</li>
+                            </ul>
+</div>
+                    </div>
+                </div>
+                
+                <button class="carousel-nav carousel-prev">❮</button>
+                <button class="carousel-nav carousel-next">❯</button>
+                
+                <div class="carousel-indicators">
+                    <div class="carousel-indicator active"></div>
+                    <div class="carousel-indicator"></div>
+                    <div class="carousel-indicator"></div>
+                    <div class="carousel-indicator"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 价格区域 -->
+    <div class="section" id="pricing">
+        <div class="container">
+            <h2 class="section-title">360° Camera Pricing</h2>
+            <div class="price-table-container">
+                <div class="table-wrapper">
+                    <table class="price-table">
+                        <caption>EXW Pricing (USD $) - 360° Car Camera Systems</caption>
+                        <thead>
+                            <tr>
+                                <th class="model-header">Camera Model</th>
+                              <th>Resolution</th>
+<th>EXW Price</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          <tr>
+                                <td rowspan="3" class="model-header">1#</td>
+                            <td rowspan="3">720P</td>
+<td class="price-highlight">$19.99</td>
+                            </tr>
+                            <tr> </tr>
+                            <tr> </tr>
+                            <tr>
+                                <td rowspan="3" class="model-header">2053+1005</td>
+                              <td rowspan="3">720P</td>
+<td class="price-highlight">$22.99</td>
+                            </tr>
+                            <tr> </tr>
+                            <tr> </tr>
+                            <tr>
+                                <td rowspan="3" class="model-header">2053+6048</td>
+                              <td rowspan="3">1080P</td>
+<td class="price-highlight">$24.99</td>
+                            </tr>
+                            <tr> </tr>
+                            <tr> </tr>
+                            <tr>
+                                <td rowspan="3" class="model-header">307+6048 sony lens</td>
+                              <td rowspan="3">1080P</td>
+<td class="price-highlight">$44.99</td>
+                            </tr>
+                            <tr> </tr>
+                            <tr> </tr>
+                          <tr>
+                                <td rowspan="3" class="model-header">622+6048&nbsp;sony lens</td>
+                            <td rowspan="3">1080P</td>
+</tr>
+                            <tr> </tr>
+                            <tr>
+<td class="price-highlight">$59.99</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 核心卖点图标栏 -->
+<div class="section">
+        <div class="container">
+            <h2 class="section-title">Key Features</h2>
+            <div class="feature-grid">
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-sync-alt"></i></div>
+                    <h3>360° Panoramic Monitoring</h3>
+                    <p>Eliminate blind spots for safer parking and maneuvering</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-video"></i></div>
+                    <h3>AHD HD Night Vision</h3>
+                    <p>1080P high-definition image quality, clear even at night</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-tint"></i></div>
+                    <h3>IP69K Superior Waterproof</h3>
+                    <p>Withstand heavy rain and car washing, suitable for all weather</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-expand"></i></div>
+                    <h3>Wide Angle Lens</h3>
+                    <p>Cover wider area with minimal distortion</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-plug"></i></div>
+                    <h3>Plug & Play</h3>
+                    <p>Vehicle-specific cables for easy installation</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon"><i class="fas fa-industry"></i></div>
+                    <h3>OEM/ODM Support</h3>
+                    <p>Customize with your own brand and specifications</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 技术参数 -->
+    <div class="section" style="background: #f9f9f9;" id="specifications">
+        <div class="container">
+            <h2 class="section-title">Technical Specifications</h2>
+            <table class="spec-table">
+                <tr>
+                    <th>Item</th>
+                    <th>Specification</th>
+                </tr>
+                <tr>
+                    <td>Imaging Technology</td>
+                    <td>AHD (Analog High Definition)</td>
+                </tr>
+                <tr>
+                    <td>Resolution</td>
+                    <td>1080P / 720P (Optional)</td>
+                </tr>
+                <tr>
+                    <td>Sensor</td>
+                    <td>High-end CMOS</td>
+                </tr>
+                <tr>
+                    <td>Waterproof Rating</td>
+                    <td>IP67</td>
+                </tr>
+                <tr>
+                    <td>Lens Angle</td>
+                    <td>170° / 190° (Wide Angle)</td>
+                </tr>
+                <tr>
+                    <td>Operating Voltage</td>
+                    <td>DC 12V</td>
+                </tr>
+                <tr>
+                    <td>Signal Interface</td>
+                    <td>RCA</td>
+                </tr>
+                <tr>
+                    <td>Operating Temperature</td>
+                    <td>-30°C to +85°C</td>
+                </tr>
+                <tr>
+                    <td>Compatibility</td>
+                    <td>All AHD-supported car display systems</td>
+                </tr>
+            </table>
+        </div>
+</div>
+
+    <!-- 5种辅助模式区域 -->
+<div class="assistive-modes">
+  <div class="container">
+            <h2 class="section-title">5 Intelligent Assistive Modes</h2>
+            
+            <div class="modes-grid">
+                <!-- Reverse Mode -->
+                <div class="mode-card">
+                    <div class="mode-header">
+                        <div class="mode-icon">
+                            <i class="fas fa-undo-alt"></i>
+                        </div>
+                        <h3 class="mode-title">Reverse Mode</h3>
+                    </div>
+                    <div class="mode-content">
+                        <p class="mode-description">Activates automatically in reverse gear, displaying dynamic guidance lines with video storage capability.</p>
+                        <div class="mode-features">
+                            <ul>
+                                <li>Automatic activation when reversing</li>
+                                <li>Dynamic guidance lines</li>
+                                <li>Video recording and storage</li>
+                                <li>Enhanced safety during parking</li>
+                            </ul>
+                        </div>
+                    </div>
+</div>
+                
+                <!-- 3D Surround Mode -->
+                <div class="mode-card">
+                    <div class="mode-header">
+                        <div class="mode-icon">
+                            <i class="fas fa-cube"></i>
+                        </div>
+                        <h3 class="mode-title">3D Surround Mode</h3>
+                    </div>
+                    <div class="mode-content">
+                        <p class="mode-description">Automatically activates 360° view upon vehicle start-up for complete surrounding awareness.</p>
+                        <div class="mode-features">
+                            <ul>
+                                <li>360° panoramic view</li>
+                                <li>Automatic activation at startup</li>
+                                <li>Complete surrounding awareness</li>
+                                <li>Eliminates blind spots</li>
+                            </ul>
+                        </div>
+                    </div>
+</div>
+                
+                <!-- Pull Over Mode -->
+                <div class="mode-card">
+                    <div class="mode-header">
+                        <div class="mode-icon">
+                            <i class="fas fa-arrows-left-right"></i>
+                        </div>
+                        <h3 class="mode-title">Pull Over Mode</h3>
+                    </div>
+                    <div class="mode-content">
+                        <p class="mode-description">Activates narrow space assist when parking, showing both vehicle sides simultaneously to prevent tire and body damage.</p>
+                        <div class="mode-features">
+                            <ul>
+                                <li>Narrow space assistance</li>
+                                <li>Simultaneous side view</li>
+                                <li>Prevents tire and body damage</li>
+                                <li>Perfect for tight parking spots</li>
+                            </ul>
+                        </div>
+                    </div>
+</div>
+                
+                <!-- Starting Mode -->
+                <div class="mode-card">
+                    <div class="mode-header">
+                        <div class="mode-icon">
+                            <i class="fas fa-play-circle"></i>
+                        </div>
+                        <h3 class="mode-title">Starting Mode</h3>
+                    </div>
+                    <div class="mode-content">
+                        <p class="mode-description">Forward view activates when front sensors detect obstacles, helping prevent forward collisions.</p>
+                        <div class="mode-features">
+                            <ul>
+                                <li>Forward obstacle detection</li>
+                                <li>Automatic front view activation</li>
+                                <li>Collision prevention</li>
+                                <li>Enhanced forward safety</li>
+                            </ul>
+                        </div>
+                    </div>
+</div>
+                
+                <!-- Turning Mode -->
+                <div class="mode-card">
+                    <div class="mode-header">
+                        <div class="mode-icon">
+                            <i class="fas fa-exchange-alt"></i>
+                        </div>
+                        <h3 class="mode-title">Turning Mode</h3>
+                    </div>
+                    <div class="mode-content">
+                        <p class="mode-description">Provides expanded view during turns with dynamic guide lines for optimal path correction.</p>
+                        <div class="mode-features">
+                            <ul>
+                                <li>Expanded turning view</li>
+                                <li>Dynamic guide lines</li>
+                                <li>Optimal path correction</li>
+                                <li>Enhanced turning safety</li>
+                            </ul>
+                        </div>
+                    </div>
+</div>
+            </div>
+            
+    <div class="modes-highlight">
+                <h2>Complete Driving Safety Solution</h2>
+      <p>Our 360° camera system with 5 intelligent assistive modes provides comprehensive coverage for all driving scenarios, making every journey safer and more convenient.</p>
+</div>
+</div>
+    </div>
+
+    <!-- 应用场景与安装 -->
+    <div class="section" id="installation">
+        <div class="container">
+            <h2 class="section-title">Simple 4-Step Installation</h2>
+            
+            <div style="text-align: center; margin: 50px 0;">
+<div style="display: flex; justify-content: space-around; margin: 40px 0; flex-wrap: wrap;">
+          <div style="text-align: center; margin: 15px; flex: 1; min-width: 150px;">
+                        <div style="background: #3498db; color: white; border-radius: 50%; width: 70px; height: 70px; line-height: 70px; margin: 0 auto; font-size: 24px; font-weight: bold;">1</div>
+                        <p style="margin-top: 15px; font-weight: 600; color: #333;">Position Camera</p>
+        </div>
+                    <div style="text-align: center; margin: 15px; flex: 1; min-width: 150px;">
+                        <div style="background: #3498db; color: white; border-radius: 50%; width: 70px; height: 70px; line-height: 70px; margin: 0 auto; font-size: 24px; font-weight: bold;">2</div>
+                        <p style="margin-top: 15px; font-weight: 600; color: #333;">Route Cables</p>
+                    </div>
+                    <div style="text-align: center; margin: 15px; flex: 1; min-width: 150px;">
+                        <div style="background: #3498db; color: white; border-radius: 50%; width: 70px; height: 70px; line-height: 70px; margin: 0 auto; font-size: 24px; font-weight: bold;">3</div>
+                        <p style="margin-top: 15px; font-weight: 600; color: #333;">Connect to Display</p>
+                    </div>
+                    <div style="text-align: center; margin: 15px; flex: 1; min-width: 150px;">
+                        <div style="background: #3498db; color: white; border-radius: 50%; width: 70px; height: 70px; line-height: 70px; margin: 0 auto; font-size: 24px; font-weight: bold;">4</div>
+                        <p style="margin-top: 15px; font-weight: 600; color: #333;">Test & Adjust</p>
+                    </div>
+              </div>
+                <p style="font-size: 18px; font-weight: 600; color: #333;"><strong>No wiring modification needed - True Plug & Play!</strong></p>
+          </div>
+      </div>
+</div>
+
+    <!-- 品质保证 -->
+    <div class="section" style="background: #f5f5f5;">
+        <div class="container">
+            <h2 class="section-title">Quality Assurance & Certifications</h2>
+            <div class="certifications">
+                <div class="cert-item">
+                    <div class="cert-icon"><i class="fas fa-certificate"></i></div>
+                    <h4>CE Certified</h4>
+                    <p>Meets European safety standards</p>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-icon"><i class="fas fa-recycle"></i></div>
+                    <h4>RoHS Compliant</h4>
+                    <p>Environmentally friendly materials</p>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-icon"><i class="fas fa-check-circle"></i></div>
+                    <h4>100% Testing</h4>
+                    <p>Each unit thoroughly tested</p>
+                </div>
+                <div class="cert-item">
+                    <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h4>2-Year Warranty</h4>
+                    <p>Comprehensive product warranty</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 公司实力 -->
+    <div class="section">
+        <div class="container">
+            <h2 class="section-title">About Lodark - Professional Car Electronics Manufacturer</h2>
+            <div class="company-info">
+              <div class="company-text">
+                    <h3 style="font-size: 26px; margin-bottom: 20px; color: #2c3e50;">Why Choose Lodark?</h3>
+                <ul style="margin-left: 20px; font-size: 17px;">
+                        <li style="margin-bottom: 12px;">10+ years experience in car electronics manufacturing</li>
+                        <li style="margin-bottom: 12px;">Annual production capacity: 500,000+ units</li>
+                        <li style="margin-bottom: 12px;">Serving clients from 30+ countries worldwide</li>
+                        <li style="margin-bottom: 12px;">Strong R&D team for continuous innovation</li>
+                        <li style="margin-bottom: 12px;">Professional OEM/ODM services available</li>
+                        <li style="margin-bottom: 12px;">Competitive pricing with premium quality</li>
+                  </ul>
+</div>
+                <div class="company-image">
+                    <img src="images/about us.jpg" alt="Lodark Factory">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- 包装与物流 -->
+    <div class="section" style="background: #f9f9f9;">
+        <div class="container">
+<p style="text-align: center; font-size: 18px; margin-top: 20px; color: #333;"><strong>Custom packaging available for OEM clients</strong></p>
+            <p style="text-align: center; font-size: 16px; margin-top: 10px; color: #555;">Shipping Options: DHL, FedEx, UPS, TNT, Sea Freight, Air Freight</p>
+      </div>
+    </div>
+
+    <!-- 最终行动号召 -->
+    <div class="final-cta" id="contact">
+      <div class="container">
+            <h2>Ready to Boost Your Business with Lodark?</h2>
+        <p>Contact us today for the best prices, OEM solutions, and professional support for your automotive business.</p>
+</div>
+    </div>
+
+    <!-- 网站底栏 -->
+    <footer class="site-footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>About Us</h3>
+                <p>LODARK is a leading manufacturer of automotive navigation systems, committed to providing high-quality products and services to global customers.</p>
+                    <!-- 社交媒体链接 -->
+                    <div class="social-media">
+                        <a href="https://www.youtube.com/@Lodark18" class="social-icon" target="_blank" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61573217336403" class="social-icon" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/lodark_car_player/" class="social-icon" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>            </div>
+            
+            <div class="footer-section">
+                <h3>Product Series</h3>
+                <ul class="footer-links">
+                    <li><a href="products.html#e-series">E-Series (Entry-Level)</a></li>
+                    <li><a href="products.html#s-series">S-Series (Mid-Range)</a></li>
+                    <li><a href="products.html#p-series">P-Series (Flagship)</a></li>
+                    <li><a href="products.html#specialty">Specialty Series</a></li>
+                </ul>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="accessories.html">Accessories</a></li>
+                    <li><a href="oem.html">OEM/ODM</a></li>
+                    <li><a href="Contact.html">Contact Us</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="copyright">
+            <p>&copy; 2025 LODARK. All rights reserved.</p>
+        </div>
+    </footer>
+
+<script>
+        // 轮播图功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const carousel = document.querySelector('.carousel');
+            const slides = document.querySelectorAll('.carousel-slide');
+            const indicators = document.querySelectorAll('.carousel-indicator');
+            const prevBtn = document.querySelector('.carousel-prev');
+            const nextBtn = document.querySelector('.carousel-next');
+            
+            let currentSlide = 0;
+            const slideCount = slides.length;
+            
+            // 更新轮播图位置
+            function updateCarousel() {
+                carousel.style.transform = `translateX(-${currentSlide * 100}%)`;
+                
+                // 更新指示器状态
+                indicators.forEach((indicator, index) => {
+                    indicator.classList.toggle('active', index === currentSlide);
+                });
+            }
+            
+            // 下一张幻灯片
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % slideCount;
+                updateCarousel();
+            }
+            
+            // 上一张幻灯片
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + slideCount) % slideCount;
+                updateCarousel();
+            }
+            
+            // 点击指示器跳转到对应幻灯片
+            indicators.forEach((indicator, index) => {
+                indicator.addEventListener('click', () => {
+                    currentSlide = index;
+                    updateCarousel();
+                });
+            });
+            
+            // 添加按钮事件监听器
+            prevBtn.addEventListener('click', prevSlide);
+            nextBtn.addEventListener('click', nextSlide);
+            
+            // 自动轮播
+            let autoPlay = setInterval(nextSlide, 5000);
+            
+            // 鼠标悬停时暂停自动轮播
+            const carouselContainer = document.querySelector('.carousel-container');
+            carouselContainer.addEventListener('mouseenter', () => {
+                clearInterval(autoPlay);
+            });
+            
+            carouselContainer.addEventListener('mouseleave', () => {
+                autoPlay = setInterval(nextSlide, 5000);
+            });
+            
+            // 辅助模式卡片动画
+            const modeCards = document.querySelectorAll('.mode-card');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            modeCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(card);
+            });
+            
+            // 移动端菜单切换
+            const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+            const nav = document.querySelector('nav');
+            
+            mobileMenuBtn.addEventListener('click', function() {
+                nav.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
