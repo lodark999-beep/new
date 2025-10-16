@@ -36,11 +36,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- 公共样式 -->
-    <link rel="stylesheet" href="css/common-styles.css">
-    
-    <!-- 首页特定样式 -->
     <style>
         :root {
             --primary: #165DFF;
@@ -50,6 +45,145 @@
             --dark: #1a1a1a;
             --text: #333333;
             --text-light: #666666;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: #fff;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles - Updated to match products.html */
+        header {
+            background: linear-gradient(135deg, #0e2b5c, #1a56db);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: #ff3a29;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 1.5rem;
+            position: relative;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Dropdown Menu Styles */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 220px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            padding: 8px 0;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu a {
+            color: var(--text);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            border-radius: 0;
+        }
+        
+        .dropdown-menu a:hover {
+            background-color: var(--light);
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .dropdown-menu i {
+            margin-right: 10px;
+            width: 16px;
+            text-align: center;
+        }
+        
+        .dropdown-arrow {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
         }
         
         /* Hero Section */
@@ -194,9 +328,24 @@
             color: var(--text-light);
         }
         
-        /* Why Choose Us Section */
+        /* Why Choose Us Section - Updated to match About Us layout */
         .why-choose-us-section {
             background-color: var(--light);
+        }
+        
+        /* Customized Services Section - Updated to match About Us layout */
+        .customized-services-section {
+            /* No additional styles needed */
+        }
+        
+        /* Certifications Section - Updated to match About Us layout */
+        .certifications-section {
+            background-color: var(--light);
+        }
+        
+        /* Customer Reviews Section - Updated to match About Us layout */
+        .customer-reviews-section {
+            /* No additional styles needed */
         }
         
         /* Features Grid */
@@ -560,7 +709,102 @@
             margin-bottom: 10px;
         }
         
-        /* Responsive Design for Homepage */
+        /* Footer - Updated to match contact.html */
+        footer {
+            background: #0e2b5c;
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #ff3a29;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
+        /* 社交媒体样式 */
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: #ff3a29;
+            transform: translateY(-3px);
+        }
+
+        /* 阿里巴巴本地图标样式 */
+        .alibaba-icon {
+            width: 20px;
+            height: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm4 0h-2v-6h2v6zm-6-8c0-.55.45-1 1-1s1 .45 1 1-.45 1-1 1-1-.45-1-1zm8 0c0-.55.45-1 1-1s1 .45 1 1-.45 1-1 1-1-.45-1-1z"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        /* Responsive Design */
         @media (max-width: 992px) {
             .hero h1 {
                 font-size: 36px;
@@ -573,6 +817,14 @@
             
             .about-stats {
                 grid-template-columns: repeat(2, 1fr);
+            }
+            
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
             }
             
             .features-grid,
@@ -611,8 +863,27 @@
                 margin: 0 auto;
             }
 
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+
             .about-stats {
                 grid-template-columns: 1fr;
+            }
+
+            .social-media {
+                flex-wrap: wrap;
             }
             
             .certifications-grid {
@@ -622,8 +893,45 @@
     </style>
 </head>
 <body>
-    <!-- 头部容器 -->
-    <div id="header-container"></div>
+    <header>
+        <div class="container header-content">
+            <div class="logo">LOD<span>ARK</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="nav-link active">Home</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="accessories.html" class="nav-link">Accessories</a></li>
+                    <li><a href="oem.html" class="nav-link">OEM/ODM</a></li>
+                    <li class="dropdown">
+                        <a href="Technology Portal.html" class="nav-link">
+                            Technology Portal
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="guzhang.html">
+                                <i class="fas fa-tools"></i>
+                                Faults & Solutions
+                            </a>
+                            <a href="RFQ.html">
+                                <i class="fas fa-question-circle"></i>
+                                FAQ
+                            </a>
+                            <a href="How To's.html">
+                                <i class="fas fa-book"></i>
+                                How To's
+                            </a>
+                            <a href="3603.html">
+                                <i class="fas fa-camera-retro"></i>
+                                360 Camera Guide
+                            </a>
+                        </div>
+                    </li>
+                    <li><a href="Contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </header>
 
     <main>
         <!-- Hero Section -->
@@ -677,7 +985,7 @@
             </div>
         </section>
 
-        <!-- Why Choose Us Section -->
+        <!-- Why Choose Us Section - Updated to match About Us layout -->
         <section class="why-choose-us-section">
             <div class="container">
                 <div class="section-title">
@@ -740,7 +1048,7 @@
             </div>
         </section>
 
-        <!-- Customized Services Section -->
+        <!-- Customized Services Section - Updated to match About Us layout -->
         <section class="customized-services-section">
             <div class="container">
                 <div class="section-title">
@@ -803,7 +1111,7 @@
             </div>
         </section>
 
-        <!-- Certifications Section -->
+        <!-- Certifications Section - Updated to match About Us layout -->
         <section class="certifications-section">
             <div class="container">
                 <div class="section-title">
@@ -818,46 +1126,13 @@
                     <div class="about-content">
                         <h3>Quality Standards and Compliance</h3>
                         <p>LODARK is proud to hold multiple international certifications that demonstrate our commitment to quality, safety, and environmental responsibility.</p>
-                        <p>Our certifications ensure that our products meet the highest industry standards and regulatory requirements, giving our customers confidence in the quality and reliability of our automotive entertainment systems.</p>
-                        
-                        <div class="certifications-grid">
-                            <div class="certification-item">
-                                <i class="fas fa-certificate" style="font-size: 48px; color: var(--primary); margin-bottom: 15px;"></i>
-                                <h4>IATF 16949</h4>
-                                <p>Automotive Quality Management System</p>
-                            </div>
-                            <div class="certification-item">
-                                <i class="fas fa-certificate" style="font-size: 48px; color: var(--primary); margin-bottom: 15px;"></i>
-                                <h4>ISO 9001</h4>
-                                <p>Quality Management System</p>
-                            </div>
-                            <div class="certification-item">
-                                <i class="fas fa-certificate" style="font-size: 48px; color: var(--primary); margin-bottom: 15px;"></i>
-                                <h4>CCC</h4>
-                                <p>China Compulsory Certification</p>
-                            </div>
-                            <div class="certification-item">
-                                <i class="fas fa-certificate" style="font-size: 48px; color: var(--primary); margin-bottom: 15px;"></i>
-                                <h4>CE</h4>
-                                <p>European Conformity</p>
-                            </div>
-                            <div class="certification-item">
-                                <i class="fas fa-certificate" style="font-size: 48px; color: var(--primary); margin-bottom: 15px;"></i>
-                                <h4>FCC</h4>
-                                <p>Federal Communications Commission</p>
-                            </div>
-                            <div class="certification-item">
-                                <i class="fas fa-certificate" style="font-size: 48px; color: var(--primary); margin-bottom: 15px;"></i>
-                                <h4>RoHS</h4>
-                                <p>Restriction of Hazardous Substances</p>
-                            </div>
-                        </div>
-                    </div>
+                      <p>Our certifications ensure that our products meet the highest industry standards and regulatory requirements, giving our customers confidence in the quality and reliability of our automotive entertainment systems.</p>
+</div>
                 </div>
             </div>
         </section>
 
-        <!-- Customer Reviews Section -->
+        <!-- Customer Reviews Section - Updated to match About Us layout -->
         <section class="customer-reviews-section">
             <div class="container">
                 <div class="section-title">
@@ -887,12 +1162,12 @@
                                     "The P2 Series unit I purchased for my Toyota has exceeded my expectations. The screen quality is excellent and the Android Auto integration works flawlessly."
                                 </div>
                                 <div class="review-author">
-                                    <div class="review-details">
-                                        <h4>Michael Johnson</h4>
+<div class="review-details">
+                  <h4>Michael Johnson</h4>
                                         <p>Automotive Retailer, USA</p>
-                                    </div>
-                                </div>
-                            </div>
+                                  </div>
+                              </div>
+                          </div>
                             
                             <div class="review-item">
                                 <div class="review-rating">
@@ -906,11 +1181,11 @@
                                     "We've been partnering with LODARK for over 3 years for our OEM requirements. Their product quality and customer service are outstanding."
                                 </div>
                                 <div class="review-author">
-                                    <div class="review-details">
-                                        <h4>Sarah Chen</h4>
+<div class="review-details">
+                  <h4>Sarah Chen</h4>
                                         <p>Procurement Manager, Singapore</p>
-                                    </div>
-                                </div>
+                                  </div>
+                              </div>
                             </div>
                             
                             <div class="review-item">
@@ -925,11 +1200,11 @@
                                     "The technical support team at LODARK was incredibly helpful during our customization process. They understood our requirements perfectly."
                                 </div>
                                 <div class="review-author">
-                                    <div class="review-details">
-                                        <h4>David Wilson</h4>
+<div class="review-details">
+                  <h4>David Wilson</h4>
                                         <p>Business Owner, Australia</p>
-                                    </div>
-                                </div>
+                                  </div>
+                              </div>
                             </div>
                             
                             <div class="review-item">
@@ -944,11 +1219,11 @@
                                     "Excellent products at competitive prices. The delivery was faster than expected and the installation was straightforward."
                                 </div>
                                 <div class="review-author">
-                                    <div class="review-details">
-                                        <h4>Emma Rodriguez</h4>
+<div class="review-details">
+                  <h4>Emma Rodriguez</h4>
                                         <p>Car Enthusiast, Spain</p>
-                                    </div>
-                                </div>
+                                  </div>
+                              </div>
                             </div>
                         </div>
                     </div>
@@ -1129,28 +1404,98 @@
         </section>
     </main>
 
-    <!-- 页脚容器 -->
-    <div id="footer-container"></div>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>LODARK is a leading manufacturer of automotive navigation systems, committed to providing high-quality products and services to global customers.</p>
+                    <!-- 社交媒体链接 -->
+                    <div class="social-media">
+                        <a href="https://www.youtube.com/@Lodark18" class="social-icon" target="_blank" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61573217336403" class="social-icon" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/lodark_car_player/" class="social-icon" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Product Series</h3>
+                    <ul class="footer-links">
+                        <li><a href="products.html#e-series">E-Series (Entry-Level)</a></li>
+                        <li><a href="products.html#s-series">S-Series (Mid-Range)</a></li>
+                        <li><a href="products.html#p-series">P-Series (Flagship)</a></li>
+                        <li><a href="products.html#specialty">Specialty Series</a></li>
+                    </ul>
+                </div>
+                
+              <div class="footer-section">
+                <h3>Quick Links</h3>
+                  <ul class="footer-links">
+                      <li><a href="index.html">Home</a></li>
+                      <li><a href="products.html">Products</a></li>
+                      <li><a href="accessories.html">Accessories</a></li>
+                      <li><a href="oem.html">OEM/ODM</a></li>
+                      <li><a href="Technology Portal.html">Technology Portal</a></li>
+                      <li><a href="Contact.html">Contact Us</a></li>
+                  </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 LODARK. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-    <!-- 公共脚本 -->
-    <script src="js/load-components.js"></script>
-    <script src="js/common-functions.js"></script>
-
-    
-    <!-- 首页特定脚本 -->
     <script>
-        // 页面加载完成后初始化
-        document.addEventListener('DOMContentLoaded', function() {
-            // 设置首页导航链接为活动状态
-            setTimeout(function() {
-                const navLinks = document.querySelectorAll('.nav-link');
-                navLinks.forEach(link => {
-                    if (link.getAttribute('href') === 'index.html') {
-                        link.classList.add('active');
-                    }
-                });
-            }, 500);
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            const nav = document.querySelector('nav ul');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
         });
+        
+        // Responsive nav adjustment
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 992) {
+                document.querySelector('nav ul').style.display = 'flex';
+            } else {
+                document.querySelector('nav ul').style.display = 'none';
+            }
+        });
+
+        // WhatsApp function
+        function openWhatsApp() {
+            const phoneNumber = "+8613537885828";
+            const message = "Hello LODARK, I'm interested in your automotive entertainment systems. Could you please provide more information?";
+            const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            window.open(whatsappURL, '_blank');
+        }
+
+        // WeChat copy function
+        function copyWeChat() {
+            const wechatId = "+86 13537885828";
+            navigator.clipboard.writeText(wechatId).then(() => {
+                alert(`WeChat ID "${wechatId}" has been copied to clipboard. Please add us on WeChat.`);
+            }).catch(err => {
+                console.error('Failed to copy WeChat ID: ', err);
+                alert(`Please manually copy the WeChat ID: ${wechatId}`);
+            });
+        }
+
+        // Email function
+        function sendEmail() {
+            const email = "lodark999@gmail.com";
+            const subject = "Inquiry about LODARK Automotive Entertainment Systems";
+            const body = "Dear LODARK Team,\n\nI am interested in your automotive entertainment systems. Could you please provide more information about your products and pricing?\n\nThank you.";
+            const mailtoURL = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+            window.location.href = mailtoURL;
+        }
     </script>
 </body>
 </html>
