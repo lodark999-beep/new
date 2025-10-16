@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Technical Portal - LODARK</title>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- 公共样式 -->
+    <link rel="stylesheet" href="css/common-styles.css">
+    
+    <!-- 技术门户特定样式 -->
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #10b981;
+            --accent-color: #f59e0b;
+            --dark-color: #1e293b;
+            --light-color: #f8fafc;
+            --border-color: #e2e8f0;
+            --text-color: #334155;
+            --text-light: #64748b;
+            --radius: 8px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        body {
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--light-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary-color), #0d47a1);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+
+        /* Search Section */
+        .search-section {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 16px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+
+        /* Main Content Styles */
+        main {
+            padding: 40px 0;
+        }
+
+        .section-title {
+            font-size: 28px;
+            color: var(--dark-color);
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .content-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow);
+            border-left: 4px solid var(--primary-color);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .content-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card-title {
+            font-size: 22px;
+            margin-bottom: 18px;
+            color: var(--dark-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title a {
+            text-decoration: none;
+            color: inherit;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-title i {
+            color: var(--primary-color);
+        }
+
+        .card-content ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .card-content li {
+            margin-bottom: 10px;
+            padding: 8px 0;
+            padding-left: 25px;
+            position: relative;
+            border-bottom: 1px dashed #eee;
+            transition: all 0.3s ease;
+        }
+
+        .card-content li:hover {
+            background-color: var(--light-color);
+            padding-left: 30px;
+        }
+
+        .card-content li:last-child {
+            border-bottom: none;
+        }
+
+        .card-content li:before {
+            content: "›";
+            color: var(--primary-color);
+            position: absolute;
+            left: 10px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+
+        /* Quick Links Section */
+        .quick-links {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .quick-links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        .quick-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background-color: var(--light-color);
+            border-radius: var(--radius);
+            text-decoration: none;
+            color: var(--text-color);
+            transition: all 0.3s ease;
+        }
+
+        .quick-link:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .quick-link i {
+            color: var(--primary-color);
+        }
+
+        .quick-link:hover i {
+            color: white;
+        }
+
+        /* Responsive Styles for Technology Portal */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .quick-links-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部容器 -->
+    <div id="header-container"></div>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Technical Support Portal</h1>
+            <p>Find solutions, guides, and troubleshooting for LODARK products</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="search-section"> <i class="fas fa-search search-icon"></i>
+        </div>
+        
+      <h2 class="section-title">Technical Resources</h2>
+        <div class="content-grid">
+            <div class="content-card">
+                <h2 class="card-title"><a href="guzhang.html"><i class="fas fa-tools"></i> Faults & Solutions</a></h2>
+                <div class="card-content">
+                    <ul>
+                        <li>Common installation issues</li>
+                        <li>Audio problems troubleshooting</li>
+                        <li>Screen display issues</li>
+                        <li>Connectivity problems</li>
+                        <li>Software update errors</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="content-card">
+                <h2 class="card-title"><a href="RFQ.html"><i class="fas fa-question-circle"></i> FAQ</a></h2>
+                <div class="card-content">
+                    <ul>
+                        <li>Product compatibility questions</li>
+                        <li>Installation requirements</li>
+                        <li>Warranty information</li>
+                        <li>Technical specifications</li>
+                        <li>Order and shipping inquiries</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="content-card">
+                <h2 class="card-title"><a href="How To's.html"><i class="fas fa-book"></i> How To's</a></h2>
+                <div class="card-content">
+                    <ul>
+                        <li>Installation guides</li>
+                        <li>Software setup instructions</li>
+                        <li>Feature usage tutorials</li>
+                        <li>Maintenance tips</li>
+                        <li>Customization options</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="content-card">
+                <h2 class="card-title"><a href="3603.html"><i class="fas fa-camera-retro"></i> 360 Camera Guide</a></h2>
+                <div class="card-content">
+                    <ul>
+                        <li>Camera installation guide</li>
+                        <li>Calibration procedures</li>
+                        <li>Troubleshooting camera issues</li>
+                        <li>Optimal placement tips</li>
+                        <li>Advanced features setup</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Links Section -->
+        <div class="quick-links">
+            <h2 class="section-title">Quick Links</h2>
+            <div class="quick-links-grid">
+                <a href="products.html" class="quick-link">
+                    <i class="fas fa-box"></i>
+                    <span>Product Catalog</span>
+                </a>
+                <a href="accessories.html" class="quick-link">
+                    <i class="fas fa-cogs"></i>
+                    <span>Accessories</span>
+                </a>
+                <a href="oem.html" class="quick-link">
+                    <i class="fas fa-industry"></i>
+                    <span>OEM/ODM Services</span>
+                </a>
+                <a href="Contact.html" class="quick-link">
+                    <i class="fas fa-headset"></i>
+                    <span>Contact Support</span>
+                </a>
+                <a href="index.html" class="quick-link">
+                    <i class="fas fa-home"></i>
+                    <span>Home</span>
+                </a>
+                <a href="https://www.youtube.com/@Lodark18" class="quick-link" target="_blank">
+                    <i class="fab fa-youtube"></i>
+                    <span>Video Tutorials</span>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚容器 -->
+    <div id="footer-container"></div>
+
+    <!-- 公共脚本 -->
+    <script src="js/load-components.js"></script>
+    <script src="js/common-functions.js"></script>
+    
+    <!-- 技术门户特定脚本 -->
+    <script>
+        // 设置技术门户导航链接为活动状态
+        document.addEventListener('DOMContentLoaded', function() {
+            setTimeout(function() {
+                const navLinks = document.querySelectorAll('.nav-link');
+                navLinks.forEach(link => {
+                    if (link.getAttribute('href') === 'Technology Portal.html') {
+                        link.classList.add('active');
+                    }
+                });
+            }, 500);
+
+            // 搜索功能
+            const searchBox = document.querySelector('.search-box');
+            const cards = document.querySelectorAll('.content-card');
+            
+            if (searchBox) {
+                searchBox.addEventListener('input', function() {
+                    const searchTerm = this.value.toLowerCase();
+                    
+                    cards.forEach(card => {
+                        const cardTitle = card.querySelector('.card-title').textContent.toLowerCase();
+                        const cardItems = card.querySelectorAll('.card-content li');
+                        let hasMatch = false;
+                        
+                        // 检查标题是否匹配
+                        if (cardTitle.includes(searchTerm)) {
+                            hasMatch = true;
+                        }
+                        
+                        // 检查列表项是否匹配
+                        cardItems.forEach(item => {
+                            const itemText = item.textContent.toLowerCase();
+                            if (itemText.includes(searchTerm)) {
+                                hasMatch = true;
+                                // 高亮匹配文本
+                                const regex = new RegExp(searchTerm, 'gi');
+                                item.innerHTML = item.innerHTML.replace(regex, match => `<span style="background-color: #ffeb3b; padding: 2px 4px; border-radius: 3px;">${match}</span>`);
+                            }
+                        });
+                        
+                        // 根据匹配结果显示或隐藏卡片
+                        if (hasMatch || searchTerm === '') {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>

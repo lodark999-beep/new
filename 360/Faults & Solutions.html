@@ -1,0 +1,1775 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Faults and Solutions - LODARK</title>
+    <meta name="description" content="Troubleshooting guide for LODARK car entertainment systems. Find solutions for common issues with DVR, reverse camera and other features.">
+    
+    <!-- 优化的标签栏图标代码 -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" href="/logo.svg" type="image/svg+xml">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#165DFF">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+    <meta name="theme-color" content="#165DFF">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- 公共样式 -->
+    <link rel="stylesheet" href="css/common-styles.css">
+    
+    <!-- 页面特定样式 -->
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #10b981;
+            --accent-color: #f59e0b;
+            --dark-color: #1e293b;
+            --light-color: #f8fafc;
+            --border-color: #e2e8f0;
+            --text-color: #334155;
+            --text-light: #64748b;
+            --radius: 8px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+
+        /* 页面特定样式 */
+        main {
+            padding: 40px 0;
+            min-height: calc(100vh - 300px);
+        }
+
+        .page-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .page-title {
+            font-size: 36px;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        .page-subtitle {
+            font-size: 18px;
+            color: var(--text-light);
+            margin-bottom: 20px;
+        }
+
+        .author-date {
+            font-size: 14px;
+            color: var(--text-light);
+            margin-bottom: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .author-date i {
+            margin-right: 5px;
+        }
+
+        .update-notice {
+            background-color: #eff6ff;
+            border-left: 4px solid var(--primary-color);
+            padding: 12px 15px;
+            border-radius: 4px;
+            display: inline-flex;
+            align-items: center;
+            margin-top: 10px;
+        }
+
+        .update-notice i {
+            color: var(--primary-color);
+            margin-right: 10px;
+        }
+
+        .warning-banner {
+            display: flex;
+            background-color: #fef3c7;
+            border: 1px solid #fbbf24;
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-bottom: 40px;
+        }
+
+        .warning-icon {
+            margin-right: 15px;
+            color: #d97706;
+            font-size: 24px;
+        }
+
+        .warning-content h3 {
+            color: #92400e;
+            margin-bottom: 5px;
+        }
+
+        .warning-content a {
+            color: var(--primary-color);
+            text-decoration: underline;
+        }
+
+        .content-section {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: var(--shadow);
+        }
+
+        .section-title {
+            font-size: 24px;
+            color: var(--dark-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+
+        .issue-list {
+            list-style: none;
+        }
+
+        .issue-item {
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .issue-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .issue-title {
+            display: flex;
+            align-items: center;
+            font-size: 18px;
+            font-weight: 600;
+            color: var(--dark-color);
+            margin-bottom: 10px;
+        }
+
+        .issue-title i {
+            color: var(--accent-color);
+            margin-right: 10px;
+        }
+
+        .solution {
+            background-color: #f8fafc;
+            border-radius: var(--radius);
+            padding: 20px;
+            margin-top: 15px;
+        }
+
+        .solution-title {
+            display: flex;
+            align-items: center;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+        }
+
+        .solution-title i {
+            margin-right: 10px;
+        }
+
+        .steps {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+
+        .steps li {
+            margin-bottom: 8px;
+        }
+
+        .note {
+            background-color: #f0f9ff;
+            border-left: 4px solid var(--primary-color);
+            padding: 12px 15px;
+            border-radius: 4px;
+            margin-top: 15px;
+        }
+
+        .note strong {
+            color: var(--primary-color);
+        }
+
+        .code-block {
+            background-color: #1e293b;
+            color: #e2e8f0;
+            border-radius: var(--radius);
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .solution-image {
+            max-width: 100%;
+            border-radius: var(--radius);
+            margin: 15px 0;
+            box-shadow: var(--shadow);
+        }
+
+        /* FAQ Styles */
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 15px 20px;
+            background-color: #f8fafc;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 500;
+            transition: background-color 0.3s;
+        }
+
+        .faq-question:hover {
+            background-color: #f1f5f9;
+        }
+
+        .faq-question i {
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-answer {
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s, padding 0.3s;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 15px 20px;
+            max-height: 500px;
+        }
+
+        /* Contact Options */
+        .contact-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .contact-card {
+            background-color: #f8fafc;
+            border-radius: var(--radius);
+            padding: 25px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .contact-card i {
+            font-size: 36px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .contact-card h3 {
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        /* Back to Top Button */
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s, visibility 0.3s, background-color 0.3s;
+            z-index: 99;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Quick Navigation */
+        .quick-nav {
+            position: sticky;
+            top: 80px;
+            background: white;
+            padding: 15px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin-bottom: 30px;
+            z-index: 10;
+        }
+
+        .quick-nav h3 {
+            margin-bottom: 10px;
+            color: var(--dark-color);
+        }
+
+        .quick-nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .quick-nav-links a {
+            background-color: #f1f5f9;
+            color: var(--text-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .quick-nav-links a:hover {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 28px;
+            }
+
+            .content-section {
+                padding: 20px;
+            }
+
+            .contact-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .quick-nav-links {
+                justify-content: center;
+            }
+            
+            .quick-nav-links a {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 头部容器 -->
+    <div id="header-container"></div>
+    
+    <main class="container">
+        <!-- 快速导航 -->
+        <div class="quick-nav">
+            <h3>Quick Navigation</h3>
+            <div class="quick-nav-links">
+                <a href="#common-issues">Common Issues</a>
+                <a href="#power-issues">Power Issues</a>
+                <a href="#camera-issues">Camera Issues</a>
+                <a href="#display-audio-issues">Display & Audio</a>
+                <a href="#settings-issues">Settings & Config</a>
+                <a href="#troubleshooting">Troubleshooting</a>
+                <a href="#faq">FAQ</a>
+                <a href="#contact">Contact</a>
+            </div>
+        </div>
+        
+        <div class="page-header">
+            <h1 class="page-title">Random Faults and Solutions</h1>
+<p class="page-subtitle">Troubleshooting Guide for LODARK Products</p>
+            <div class="update-notice">
+                <i class="fas fa-info-circle"></i> This page is continuously being updated with new solutions and information.
+          </div>
+        </div>
+        
+        <div class="warning-banner">
+            <div class="warning-icon">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="warning-content">
+                <h3>IMPORTANT NOTICE</h3>
+                <p>We have identified multiple issues affecting units due to a damaged DVR plug. <a href="#" style="color: var(--primary-color); text-decoration: underline;">See here for more information</a></p>
+            </div>
+        </div>
+        
+        <!-- Common Issues Section -->
+        <section class="content-section" id="common-issues">
+            <h2 class="section-title">Common Issues & Solutions</h2>
+            
+            <ul class="issue-list">
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        DVR Plug Damage Issues
+                    </div>
+                    <p>We have identified multiple issues affecting units due to a damaged DVR plug.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Inspect the DVR plug for any physical damage. If damaged, contact customer support for replacement instructions.</p>
+                        <div class="note">
+                            <strong>Note:</strong> Continuing to use a damaged plug may cause further issues with your system.
+                        </div>
+                    </div>
+                </li>
+                
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        WiFi Connected but No Internet
+                    </div>
+                    <p>MY WIFI is connected, 4G antenna and F port antennas are also plugged in but I have no internet.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Make sure that the time and date are correct on the unit.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        GPS Signal Problems
+                    </div>
+                    <p>My unit is installed and the GPS is not receiving signal.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Check that the connection is not too tight! This is a common occurrence.</p>
+                        <div class="note">
+                            <strong>Note:</strong> GPS performance can be affected by weather conditions and building density.
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Vehicle Doors and Dynamic Reverse Lines Not Working
+                    </div>
+                    <p>My vehicle car doors and dynamic reverse lines are not working.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>If your original head unit did not show this, it generally will not carry over as this is a vehicle option.</p>
+</div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Screen Cut Off by Frame
+                    </div>
+                    <p>I have a frame that installs on top of the screen, however some of the screen is now cut off.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Go to your correct firmware section on here and select the "click here to download" to download the screen adjusted firmware.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        How to Remove Radar Display
+                    </div>
+                    <p>How do I remove the radar display?</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>You can turn them off in the vehicle agreement section located in the factory settings.</p>
+                        <p>There are settings for this found <a href="#" style="color: var(--primary-color);">here</a>.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        OBDII App Bluetooth Connection Issue
+                    </div>
+                    <p>My OBDII app has connected to bluetooth but it tells me to connect to bluetooth.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>When pressing these 2 selections in the app, you must have the engine running. The data is not flowing because the engine is off, so the OBDII thinks it is not connected.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        VESTA App Warning
+                    </div>
+                    <p>Do NOT install the VESTA app. This is specifically for Lada VESTA vehicles.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Installing this will cause canbus issues and can damage your canbus!</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        2K Screen Upgrade Issue
+                    </div>
+                    <p>I upgraded my 2K screen and it looks like this.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>This is caused by the firmware not being upgraded. Select from <a href="#" style="color: var(--primary-color);">here</a> and install this firmware.</p>
+                        <p>This can also happen if the firmware has not correctly initialised. This might happen with a new unit that you receive if the firmware had not properly initialised.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Touch Screen Problems
+                    </div>
+                    <p>I have touch screen problems.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Please go <a href="#" style="color: var(--primary-color);">here</a> for a run through troubleshooting.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        360 System Image Issue
+                    </div>
+                    <p>I have a 360 system and the image looks like this.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>This is caused by connecting a camera to the F port. This is not compatible with the 360 system, if you want to use a 5th monitoring camera, install on the A port harness video input and view via the AUX app.</p>
+                        <p>Below is an example of what can happen if not all 360 cameras are installed.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Firmware Installation Failure
+                    </div>
+                    <p>My firmware fails to install after detecting the firmware.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>If you find this folder in the firmware directory, delete it.</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        360 System Vehicle Display Issue
+                    </div>
+                    <p>My vehicle is see through/invisible on the 360 app, how can I fix it?</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>This is just a viewing option, select the LODARK logo to toggle this function.</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        WiFi/Bluetooth Signal Issues
+                    </div>
+                    <p>My wifi keeps disconnecting to my phone affecting CarPlay / My bluetooth signal is weak.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>You must always connect the supplied F port adapter that is for a reverse camera, even if you are not using a reverse camera. This is because it has important bluetooth and WIFI 2.4Ghz antennas on it.</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        SIM Card Issues
+                    </div>
+                    <p>I have a SIM card issue.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>See here for SIM cards (enter)</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Microphone Issues with CarPlay
+                    </div>
+                    <p>Situation 1: My microphone sounds bad while using Apple Carplay. I sound very quiet / there is feedback where the caller hears themself.</p>
+                    <p>Situation 2: I have problems with the external mic when connected to car play. I have turned the internal mic off. The mic won't work when the wifi is off and connected to car play. I have changed the settings for the wifi to stay on but it still doesn't. So when I make a phone call no one can hear me. When connected to just Bluetooth the mic works. Just seems to be when carplay is connected.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>The Carlink app for CarPlay is using the internal mic of the iPhone and the head unit for noise reduction, this is not optimal. Disable it by opening the Carlink app while bluetooth is disconnected (to give you more time to go into settings without the iPhone connecting).</p>
+                        <p>Select NO for noise reduction.</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Sound Difference Between Bluetooth and Head Unit
+                    </div>
+                    <p>There's a difference in sound between using Bluetooth audio and the audio directly from the head unit.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Go to settings --> Factory settings --> 168 --> Volume Balance settings and adjust accordingly to your preferences.</p>
+                        <div class="note">
+                            <strong>Note:</strong> This does not control NAVI volume and other in-app volume controls. It only allows mixing. If bluetooth call volume is too low, you can adjust the power conditioner. See here.
+                        </div>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        App Sound Quality Issues
+                    </div>
+                    <p>Only the music from the LODARK apps sound good and uses the subwoofer. Instead any other app that plays music or videos doesn't sound right and is lower in volume or use subwoofer.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>You must turn the bluetooth source up to maximum. In case of your phone turn it up to maximum. Activate the 5.1 in the equaliser to get the subwoofer working.</p>
+                        <div class="note">
+                            <strong>Note:</strong> Music volume and caller volume can be 2 different settings when using your phone so you must check them.
+                        </div>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        CarPlay Call Volume Too Loud
+                    </div>
+                    <p>When someone calls, the default level is 16 and its very loud during carplay.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Re-pair the connection between the phone and head unit.</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Subwoofer Not Working Properly
+                    </div>
+                    <p>My subwoofer is not working properly.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Activate the 5.1 in the equaliser settings.</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Reverse Image Not Showing After Firmware Install
+                    </div>
+                    <p>After I installed the firmware, the reverse image is not showing when in reverse but live view functioning.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Reinstall the firmware to rectify.</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Sound Balance Shifting Issue
+                    </div>
+                    <p>Sound balancing - when I listen to radio app the sound is normal, but when I play fro USB or YouTube the sound balance shifts to the left.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Perform a factory reset: Settings --> User --> Backup/Reset --> 168 --> Clear all data.</p>
+                        <p>Update to the latest firmware after if required (here).</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Aftermarket Amplifier Connection
+                    </div>
+                    <p>My aftermarket amplifier has 2 inputs (left and right) for subwoofer, but the 5.1 L port harness has one green sub-out. How do I connect?</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>You will need to use a AV splitter.</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Speed Warning Announcement
+                    </div>
+                    <p>Whenever I drive over ~ 130KM/H or 80mph, a voice announces that I've been speeding and to drive safe. How do I turn this off?</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Go to Settings --> User --> Driving Reminder --> from there you will have options for speeding reminder and fatigue driving reminder that you can enable or disable.</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Door Graphics and A/C Display Not Showing
+                    </div>
+                    <p>My door graphics and A/C display used to work but now it is not showing.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <ol class="steps">
+                            <li>Check here for a/c and door options</li>
+                            <li>Double check your canbus settings</li>
+                            <li>Go to Settings - System - About Device - Check if the canbus is being registered under CAN Protocol Version line, or if it is showing as Unknown. If Unknown, check your canbus connection on the harness and also to the C port for any lose connections.</li>
+                            <li>If the above is ok do a factory reset</li>
+                        </ol>
+                    </div>
+                </li>
+                
+            </ul>
+        </section>
+        
+        <!-- Power Issues Section -->
+        <section class="content-section" id="power-issues">
+            <h2 class="section-title">Power & Connection Issues</h2>
+            
+            <ul class="issue-list">
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Power Issues - Full Boot Instead of Quick Boot
+                    </div>
+                    <p>The unit does a full boot instead of quick boot every time the accessories is turned on.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>The Accessories G3 and Main battery power G2 are swapped around so that G2 is coming on with ignition and G3 is always on.</p>
+                        <div class="code-block">
+                            G1= 0VDC NEGATIVE<br>
+                            G2= 12VDC ACCESSORIES POWER (Swapped with G3)<br>
+                            G3= 12VDC MAIN BATTERY (Swapped with G2)
+                        </div>
+                        <p>Correct Vehicle Voltage condition on these pins when ignition is ON should be as follows:</p>
+                        <div class="code-block">
+                            G1= 0VDC NEGATIVE<br>
+                            G2= 12VDC MAIN BATTERY<br>
+                            G3= 12VDC ACCESSORIES POWER
+                        </div>
+                        <p>Correct Vehicle Voltage condition on these pins when ignition is OFF should be as follows:</p>
+                        <div class="code-block">
+                            G1= 0VDC NEGATIVE<br>
+                            G2= 12VDC MAIN BATTERY<br>
+                            G3= 0VDC ACCESSORIES POWER
+                        </div>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Unit Only Powers On When Reset Pin is Held
+                    </div>
+                    <p>The unit only comes on when the reset pin is pushed and held in and the optical light on the back comes on when the ignition is on.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>The accessories G3 is missing 12VDC. You have the following condition which needs to be fixed.</p>
+                        <p>Check for blown fuses, wire misalignment from factory pin to G plug or if the G3 accessories is only supplied by canbus (not all cases), the canbus could be faulty by not outputting 12VDC even if it has G2 main battery supply to it.</p>
+                        <div class="code-block">
+                            G1= 0VDC NEGATIVE<br>
+                            G2= 12VDC MAIN BATTERY<br>
+                            G3= 0VDC ACCESSORIES POWER
+                        </div>
+                        <p>Below is an example of a symptom of 0VDC on G3 Accessories input.</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Fuse Blowing When Unit Connected
+                    </div>
+                    <p>The fuse is blowing when the unit is connected, then the Negative G1 and Main Battery G3 are swapped.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <div class="code-block">
+                            G1= 12VDC MAIN BATTERY<br>
+                            G2= 0VDC NEGATIVE<br>
+                            G3= 12VDC ACCESSORIES POWER
+                        </div>
+                        <div class="note">
+                            <strong>Note:</strong> The unit has a 15A fuse, some vehicles accessories are lower than this and can blow. You may need to either upgrade the accessories fuse for your vehicle if it's safe to do so, or run a new accessories line.
+                        </div>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Battery Drain Issue
+                    </div>
+                    <p>The unit turns off as expected by the battery is draining.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Sometimes in some systems, the canbus (if installed) keeps something "awake" in the engine bay which drains the battery.</p>
+                        <p>The solution is to disconnect the G2 mains battery supply to the canbus, and power it by G3 accessories power only so that the canbus also turns off when the unit is off.</p>
+                        <div class="note">
+                            <strong>Note:</strong> If the G3 only comes from the canbus only, then you will be required to run your own accessories power to the main power supply to the canbus instead.
+                        </div>
+                        <div class="note">
+                            <strong>Important:</strong> Some installations with this issue have been identified as having the reverse camera incorrectly installed to the main battery G2 instead of the accessories. This will cause the camera to stay on all the time and drain the battery.
+                        </div>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Screen Goes Black When Cranking Key
+                    </div>
+                    <p>When I crank the key from accessory to ignition, the HU screen goes black for 1-2 seconds and then comes back. Is this normal?</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>This can happen if the vehicle is be cutting the accessories off when switching between accessories to ignition.</p>
+                        <p>You can go into general settings and increasing the "delay off" setting.</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Unit Not Fast Booting
+                    </div>
+                    <p>My unit is not fast booting from start.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Check in your Factory settings if you have Sleep Mode selected ON.</p>
+                        <p>In general settings, set sleep delay to 3 seconds.</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        USB Port Not Working
+                    </div>
+                    <p>My USB port / ports are not working.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <ol class="steps">
+                            <li>Check the connection for Port D (USB1) and E (USB2/3) and make sure they are pushed all the way in and seated correctly.</li>
+                            <li>Check the USB1 & USB2/3 cables for any damaged cables or loose wires.</li>
+                            <li>Check that the socket D and E pins are not bent or damaged.</li>
+                            <li>Measure the voltage on pins 1 to 3 on socket D and E for 5VDC. If you measure 5VDC then it is fine.</li>
+                            <li>If no voltage if found on these pins, try to perform a factory reset Settings - User - Backup/reset - 168 - clear all data.</li>
+                            <li>Unplug the canbus wait 5 minutes and plug it back in again.</li>
+                            <li>If still no success, send back for warranty repair.</li>
+                        </ol>
+                        <div class="note">
+                            <strong>Note:</strong> If not using the supplied USB cables direct to the unit and instead using retention to the vehicles original USB port, this might not be compatible.
+                        </div>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        WiFi Not Staying On
+                    </div>
+                    <p>Whenever I start the unit the WIFI has to be turned on again. How do I keep the units WIFI on?</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Swipe the screen down to reveal the Wifi icon, Press and hold it to open the WIFI options and do the follow the below steps.</p>
+                        <ol class="steps">
+                            <li>Enter Wifi preferences.</li>
+                            <li>Turn on WIFI Automatically.</li>
+                        </ol>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        GPS Tracking Not Smooth/Accurate
+                    </div>
+                    <p>My GPS tracking of position is not as smooth/accurate as when I use Android Auto/Apple Carplay.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Check that your GPS antenna connection is secured. This is the most common cause.</p>
+                        <p>You can check the GPS signal strength in the Settings --> Device --> GPS section.</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Radio Automatically Mutes with Stop/Start
+                    </div>
+                    <p>I have an issue where I will be playing radio and it automatically mutes itself when the vehicle stop/start is triggered.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Go to settings - Factory Settings - 168 - Start/Stop Enable.</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Unit Cycles App Modes When Flicking Lights
+                    </div>
+                    <p>When flicking my interior lights on and off the unit cycles app modes, also it does not always start when turning the car on till I do a reset.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Perform a factory reset - settings --> user --> Backup/reset - 168 --> Clear all data. This rare occurrence has been reported to be resolved with this method.</p>
+                    </div>
+                </li>
+                
+            </ul>
+        </section>
+        
+        <!-- Camera Issues Section -->
+        <section class="content-section" id="camera-issues">
+            <h2 class="section-title">Reverse Camera Issues</h2>
+            
+            <ul class="issue-list">
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        How to Connect LODARK Reverse Camera
+                    </div>
+                    <p>How do I connect the LODARK reverse camera?</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Make sure to not use crimp connectors, soldering is the best and most secure. There have been many reported issues with loosening or failed connections using these types.</p>
+                        <p>Please see for diagram and pinouts <a href="#" style="color: var(--primary-color);">here</a>.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        OEM Reverse Camera Live View Not Working
+                    </div>
+                    <p>My OEM reverse camera works in reverse but not with live view.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Live view is only supported by LODARK reverse camera.</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        LODARK Live View Working But Not in Reverse
+                    </div>
+                    <p>LODARK Live view is working but not when in reverse.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>You must check your connections, specifically the yellow reverse connection.</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        LODARK Reverse Camera Works in Reverse But Not Live View
+                    </div>
+                    <p>LODARK reverse camera works in reverse but not live view.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>You must check your connections, specifically the RED ACC connection.</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        LODARK Reverse Camera Black and White
+                    </div>
+                    <p>My LODARK reverse camera is black and white.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Set the reverse camera is set to AHD in the factory settings (password 168).</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Reverse Camera Not Working When Engine Started
+                    </div>
+                    <p>The reverse camera works when the engine is off. When I start my vehicle and put it in reverse, the camera does not work.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>This is caused by a voltage drop from the rear light, especially with long vehicles (Long cable run) and/or alot of work being done to it. Adding a relay for reverse light switching and taking power from the main battery or accessories power will resolve this issue.</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Reverse Camera Static/Frozen Image
+                    </div>
+                    <p>The reverse camera is playing up, it displays static/frozen image on screen from time to time after shifting from reverse to forwarding. The static/frozen image will stay on the screen for 1 minute or more then back to normal.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>This is caused by lose connection on the Yellow RCA plug. Please check.</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        LODARK Reverse Camera Out of Focus/Blurry
+                    </div>
+                    <p>My LODARK reverse camera is showing out of focus/blury.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>This has been discovered as a damaged wiring harness during installation, especially at pinch points.</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        360 Reverse Camera Delay
+                    </div>
+                    <p>LODARK 360 reverse camera has a delay before it shows up when I put it in reverse.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>REASON 1: You must have ALL 4 x 360 cameras installed. Not doing so will cause a delay on the rear 360 camera.</p>
+                        <p>REASON 2: You have a canbus and have not disconnected G5 (reverse detect) from it. This must be wired directly from the G plug to the Reverse Light power.</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        F Port Not Working with 360 System
+                    </div>
+                    <p>I have a CC3 360 or CC3 2K 360 and I don't want to use the 360 camera system. I want to install a camera using the F port but its not working.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>The F port is disabled in the 360 system. If you want to use the F port for a reverse camera when not installating the 360 camera system, you must install the non-360 firmware on your unit. Make sure to install the correct firmware 2K/Non-2K.</p>
+                    </div>
+                </li>
+
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Mercedes Benz Vito 360 Camera Issue
+                    </div>
+                    <p>I have a Mercedes Benz Vito 3 W447 (2014-2020) and when I select the "trigger when turn" option OFF so that my CC3 360 does not trigger the side cameras when indicating, it still triggers.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>It was reported that updating the 4 x APKs resolved this issue.</p>
+                    </div>
+                </li>
+                
+            </ul>
+        </section>
+
+        <!-- Display & Audio Issues Section -->
+        <section class="content-section" id="display-audio-issues">
+            <h2 class="section-title">Display & Audio Issues</h2>
+            
+            <ul class="issue-list">
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        OEM Amplifier Not Turning On
+                    </div>
+                    <p>I have OEM amplifier but its not turning on.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>If the supplied harness supports OEM amplifier, it should have a BLUE AMP wire. Connect this to either G3 Accessories, or to Blue AMP-C that is on the supplied CC3 AUX harness that has the sim card reader on it.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Screen Not Dimming with Head Lights
+                    </div>
+                    <p>My screen is not dimming and the side capacitive buttons are not illuminating when I turn the head lights on.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Settings --> General --> Disable Backlight Control.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Screen Flickering Dark and Bright
+                    </div>
+                    <p>My screen is flickering dark and bright.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>If you have non-canbus safe LED that has replaced your glove box light and there is no glove box switch, change the LED back to the normal incandescent globe.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Screen Not Dimming to Settings
+                    </div>
+                    <p>My screen dim for head lights is in manual mode and no timer is active. My screen does not DIM to the settings I put when I turn my head lights on.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>If your instrument panel illumination also controls the dashboard lights illumination, then please check that your instrument panel illumination dial is turned up above its lowest level.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Setting Day/Night Screen Brightness
+                    </div>
+                    <p>How do I set my day time and night time screen brightness levels?</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Settings --> Device --> Display --> Brightness Level.</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <!-- Settings & Configuration Issues Section -->
+        <section class="content-section" id="settings-issues">
+            <h2 class="section-title">Settings & Configuration Issues</h2>
+            
+            <ul class="issue-list">
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Adding/Removing Reverse Lines
+                    </div>
+                    <p>How do I add/remove reversing lines when I am in reverse mode?</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Settings --> Factory --> 1268 --> Car Agreement --> Reverse Parking Line.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Mirror Reverse Camera
+                    </div>
+                    <p>How do I mirror my reverse camera?</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Settings --> General --> Mirror view on reverse.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Reverse Camera Upside Down
+                    </div>
+                    <p>My Reverse Camera showing everything upside down.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Turn it around 180 degrees so the text is on the bottom.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Reverse Camera Black and White
+                    </div>
+                    <p>My Reverse Camera is black and white.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Go to Factory Settings --> Password:168 --> Reverse Camera Format --> AHD.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        360 Cameras Not Working
+                    </div>
+                    <p>My 360 Cameras are not working.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Disconnect the 360 cameras and connect 1 at a time and see if an image appears for the respective camera. A fault cable lead out to a camera may cause all of the cameras to go blank.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Enable/Disable A/C Display
+                    </div>
+                    <p>How do I enable/turn off A/C display?</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>If your OEM head unit supports this function it should carry over most times to the unit. To turn on/off this setting:</p>
+                        <p>Settings --> Factory --> 168 --> Car Agreement --> A/C Information ON/OFF.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Adjust Default Volume
+                    </div>
+                    <p>My default volume is too loud/quiet, how do I adjust it?</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Go to settings --> General --> Enable Default Volume Switch --> Open Default boot volume option and set to your desired level.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Boot Screen Logo Issues
+                    </div>
+                    <p>My boot screen logo option is missing or not opening in factory settings.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>(i) If its not opening, install this fix from (here).</p>
+                        <p>(ii) If it is missing, Install the latest firmware for your head unit from (here). Once installed and showing, if its not opening, install this fix from (here) as above (i).</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Dynamic Reverse Guidelines Moving Opposite Direction
+                    </div>
+                    <p>My dynamic reverse guidelines are moving in opposite direction to my steering wheel.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Go to Settings --> Factory --> 168 --> Original Car Agreement --> Reversing track reversal.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Steering Controls Reversed
+                    </div>
+                    <p>My steering controls volume and seek buttons are reversed.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Go to Settings --> Factory --> 168 --> Original Car Agreement --> Reversal Previous and Next and also Reversal Volume.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        OEM A/C Display
+                    </div>
+                    <p>My OEM unit used to display my A/C, how can I do it?</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Depending on your vehicle, you must have the correct canbus settings entered. Also you should check the following below. If your OEM head unit did not show such data, or it is a trim level not supported by our package, it will not be carried over.</p>
+                        <p>Go to Settings --> Factory --> 168 --> Original Car Agreement --> A/C information ON/OFF --> Toggle to the Right.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Unit Not Sleeping
+                    </div>
+                    <p>My unit is not sleeping, but performing a full boot on start.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Go to Settings --> Factory --> 168 --> if Sleep mode setting is off (to the left) toggle it on (to the right), If it is already ON (to the right) toggle it OFF and ON again.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        App Drawer Blank
+                    </div>
+                    <p>When I try to open my app draw it is blank.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Do a factory reset, Settings --> User --> Backup/Reset --> 168 --> Clear All Data.</p>
+                        <p>You will need to change your language back (guide is here).</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Vehicle Brand Logo Not Showing
+                    </div>
+                    <p>When I do a full boot, my vehicle brand logo I selected isn't showing.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Do a factory reset, Settings --> User --> Backup/Reset --> 168 --> Clear All Data.</p>
+                        <p>You will need to change your language back (guide is here).</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Themes Keep Resetting
+                    </div>
+                    <p>My "Themes" keeps reseting to another theme.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>If you are running the latest firmware and having this issue, please do the following:</p>
+                        <p>Go to Settings --> Device --> Apps --> Health Monitoring Service --> Disable.</p>
+                        <p>This service is mainly for mobile devices and not required.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Popup When Changing Launchers
+                    </div>
+                    <p>This keeps popping up on my screen when changing launchers.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Update to the latest firmware (here).</p>
+                        <p>Once updated, reconnect the unit to the internet and reboot is required.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Change Time to 24hr Format
+                    </div>
+                    <p>How do I change my time settings to 24hr?</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>Go to Settings --> System --> Date and Time --> Use 24-hour format.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        GPS Stopped Working
+                    </div>
+                    <p>My GPS stopped working, how can I fix it?</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <ol class="steps">
+                            <li>Check that the SMA connection at the rear of the head unit is not loose.</li>
+                            <li>Check for any cabling damage.</li>
+                            <li>Swipe the screen down and select "Reboot".</li>
+                            <li>If that does not work, perform a factory reset: Settings --> User --> Backup/Reset --> 168 --> Clear All Data.</li>
+                            <li>If each of those steps do not resolve the problem, replace the GPS dongle.</li>
+                        </ol>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Microphone Sounds Quiet
+                    </div>
+                    <p>I sound very quiet with the internal mic, but also when I disable the internal mic and use the external microphone.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>A reported working solution is a factory reset: Settings --> User --> Backup/Reset --> 168 --> Clear All Data.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        "str_release_space_fail" Prompt
+                    </div>
+                    <p>There is a "str_release_space_fail" prompt coming up on the bottom of the screen. What does this mean?</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>This is for 360 systems. It means that the 360 recording video drive is full. You need to format it.</p>
+                    </div>
+                </li>
+                
+                <li class="issue-item">
+                    <div class="issue-title">
+                        <i class="fas fa-exclamation-circle"></i>
+                        Unit Power Goes Out with Head Lights
+                    </div>
+                    <p>When ever I start my car the unit starts. When I turn on the head lights of my car the power to the head unit goes out. When I turn off the head light the power comes back to the head unit.</p>
+                    <div class="solution">
+                        <div class="solution-title">
+                            <i class="fas fa-wrench"></i>
+                            Solution:
+                        </div>
+                        <p>We found that this issue was due to the connections not being connected properly.</p>
+                    </div>
+                </li>
+                
+            </ul>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="content-section" id="faq">
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>How often is this troubleshooting guide updated?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>This guide is continuously updated as we receive new information and identify additional issues. We recommend checking back periodically for the latest solutions.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>What should I do if my issue isn't listed here?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>If you can't find a solution for your specific issue, please contact our support team through the contact options below. Be sure to include as much detail as possible about your problem.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Are these solutions applicable to all LODARK models?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Most solutions apply to multiple models, but some may be specific to certain series or firmware versions. Always check your specific model and firmware version before applying any solutions.</p>
+                </div>
+            </div>
+            
+            <div class="faq-item">
+                <div class="faq-question">
+                    <span>Where can I find firmware updates for my unit?</span>
+                    <i class="fas fa-chevron-down"></i>
+                </div>
+                <div class="faq-answer">
+                    <p>Firmware updates are available in the Technology Portal section of our website. Make sure to download the correct firmware for your specific model and follow the installation instructions carefully.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="content-section" id="contact">
+            <h2 class="section-title">Need More Help?</h2>
+            <p>If you couldn't find a solution to your problem in this guide, our support team is here to help.</p>
+            
+            <div class="contact-options">
+                <div class="contact-card" onclick="openWhatsApp()">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>WhatsApp</h3>
+                    <p>+86 13537885828</p>
+                    <p style="font-size: 0.8rem; margin-top: 5px;">(Click to contact)</p>
+                </div>
+                
+                <div class="contact-card" onclick="copyWeChat()">
+                    <i class="fab fa-weixin"></i>
+                    <h3>WeChat</h3>
+                    <p>+86 13537885828</p>
+                    <p style="font-size: 0.8rem; margin-top: 5px;">(Click to copy)</p>
+                </div>
+                
+                <div class="contact-card" onclick="sendEmail()">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email</h3>
+                    <p>lodark999@gmail.com</p>
+                    <p style="font-size: 0.8rem; margin-top: 5px;">(Click to email)</p>
+                </div>
+            </div>
+            
+            <div class="note">
+                <strong>Tip:</strong> When contacting support, please provide your unit model, firmware version, and a detailed description of the issue including any error messages you're seeing.
+            </div>
+        </section>
+    </main>
+
+    <!-- 页脚容器 -->
+<div id="footer-container"></div>
+
+    <!-- 返回顶部按钮 -->
+    <div class="back-to-top" id="backToTop">
+        <i class="fas fa-chevron-up"></i>
+    </div>
+
+    <!-- 加载组件脚本 -->
+    <script src="js/load-components.js"></script>
+    
+    <!-- 通用功能脚本 -->
+    <script src="js/common-functions.js"></script>
+    
+    <!-- 页面特定脚本 -->
+    <script>
+        // FAQ手风琴功能
+        document.addEventListener('DOMContentLoaded', function() {
+            // 等待组件加载完成
+            setTimeout(function() {
+                document.querySelectorAll('.faq-question').forEach(question => {
+                    question.addEventListener('click', () => {
+                        const faqItem = question.parentElement;
+                        faqItem.classList.toggle('active');
+                    });
+                });
+            }, 100);
+        });
+    </script>
+</body>
+</html>
