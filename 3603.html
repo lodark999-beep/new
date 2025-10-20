@@ -4,10 +4,47 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>360 Bird's Eye View Camera Stitching Operation Manual</title>
-    <!-- 引入公共样式 -->
-    <link rel="stylesheet" href="css/common-styles.css">
+    
+    <!-- 优化的标签栏图标代码 -->
+    <!-- 基础图标（必选） -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    
+    <!-- 多种尺寸图标适配不同设备 -->
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
+    
+    <!-- Apple设备专用图标 -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    
+    <!-- 现代浏览器 SVG 支持（可选，更锐利） -->
+    <link rel="icon" href="/logo.svg" type="image/svg+xml">
+    
+    <!-- PWA应用清单 -->
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Windows磁贴配置 -->
+    <meta name="msapplication-TileColor" content="#165DFF">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+    
+    <!-- 主题颜色（移动浏览器） -->
+    <meta name="theme-color" content="#165DFF">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
+            --primary: #165DFF;
+            --secondary: #363636;
+            --accent: #FF7D00;
+            --light: #F5F7FA;
+            --dark: #1a1a1a;
+            --text: #333333;
+            --text-light: #666666;
             --primary-color: #2c5282;
             --secondary-color: #4299e1;
             --accent-color: #e53e3e;
@@ -23,24 +60,244 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background-color: var(--light-bg);
-            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
             line-height: 1.6;
-            background-image: linear-gradient(to bottom, #edf2f7, #f7fafc);
-            min-height: 100vh;
+            background-color: #fff;
         }
         
         .container {
+            width: 100%;
             max-width: 1200px;
             margin: 0 auto;
-            padding: 20px;
+            padding: 0 20px;
         }
         
+        /* Header Styles - Updated to match products.html */
         header {
+            background: linear-gradient(135deg, #0e2b5c, #1a56db);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: #ff3a29;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 1.5rem;
+            position: relative;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Dropdown Menu Styles */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 220px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            padding: 8px 0;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu a {
+            color: var(--text);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            border-radius: 0;
+        }
+        
+        .dropdown-menu a:hover {
+            background-color: var(--light);
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .dropdown-menu i {
+            margin-right: 10px;
+            width: 16px;
+            text-align: center;
+        }
+        
+        .dropdown-arrow {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* Footer - Updated to match contact.html */
+        footer {
+            background: #0e2b5c;
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #ff3a29;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+
+        /* 社交媒体样式 */
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-icon:hover {
+            background: #ff3a29;
+            transform: translateY(-3px);
+        }
+
+        /* 阿里巴巴本地图标样式 */
+        .alibaba-icon {
+            width: 20px;
+            height: 20px;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="white" d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h-2v-6h2v6zm4 0h-2v-6h2v6zm-6-8c0-.55.45-1 1-1s1 .45 1 1-.45 1-1 1-1-.45-1-1zm8 0c0-.55.45-1 1-1s1 .45 1 1-.45 1-1 1-1-.45-1-1z"/></svg>');
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+        
+        /* 原有内容样式保持不变 */
+        .content-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        
+        .page-header {
             background: linear-gradient(135deg, var(--primary-color), #4a90e2);
             color: white;
             padding: 40px 0;
@@ -52,7 +309,7 @@
             overflow: hidden;
         }
         
-        header::before {
+        .page-header::before {
             content: '';
             position: absolute;
             top: -50%;
@@ -71,7 +328,7 @@
             z-index: 2;
         }
         
-        header p {
+        .page-header p {
             font-size: 1.2rem;
             opacity: 0.9;
             position: relative;
@@ -285,17 +542,61 @@
             font-weight: 600;
         }
         
+        /* 为步骤添加编号 */
+        .step-number {
+            display: inline-block;
+            background: var(--secondary-color);
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 28px;
+            margin-right: 10px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
         /* 响应式设计 */
+        @media (max-width: 992px) {
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+        
         @media (max-width: 768px) {
-            .container {
-                padding: 15px;
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+
+            .social-media {
+                flex-wrap: wrap;
+            }
+            
+            .content-container {
+                padding: 0 15px;
             }
             
             h1 {
                 font-size: 2rem;
             }
             
-            header {
+            .page-header {
                 padding: 30px 0;
             }
             
@@ -346,426 +647,508 @@
             to { opacity: 1; transform: translateY(0); }
         }
         
-        .section, header, .company-info {
+        .section, .page-header, .company-info {
             animation: fadeIn 0.6s ease forwards;
-        }
-        
-        /* 为步骤添加编号 */
-        .step-number {
-            display: inline-block;
-            background: var(--secondary-color);
-            color: white;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 28px;
-            margin-right: 10px;
-            font-weight: bold;
-            font-size: 0.9rem;
         }
     </style>
 </head>
 <body>
-    <!-- 公共导航栏 -->
-    <div id="header-container"></div>
-
-    <!-- 内容区域 -->
-    <div class="container">
-        <header>
-            <h1>360 Bird's Eye View Camera Stitching Operation Manual</h1>
-            <p>Detailed Operation Guide & Troubleshooting</p>
-        </header>
-        
-        <section class="section">
-            <h2>1. Preparation Before Operation</h2>
-            <h3>1.1 Tool List</h3>
-            <ul>
-                <li><strong>Calibration Cloth for Stitching</strong>: 1 set, including 2 large calibration cloths, 2 small calibration cloths (for image calibration positioning).</li>
-                <li><strong>Tape Measures</strong>: 3-4 pieces, at least 2 of which should be longer than 5m (for measuring vehicle parameters and calibration cloth placement distances).</li>
-            </ul>
-        </section>
-        
-        <section class="section">
-            <h2>2. Detailed Operation Steps</h2>
-            
-            <div class="step">
-                <h3><span class="step-number">1</span>2.1 Step 1: Enter 360 Surround View System</h3>
-                <p>Find and click the "360 Surround View" entry on the device's main interface to enter the surround view control interface.</p>
-                
-                <h4>Interface Display Content:</h4>
+    <header>
+        <div class="container header-content">
+            <div class="logo">LOD<span>ARK</span></div>
+            <nav>
                 <ul>
-                    <li><strong>Display Mode</strong>: Supports switching between 2D display and 3D display.</li>
-                    <li><strong>View Partition</strong>: The interface is divided into four camera view areas: "Front View", "Rear View", "Left View", "Right View".</li>
-                    <li><strong>Function Buttons</strong>: There is a "Settings" button at the bottom or side of the interface (core operation entry, needed for subsequent steps).</li>
-                </ul>
-                
-                <div class="image-grid">
-                    <div class="image-container">
-                        <img src="360/1.jpg" alt="2D Display Mode" class="image-horizontal">
-                        <p class="image-caption">Figure 1: 2D Display Mode</p>
-                    </div>
-                    <div class="image-container">
-                        <img src="360/2.jpg" alt="3D Display Mode" class="image-horizontal">
-                        <p class="image-caption">Figure 2: 3D Display Mode</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="step">
-                <h3><span class="step-number">2</span>2.2 Step 2: Enter System Settings Interface</h3>
-                <p>In the 360 Surround View interface, click the <strong>"Settings"</strong> button to enter the main settings interface.</p>
-                
-                <h4>Settings Interface Contains the Following Core Options:</h4>
-                <ul>
-                    <li><strong>Vehicle Model Settings</strong>: Adjust vehicle model color, scaling ratio, black edge removal (ON/OFF), 2D rear view scale line (ON/OFF), etc.</li>
-                    <li><strong>View Settings</strong>: Supports display mode switching such as "Left Split Screen".</li>
-                    <li><strong>Original Vehicle Settings</strong>: Match basic vehicle information (such as sedan, SUV, MPV, Mercedes-Benz GLE, etc.).</li>
-                    <li><strong>Recording Settings</strong>: Manage recording related parameters (not core to stitching, not expanded here).</li>
-                    <li><strong>Remote Service</strong>: Device remote functions (not core to stitching, not expanded here).</li>
-                    <li><strong>Parameter Management</strong>: Core entry for stitching debugging, used to enter stitching settings, parameter import/export, restore defaults, etc.</li>
-                </ul>
-                
-                <div class="image-container">
-                    <img src="360/3.jpg" alt="System Settings Interface Diagram" class="image-horizontal">
-                    <p class="image-caption">Figure 3: System Settings Interface</p>
-                </div>
-            </div>
-            
-            <div class="step">
-                <h3><span class="step-number">3</span>2.3 Step 3: Enter Stitching Parameter Management Interface</h3>
-                <p>In the settings interface, click the <strong>"Parameter Management"</strong> option to enter the parameter management interface.</p>
-                
-                <h4>Interface Core Functions:</h4>
-                <ul>
-                    <li><strong>Stitching</strong>: Click to enter the "Calibration Cloth Selection and Stitching Method Settings" interface (key entry for stitching operations).</li>
-                    <li><strong>Import Parameters</strong>: Import saved stitching parameters (suitable for secondary debugging of the same vehicle model).</li>
-                    <li><strong>Export Parameters</strong>: Save the current debugged stitching parameters (for backup).</li>
-                    <li><strong>Restore Defaults</strong>: Reset to system default stitching parameters (suitable when parameters are confused).</li>
-                    <li><strong>Activation Information</strong>: View device activation status (not core to stitching).</li>
-                </ul>
-                
-                <div class="image-container">
-                    <img src="360/4.jpg" alt="Parameter Management Interface Diagram" class="image-horizontal">
-                    <p class="image-caption">Figure 4: Parameter Management Interface</p>
-                </div>
-            </div>
-            
-            <div class="step">
-                <h3><span class="step-number">4</span>2.4 Step 4: Select Stitching Method and Calibration Cloth Type</h3>
-                <p>After clicking the "Stitching" option, enter the "Calibration Cloth Selection and Stitching Method" interface, where two selections need to be completed:</p>
-                
-                <h4>2.4.1 Select Stitching Method (Choose One)</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Stitching Method</th>
-                            <th>Applicable Scenarios</th>
-                            <th>Operation Points</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Lens-Free Stitching</td>
-                            <td>No need for precise camera model matching, simpler operation</td>
-                            <td>No need to select camera model, directly enter calibration cloth selection</td>
-                        </tr>
-                        <tr>
-                            <td>Lens Selection Stitching</td>
-                            <td>Need to precisely match the installed camera model (ensure stitching accuracy)</td>
-                            <td>Need to select the model corresponding to the actually installed camera in subsequent steps</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <div class="image-container">
-                    <img src="360/5.jpg" alt="Stitching Methods Selection" class="image-horizontal">
-                    <p class="image-caption">Figure 5: Stitching Methods Selection</p>
-                </div>
-                
-                <h4>2.4.2 Select Stitching Mode (Choose One)</h4>
-                <ul>
-                    <li><strong>Automatic Stitching</strong>: The system automatically recognizes the calibration cloth and completes basic calibration (recommended for beginners, high efficiency).</li>
-                    <li><strong>Manual Stitching</strong>: Need to manually position key points of the calibration cloth (suitable when automatic stitching effect is poor).</li>
-                </ul>
-                
-                <h4>2.4.3 Select Calibration Cloth (Core)</h4>
-                <ul>
-                    <li>For lens-free stitching: Priority selection of "Large Black Block Calibration Cloth" (recommended by documentation, higher calibration accuracy), left and right calibration cloths can be omitted or used only for reference.</li>
-                    <li>For lens selection stitching: In manual calibration scenarios, left and right calibration cloths do not need to be placed, only front/rear large calibration cloths are needed.</li>
-                </ul>
-                
-                <div class="image-container">
-                    <img src="360/6.jpg" alt="Calibration Cloth Selection Interface Diagram" class="image-horizontal">
-                    <p class="image-caption">Figure 6: Calibration Cloth Selection Interface</p>
-                </div>
-            </div>
-            
-            <div class="step">
-                <h3><span class="step-number">5</span>2.5 Step 5: Place Calibration Cloths (Critical Step, Affects Stitching Accuracy)</h3>
-                <p>After completing the stitching method selection, place the calibration cloths and tape measures according to the following requirements to ensure the basis for image calibration:</p>
-                
-                <h4>2.5.1 Calibration Cloth Placement Rules (Taking "Lens-Free + Automatic Stitching + Large Black Block Calibration Cloth" as an Example)</h4>
-                <ul>
-                    <li><strong>Front/Rear Large Calibration Cloth Placement</strong>:
-                        <ul>
-                            <li>Position: Place 1 large calibration cloth in the area corresponding to the front camera, and 1 large calibration cloth in the area corresponding to the rear camera.</li>
-                            <li>Attitude: The large calibration cloth should be placed centrally and perpendicular to the vehicle body (ensure parallel to the vehicle body, can be assisted with tape measures for alignment).</li>
-                            <li>Distance: The distance from the front calibration cloth to the front of the vehicle and from the rear calibration cloth to the rear of the vehicle is based on "the screen can completely display the calibration cloth"; the closer the edge of the cloth is to the camera's visible range, the smaller the vehicle's blind spot.</li>
-                        </ul>
-                    </li>
-                    <li><strong>Tape Measure Placement</strong>:
-                        <ul>
-                            <li>Take 2 tape measures with length > 5m, place them parallel to the ground along the front and rear directions of the vehicle body (assist in calibrating the parallelism between the vehicle body and the calibration cloth).</li>
-                        </ul>
-                    </li>
-                </ul>
-                
-                <div class="image-container">
-                    <img src="360/7.jpg" alt="Calibration Cloth Placement Diagram" class="image-horizontal">
-                    <p class="image-caption">Figure 7: Calibration Cloth Placement Diagram</p>
-                </div>
-                
-                <h4>2.5.2 Camera Installation Requirements (Pre-check to Avoid Stitching Deviation)</h4>
-                <ul>
-                    <li>The camera image should be parallel to the vehicle body, with "just able to see the edge of the vehicle body" as the baseline.</li>
-                    <li>The installation angles of the left and right cameras should be as consistent as possible, and the "black squares" of the front/rear calibration cloths should be visible (ensuring key point recognition).</li>
-                </ul>
-                
-                <div class="image-container">
-                    <img src="360/8.jpg" alt="Camera Installation Requirements" class="image-horizontal">
-                    <p class="image-caption">Figure 8: Camera Installation Requirements</p>
-                </div>
-            </div>
-            
-            <div class="step">
-                <h3><span class="step-number">6</span>2.6 Step 6: Input Vehicle Parameters (Required, Accuracy Affects Stitching Effect)</h3>
-                <p>After placing the calibration cloths, click the "Enter Vehicle Parameters" button in the interface to enter the parameter input interface.</p>
-                
-                <h4>Required Parameter List (Unit: m, items with * are required, need to be actually measured with tape measure):</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Parameter Name</th>
-                            <th>Measurement and Entry Points</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Vehicle Length</td>
-                            <td>Measure the distance between the farthest front and rear ends of the vehicle (such as the straight-line distance from the front to the rear)</td>
-                        </tr>
-                        <tr>
-                            <td>Vehicle Width</td>
-                            <td>Measure the distance at the widest point left and right of the vehicle (usually the distance between the outside of the rearview mirrors)</td>
-                        </tr>
-                        <tr>
-                            <td>Vehicle Height</td>
-                            <td>Measure the distance from the bottom of the vehicle to the highest point at the top</td>
-                        </tr>
-                        <tr>
-                            <td>Wheelbase</td>
-                            <td>Measure the distance from the center of the front wheel to the center of the rear wheel</td>
-                        </tr>
-                        <tr>
-                            <td>Front Wheel Track</td>
-                            <td>Measure the distance between the centers of the left and right front wheels</td>
-                        </tr>
-                        <tr>
-
-                          <td>Rear Overhang</td>
-                            <td>Measure the distance from the center of the rear wheel to the rear of the vehicle</td>
-                        </tr>
-                        <tr>
-                            <td>Rearview Mirror - Front of Vehicle</td>
-                            <td>Measure the distance from the outside of the rearview mirror to the frontmost part of the vehicle</td>
-                        </tr>
-                        <tr>
-                            <td>Rear of Vehicle - Rear Calibration Cloth</td>
-                            <td>Measure the straight-line distance from the rearmost part of the vehicle to the rear calibration cloth</td>
-                        </tr>
-                        <tr>
-                            <td>Front of Vehicle - Front Calibration Cloth</td>
-                            <td>Measure the straight-line distance from the frontmost part of the vehicle to the front calibration cloth</td>
-                        </tr>
-                        <tr>
-                            <td>Front/Rear/Left/Right Camera Height</td>
-                            <td>Measure the vertical distance from the center of the corresponding camera to the ground respectively</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <div class="note">
-                    <p><strong>Note:</strong> If using lens selection stitching: Need to additionally select "Lens Type" in the parameter input interface (must completely match the actually installed camera model, such as 6053_2239).</p>
-                </div>
-                
-                <div class="image-container">
-                    <img src="360/9.jpg" alt="Vehicle Parameter Input Interface Diagram" class="image-horizontal">
-                    <p class="image-caption">Figure 9: Vehicle Parameter Input Interface</p>
-                </div>
-                
-                <p>After filling in the parameters, carefully check (avoid numerical errors), and after confirming there are no errors, click the <strong>"Start Stitching"</strong> button.</p>
-            </div>
-            
-            <div class="step">
-                <h3><span class="step-number">7</span>2.7 Step 7: Complete Stitching (Automatic + Manual Combination)</h3>
-                
-                <h4>2.7.1 Automatic Stitching Process</h4>
-                <ul>
-                    <li>After clicking "Start Stitching", the system will automatically recognize the positions of the front/rear calibration cloths and complete basic image calibration.</li>
-                    <li>After automatic calibration is completed, the system will automatically enter the "Manual Stitching Interface" (for fine-tuning key points to ensure seamless stitching).</li>
-                </ul>
-                
-                <h4>2.7.2 Manual Stitching (Key Point Calibration)</h4>
-                <ul>
-                    <li><strong>Interface Operation</strong>: Click the "Front View", "Rear View", "Left View", "Right View" partitions on the left panoramic image to switch to the corresponding camera's calibration interface.</li>
-                    <li><strong>Calibration Rules</strong>: Each view corresponds to 8 calibration key points, which need to be adjusted as follows:
-                        <ul>
-                            <li>Drag key points: Directly drag the key point icons in the interface to adjust to the corresponding corners of the calibration cloth (such as the four corners of the large black block).</li>
-                            <li>Fine-tuning and quick movement: Short press the key point for fine-tuning (1-2 pixels), long press the key point for quick movement to the target position.</li>
-                        </ul>
-                    </li>
-                    <li>After completing the calibration of a single view, click the <strong>"Save"</strong> button, then switch to the next view (front→rear→left→right). After all four views are calibrated, click the <strong>"Complete"</strong> button to finish the basic stitching.</li>
-                </ul>
-                
-                <div class="image-container">
-                    <img src="360/11.jpg" alt="Manual Stitching Interface Diagram" class="image-horizontal">
-                    <p class="image-caption">Figure 10: Manual Stitching Interface</p>
-                </div>
-                
-                <h4>2.7.3 Common Manual Stitching Problem Adjustments</h4>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Problem Phenomenon</th>
-                            <th>Adjustment Method</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Front/Rear/Left/Right images are chaotic</td>
-                            <td>Reposition the key points of the calibration cloth, ensuring that the 8 points of each view accurately correspond to the corners of the calibration cloth</td>
-                        </tr>
-                        <tr>
-                            <td>Slight deformation of front/rear image calibration cloth left/right corners</td>
-                            <td>If the calibration cloth image deforms upward/downward, move the corresponding view's "coordinate points 1, 6" 1-2 pixels in the deformation direction</td>
-                        </tr>
-                        <tr>
-                            <td>Left/right images tilt upward</td>
-                            <td>Move the corresponding view's "coordinate point 5" 1-2 pixels to the left</td>
-                        </tr>
-                    </tbody>
-                </table>
-                
-                <div class="comparison-container">
-                    <div class="comparison-row">
-                        <div class="comparison-item">
-                            <img src="360/12.jpg" alt="Before Adjustment" class="image-horizontal">
-                            <p class="image-caption">Before Adjustment</p>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="accessories.html" class="nav-link">Accessories</a></li>
+                    <li><a href="oem.html" class="nav-link">OEM/ODM</a></li>
+                    <li class="dropdown">
+                        <a href="Technology Portal.html" class="nav-link active">
+                            Technology Portal
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="guzhang.html">
+                                <i class="fas fa-tools"></i>
+                                Faults & Solutions
+                            </a>
+                            <a href="RFQ.html">
+                                <i class="fas fa-question-circle"></i>
+                                FAQ
+                            </a>
+                            <a href="How To's.html">
+                                <i class="fas fa-book"></i>
+                                How To's
+                            </a>
+                            <a href="3603.html">
+                                <i class="fas fa-camera-retro"></i>
+                                360 Camera Guide
+                            </a>
                         </div>
-                        <div class="comparison-item">
-                            <img src="360/13.jpg" alt="After Adjustment" class="image-horizontal">
-                            <p class="image-caption">After Adjustment</p>
+                    </li>
+                    <li><a href="Contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="content-container">
+            <div class="page-header">
+                <h1>360 Bird's Eye View Camera Stitching Operation Manual</h1>
+                <p>Detailed Operation Guide & Troubleshooting</p>
+            </div>
+            
+            <section class="section">
+                <h2>1. Preparation Before Operation</h2>
+                <h3>1.1 Tool List</h3>
+                <ul>
+                    <li><strong>Calibration Cloth for Stitching</strong>: 1 set, including 2 large calibration cloths, 2 small calibration cloths (for image calibration positioning).</li>
+                    <li><strong>Tape Measures</strong>: 3-4 pieces, at least 2 of which should be longer than 5m (for measuring vehicle parameters and calibration cloth placement distances).</li>
+                </ul>
+            </section>
+            
+            <section class="section">
+                <h2>2. Detailed Operation Steps</h2>
+                
+                <div class="step">
+                    <h3><span class="step-number">1</span>2.1 Step 1: Enter 360 Surround View System</h3>
+                    <p>Find and click the "360 Surround View" entry on the device's main interface to enter the surround view control interface.</p>
+                    
+                    <h4>Interface Display Content:</h4>
+                    <ul>
+                        <li><strong>Display Mode</strong>: Supports switching between 2D display and 3D display.</li>
+                        <li><strong>View Partition</strong>: The interface is divided into four camera view areas: "Front View", "Rear View", "Left View", "Right View".</li>
+                        <li><strong>Function Buttons</strong>: There is a "Settings" button at the bottom or side of the interface (core operation entry, needed for subsequent steps).</li>
+                    </ul>
+                    
+                    <div class="image-grid">
+                        <div class="image-container">
+                            <img src="360/1.jpg" alt="2D Display Mode" class="image-horizontal">
+                            <p class="image-caption">Figure 1: 2D Display Mode</p>
+                        </div>
+                        <div class="image-container">
+                            <img src="360/2.jpg" alt="3D Display Mode" class="image-horizontal">
+                            <p class="image-caption">Figure 2: 3D Display Mode</p>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="step">
-                <h3><span class="step-number">8</span>2.8 Step 8: Post-Stitching Fine-Tuning (Resolve Image Deviation)</h3>
-                <p>After stitching is completed, if problems such as image bending, non-parallelism, misalignment, or horn-shaped distortion occur, you need to enter the "Fine-Tuning Interface" (the interface will retain the fine-tuning button after stitching is completed) and adjust according to the following methods:</p>
                 
+                <div class="step">
+                    <h3><span class="step-number">2</span>2.2 Step 2: Enter System Settings Interface</h3>
+                    <p>In the 360 Surround View interface, click the <strong>"Settings"</strong> button to enter the main settings interface.</p>
+                    
+                    <h4>Settings Interface Contains the Following Core Options:</h4>
+                    <ul>
+                        <li><strong>Vehicle Model Settings</strong>: Adjust vehicle model color, scaling ratio, black edge removal (ON/OFF), 2D rear view scale line (ON/OFF), etc.</li>
+                        <li><strong>View Settings</strong>: Supports display mode switching such as "Left Split Screen".</li>
+                        <li><strong>Original Vehicle Settings</strong>: Match basic vehicle information (such as sedan, SUV, MPV, Mercedes-Benz GLE, etc.).</li>
+                        <li><strong>Recording Settings</strong>: Manage recording related parameters (not core to stitching, not expanded here).</li>
+                        <li><strong>Remote Service</strong>: Device remote functions (not core to stitching, not expanded here).</li>
+                        <li><strong>Parameter Management</strong>: Core entry for stitching debugging, used to enter stitching settings, parameter import/export, restore defaults, etc.</li>
+                    </ul>
+                    
+                    <div class="image-container">
+                        <img src="360/3.jpg" alt="System Settings Interface Diagram" class="image-horizontal">
+                        <p class="image-caption">Figure 3: System Settings Interface</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3><span class="step-number">3</span>2.3 Step 3: Enter Stitching Parameter Management Interface</h3>
+                    <p>In the settings interface, click the <strong>"Parameter Management"</strong> option to enter the parameter management interface.</p>
+                    
+                    <h4>Interface Core Functions:</h4>
+                    <ul>
+                        <li><strong>Stitching</strong>: Click to enter the "Calibration Cloth Selection and Stitching Method Settings" interface (key entry for stitching operations).</li>
+                        <li><strong>Import Parameters</strong>: Import saved stitching parameters (suitable for secondary debugging of the same vehicle model).</li>
+                        <li><strong>Export Parameters</strong>: Save the current debugged stitching parameters (for backup).</li>
+                        <li><strong>Restore Defaults</strong>: Reset to system default stitching parameters (suitable when parameters are confused).</li>
+                        <li><strong>Activation Information</strong>: View device activation status (not core to stitching).</li>
+                    </ul>
+                    
+                    <div class="image-container">
+                        <img src="360/4.jpg" alt="Parameter Management Interface Diagram" class="image-horizontal">
+                        <p class="image-caption">Figure 4: Parameter Management Interface</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3><span class="step-number">4</span>2.4 Step 4: Select Stitching Method and Calibration Cloth Type</h3>
+                    <p>After clicking the "Stitching" option, enter the "Calibration Cloth Selection and Stitching Method" interface, where two selections need to be completed:</p>
+                    
+                    <h4>2.4.1 Select Stitching Method (Choose One)</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Stitching Method</th>
+                                <th>Applicable Scenarios</th>
+                                <th>Operation Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Lens-Free Stitching</td>
+                                <td>No need for precise camera model matching, simpler operation</td>
+                                <td>No need to select camera model, directly enter calibration cloth selection</td>
+                            </tr>
+                            <tr>
+                                <td>Lens Selection Stitching</td>
+                                <td>Need to precisely match the installed camera model (ensure stitching accuracy)</td>
+                                <td>Need to select the model corresponding to the actually installed camera in subsequent steps</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="image-container">
+                        <img src="360/5.jpg" alt="Stitching Methods Selection" class="image-horizontal">
+                        <p class="image-caption">Figure 5: Stitching Methods Selection</p>
+                    </div>
+                    
+                    <h4>2.4.2 Select Stitching Mode (Choose One)</h4>
+                    <ul>
+                        <li><strong>Automatic Stitching</strong>: The system automatically recognizes the calibration cloth and completes basic calibration (recommended for beginners, high efficiency).</li>
+                        <li><strong>Manual Stitching</strong>: Need to manually position key points of the calibration cloth (suitable when automatic stitching effect is poor).</li>
+                    </ul>
+                    
+                    <h4>2.4.3 Select Calibration Cloth (Core)</h4>
+                    <ul>
+                        <li>For lens-free stitching: Priority selection of "Large Black Block Calibration Cloth" (recommended by documentation, higher calibration accuracy), left and right calibration cloths can be omitted or used only for reference.</li>
+                        <li>For lens selection stitching: In manual calibration scenarios, left and right calibration cloths do not need to be placed, only front/rear large calibration cloths are needed.</li>
+                    </ul>
+                    
+                    <div class="image-container">
+                        <img src="360/6.jpg" alt="Calibration Cloth Selection Interface Diagram" class="image-horizontal">
+                        <p class="image-caption">Figure 6: Calibration Cloth Selection Interface</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3><span class="step-number">5</span>2.5 Step 5: Place Calibration Cloths (Critical Step, Affects Stitching Accuracy)</h3>
+                    <p>After completing the stitching method selection, place the calibration cloths and tape measures according to the following requirements to ensure the basis for image calibration:</p>
+                    
+                    <h4>2.5.1 Calibration Cloth Placement Rules (Taking "Lens-Free + Automatic Stitching + Large Black Block Calibration Cloth" as an Example)</h4>
+                    <ul>
+                        <li><strong>Front/Rear Large Calibration Cloth Placement</strong>:
+                            <ul>
+                                <li>Position: Place 1 large calibration cloth in the area corresponding to the front camera, and 1 large calibration cloth in the area corresponding to the rear camera.</li>
+                                <li>Attitude: The large calibration cloth should be placed centrally and perpendicular to the vehicle body (ensure parallel to the vehicle body, can be assisted with tape measures for alignment).</li>
+                                <li>Distance: The distance from the front calibration cloth to the front of the vehicle and from the rear calibration cloth to the rear of the vehicle is based on "the screen can completely display the calibration cloth"; the closer the edge of the cloth is to the camera's visible range, the smaller the vehicle's blind spot.</li>
+                            </ul>
+                        </li>
+                        <li><strong>Tape Measure Placement</strong>:
+                            <ul>
+                                <li>Take 2 tape measures with length > 5m, place them parallel to the ground along the front and rear directions of the vehicle body (assist in calibrating the parallelism between the vehicle body and the calibration cloth).</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    
+                    <div class="image-container">
+                        <img src="360/7.jpg" alt="Calibration Cloth Placement Diagram" class="image-horizontal">
+                        <p class="image-caption">Figure 7: Calibration Cloth Placement Diagram</p>
+                    </div>
+                    
+                    <h4>2.5.2 Camera Installation Requirements (Pre-check to Avoid Stitching Deviation)</h4>
+                    <ul>
+                        <li>The camera image should be parallel to the vehicle body, with "just able to see the edge of the vehicle body" as the baseline.</li>
+                        <li>The installation angles of the left and right cameras should be as consistent as possible, and the "black squares" of the front/rear calibration cloths should be visible (ensuring key point recognition).</li>
+                    </ul>
+                    
+                    <div class="image-container">
+                        <img src="360/8.jpg" alt="Camera Installation Requirements" class="image-horizontal">
+                        <p class="image-caption">Figure 8: Camera Installation Requirements</p>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3><span class="step-number">6</span>2.6 Step 6: Input Vehicle Parameters (Required, Accuracy Affects Stitching Effect)</h3>
+                    <p>After placing the calibration cloths, click the "Enter Vehicle Parameters" button in the interface to enter the parameter input interface.</p>
+                    
+                    <h4>Required Parameter List (Unit: m, items with * are required, need to be actually measured with tape measure):</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Parameter Name</th>
+                                <th>Measurement and Entry Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Vehicle Length</td>
+                                <td>Measure the distance between the farthest front and rear ends of the vehicle (such as the straight-line distance from the front to the rear)</td>
+                            </tr>
+                            <tr>
+                                <td>Vehicle Width</td>
+                                <td>Measure the distance at the widest point left and right of the vehicle (usually the distance between the outside of the rearview mirrors)</td>
+                            </tr>
+                            <tr>
+                                <td>Vehicle Height</td>
+                                <td>Measure the distance from the bottom of the vehicle to the highest point at the top</td>
+                            </tr>
+                            <tr>
+                                <td>Wheelbase</td>
+                                <td>Measure the distance from the center of the front wheel to the center of the rear wheel</td>
+                            </tr>
+                            <tr>
+                                <td>Front Wheel Track</td>
+                                <td>Measure the distance between the centers of the left and right front wheels</td>
+                            </tr>
+                            <tr>
+
+                              <td>Rear Overhang</td>
+                                <td>Measure the distance from the center of the rear wheel to the rear of the vehicle</td>
+                            </tr>
+                            <tr>
+                                <td>Rearview Mirror - Front of Vehicle</td>
+                                <td>Measure the distance from the outside of the rearview mirror to the frontmost part of the vehicle</td>
+                            </tr>
+                            <tr>
+                                <td>Rear of Vehicle - Rear Calibration Cloth</td>
+                                <td>Measure the straight-line distance from the rearmost part of the vehicle to the rear calibration cloth</td>
+                            </tr>
+                            <tr>
+                                <td>Front of Vehicle - Front Calibration Cloth</td>
+                                <td>Measure the straight-line distance from the frontmost part of the vehicle to the front calibration cloth</td>
+                            </tr>
+                            <tr>
+                                <td>Front/Rear/Left/Right Camera Height</td>
+                                <td>Measure the vertical distance from the center of the corresponding camera to the ground respectively</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="note">
+                        <p><strong>Note:</strong> If using lens selection stitching: Need to additionally select "Lens Type" in the parameter input interface (must completely match the actually installed camera model, such as 6053_2239).</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="360/9.jpg" alt="Vehicle Parameter Input Interface Diagram" class="image-horizontal">
+                        <p class="image-caption">Figure 9: Vehicle Parameter Input Interface</p>
+                    </div>
+                    
+                    <p>After filling in the parameters, carefully check (avoid numerical errors), and after confirming there are no errors, click the <strong>"Start Stitching"</strong> button.</p>
+                </div>
+                
+                <div class="step">
+                    <h3><span class="step-number">7</span>2.7 Step 7: Complete Stitching (Automatic + Manual Combination)</h3>
+                    
+                    <h4>2.7.1 Automatic Stitching Process</h4>
+                    <ul>
+                        <li>After clicking "Start Stitching", the system will automatically recognize the positions of the front/rear calibration cloths and complete basic image calibration.</li>
+                        <li>After automatic calibration is completed, the system will automatically enter the "Manual Stitching Interface" (for fine-tuning key points to ensure seamless stitching).</li>
+                    </ul>
+                    
+                    <h4>2.7.2 Manual Stitching (Key Point Calibration)</h4>
+                    <ul>
+                        <li><strong>Interface Operation</strong>: Click the "Front View", "Rear View", "Left View", "Right View" partitions on the left panoramic image to switch to the corresponding camera's calibration interface.</li>
+                        <li><strong>Calibration Rules</strong>: Each view corresponds to 8 calibration key points, which need to be adjusted as follows:
+                            <ul>
+                                <li>Drag key points: Directly drag the key point icons in the interface to adjust to the corresponding corners of the calibration cloth (such as the four corners of the large black block).</li>
+                                <li>Fine-tuning and quick movement: Short press the key point for fine-tuning (1-2 pixels), long press the key point for quick movement to the target position.</li>
+                            </ul>
+                        </li>
+                        <li>After completing the calibration of a single view, click the <strong>"Save"</strong> button, then switch to the next view (front→rear→left→right). After all four views are calibrated, click the <strong>"Complete"</strong> button to finish the basic stitching.</li>
+                    </ul>
+                    
+                    <div class="image-container">
+                        <img src="360/11.jpg" alt="Manual Stitching Interface Diagram" class="image-horizontal">
+                        <p class="image-caption">Figure 10: Manual Stitching Interface</p>
+                    </div>
+                    
+                    <h4>2.7.3 Common Manual Stitching Problem Adjustments</h4>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Problem Phenomenon</th>
+                                <th>Adjustment Method</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Front/Rear/Left/Right images are chaotic</td>
+                                <td>Reposition the key points of the calibration cloth, ensuring that the 8 points of each view accurately correspond to the corners of the calibration cloth</td>
+                            </tr>
+                            <tr>
+                                <td>Slight deformation of front/rear image calibration cloth left/right corners</td>
+                                <td>If the calibration cloth image deforms upward/downward, move the corresponding view's "coordinate points 1, 6" 1-2 pixels in the deformation direction</td>
+                            </tr>
+                            <tr>
+                                <td>Left/right images tilt upward</td>
+                                <td>Move the corresponding view's "coordinate point 5" 1-2 pixels to the left</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="comparison-container">
+                        <div class="comparison-row">
+                            <div class="comparison-item">
+                                <img src="360/12.jpg" alt="Before Adjustment" class="image-horizontal">
+                                <p class="image-caption">Before Adjustment</p>
+                            </div>
+                            <div class="comparison-item">
+                                <img src="360/13.jpg" alt="After Adjustment" class="image-horizontal">
+                                <p class="image-caption">After Adjustment</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="step">
+                    <h3><span class="step-number">8</span>2.8 Step 8: Post-Stitching Fine-Tuning (Resolve Image Deviation)</h3>
+                    <p>After stitching is completed, if problems such as image bending, non-parallelism, misalignment, or horn-shaped distortion occur, you need to enter the "Fine-Tuning Interface" (the interface will retain the fine-tuning button after stitching is completed) and adjust according to the following methods:</p>
+                    
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Problem Type</th>
+                                <th>Adjustment Function</th>
+                                <th>Operation Points</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Image bending with curvature (e.g., front view image appears curved)</td>
+                                <td>Concavity/Convexity value adjustment</td>
+                                <td>Drag the "Concavity/Convexity" slider, increase/decrease the value until the image returns to a straight line (front view bending adjusts the concavity/convexity value corresponding to the front view center point, same for rear/left/right views)</td>
+                            </tr>
+                            <tr>
+                                <td>Image non-parallelism (e.g., front view image is tilted)</td>
+                                <td>Displacement value adjustment</td>
+                                <td>Drag the "Displacement" slider, adjust the value until the image is parallel to the vehicle body (front view non-horizontal adjusts the displacement value corresponding to the front view center point)</td>
+                            </tr>
+                            <tr>
+                                <td>Stitching seam misalignment (e.g., left front/right front/left rear/right rear stitching areas have fractures)</td>
+                                <td>Stitching seam left/right shift</td>
+                                <td>If left front stitching seam is misaligned, click the "Right Shift" button for "Left Front Stitching Seam"; if right front is misaligned, click the "Left Shift" button for "Right Front Stitching Seam" until seamless</td>
+                            </tr>
+                            <tr>
+                                <td>Horn-shaped distortion of stitching seam (e.g., front view stitching seam appears horn-shaped)</td>
+                                <td>Stitching seam left/right rotation</td>
+                                <td>If left front stitching seam appears horn-shaped, click the "Right Rotation" button for "Left Front Stitching Seam"; if right front is distorted, click the "Left Rotation" button for "Right Front Stitching Seam" until normal</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="image-container">
+                        <img src="360/14.jpg" alt="Fine-Tuning Interface Diagram" class="image-horizontal">
+                        <p class="image-caption">Figure 11: Fine-Tuning Interface</p>
+                    </div>
+                    
+                    <div class="warning">
+                        <p><strong>Note:</strong> After each fine-tuning, you must click the <strong>"Save"</strong> button to ensure the adjustment parameters take effect.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <section class="section">
+                <h2>3. Core Precautions</h2>
+                <ul>
+                    <li><strong>Tape Measure Selection</strong>: Must ensure at least 2 tape measures with length > 5m, otherwise cannot accurately measure the distance between the vehicle body and calibration cloth.</li>
+                    <li><strong>Calibration Cloth Visibility</strong>: Front/rear cameras must see the "edge of the calibration cloth close to the vehicle direction", otherwise it will increase the blind spot.</li>
+                    <li><strong>Camera Installation</strong>: Left and right camera angles need to be consistent, images parallel to the vehicle body, avoid stitching misalignment due to installation deviation.</li>
+                    <li><strong>Parameter Accuracy</strong>: Vehicle parameters (such as vehicle length, width, camera height) need to be actually measured, cannot be estimated, otherwise it will seriously affect stitching accuracy.</li>
+                    <li><strong>Lens Selection Stitching</strong>: Lens model must completely match the actually installed camera, model error will cause stitching failure.</li>
+                    <li><strong>Fine-Tuning Save</strong>: Must click "Save" after all fine-tuning operations, otherwise adjustment content will be lost.</li>
+                </ul>
+            </section>
+            
+            <section class="section">
+                <h2>4. Troubleshooting (Basic)</h2>
                 <table>
                     <thead>
                         <tr>
-                            <th>Problem Type</th>
-                            <th>Adjustment Function</th>
-                            <th>Operation Points</th>
+                            <th>Fault Phenomenon</th>
+                            <th>Possible Causes</th>
+                            <th>Solution</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td>Image bending with curvature (e.g., front view image appears curved)</td>
-                            <td>Concavity/Convexity value adjustment</td>
-                            <td>Drag the "Concavity/Convexity" slider, increase/decrease the value until the image returns to a straight line (front view bending adjusts the concavity/convexity value corresponding to the front view center point, same for rear/left/right views)</td>
+                            <td>Automatic stitching cannot recognize calibration cloth</td>
+                            <td>1. Calibration cloth not perpendicular to vehicle body; 2. Camera cannot see calibration cloth edge; 3. Light too dim</td>
+                            <td>1. Reposition calibration cloth, ensure parallel; 2. Adjust calibration cloth distance, let camera see edge; 3. Increase ambient light</td>
                         </tr>
                         <tr>
-                            <td>Image non-parallelism (e.g., front view image is tilted)</td>
-                            <td>Displacement value adjustment</td>
-                            <td>Drag the "Displacement" slider, adjust the value until the image is parallel to the vehicle body (front view non-horizontal adjusts the displacement value corresponding to the front view center point)</td>
+                            <td>Obvious misalignment after stitching</td>
+                            <td>1. Vehicle parameters filled incorrectly; 2. Calibration cloth key point positioning inaccurate</td>
+                            <td>1. Remeasure and correct vehicle parameters; 2. Enter manual stitching interface, recalibrate key points</td>
                         </tr>
                         <tr>
-                            <td>Stitching seam misalignment (e.g., left front/right front/left rear/right rear stitching areas have fractures)</td>
-                            <td>Stitching seam left/right shift</td>
-                            <td>If left front stitching seam is misaligned, click the "Right Shift" button for "Left Front Stitching Seam"; if right front is misaligned, click the "Left Shift" button for "Right Front Stitching Seam" until seamless</td>
-                        </tr>
-                        <tr>
-                            <td>Horn-shaped distortion of stitching seam (e.g., front view stitching seam appears horn-shaped)</td>
-                            <td>Stitching seam left/right rotation</td>
-                            <td>If left front stitching seam appears horn-shaped, click the "Right Rotation" button for "Left Front Stitching Seam"; if right front is distorted, click the "Left Rotation" button for "Right Front Stitching Seam" until normal</td>
+                            <td>Left/right image tilt inconsistent</td>
+                            <td>Left/right camera installation angle deviation</td>
+                            <td>Adjust left/right camera angles, ensure consistency, then re-stitch</td>
                         </tr>
                     </tbody>
                 </table>
-                
-                <div class="image-container">
-                    <img src="360/14.jpg" alt="Fine-Tuning Interface Diagram" class="image-horizontal">
-                    <p class="image-caption">Figure 11: Fine-Tuning Interface</p>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>LODARK is a leading manufacturer of automotive navigation systems, committed to providing high-quality products and services to global customers.</p>
+                    <!-- 社交媒体链接 -->
+                    <div class="social-media">
+                        <a href="https://www.youtube.com/@Lodark18" class="social-icon" target="_blank" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61573217336403" class="social-icon" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/lodark_car_player/" class="social-icon" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
                 </div>
                 
-                <div class="warning">
-                    <p><strong>Note:</strong> After each fine-tuning, you must click the <strong>"Save"</strong> button to ensure the adjustment parameters take effect.</p>
+                <div class="footer-section">
+                    <h3>Product Series</h3>
+                    <ul class="footer-links">
+                        <li><a href="products.html#e-series">E-Series (Entry-Level)</a></li>
+                        <li><a href="products.html#s-series">S-Series (Mid-Range)</a></li>
+                        <li><a href="products.html#p-series">P-Series (Flagship)</a></li>
+                        <li><a href="products.html#specialty">Specialty Series</a></li>
+                    </ul>
+                </div>
+                
+              <div class="footer-section">
+                <h3>Quick Links</h3>
+                  <ul class="footer-links">
+                      <li><a href="index.html">Home</a></li>
+                      <li><a href="products.html">Products</a></li>
+                      <li><a href="accessories.html">Accessories</a></li>
+                      <li><a href="oem.html">OEM/ODM</a></li>
+                      <li><a href="Technology Portal.html">Technology Portal</a></li>
+                      <li><a href="Contact.html">Contact Us</a></li>
+                  </ul>
                 </div>
             </div>
-        </section>
-        
-        <section class="section">
-            <h2>3. Core Precautions</h2>
-            <ul>
-                <li><strong>Tape Measure Selection</strong>: Must ensure at least 2 tape measures with length > 5m, otherwise cannot accurately measure the distance between the vehicle body and calibration cloth.</li>
-                <li><strong>Calibration Cloth Visibility</strong>: Front/rear cameras must see the "edge of the calibration cloth close to the vehicle direction", otherwise it will increase the blind spot.</li>
-                <li><strong>Camera Installation</strong>: Left and right camera angles need to be consistent, images parallel to the vehicle body, avoid stitching misalignment due to installation deviation.</li>
-                <li><strong>Parameter Accuracy</strong>: Vehicle parameters (such as vehicle length, width, camera height) need to be actually measured, cannot be estimated, otherwise it will seriously affect stitching accuracy.</li>
-                <li><strong>Lens Selection Stitching</strong>: Lens model must completely match the actually installed camera, model error will cause stitching failure.</li>
-                <li><strong>Fine-Tuning Save</strong>: Must click "Save" after all fine-tuning operations, otherwise adjustment content will be lost.</li>
-            </ul>
-        </section>
-        
-        <section class="section">
-            <h2>4. Troubleshooting (Basic)</h2>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Fault Phenomenon</th>
-                        <th>Possible Causes</th>
-                        <th>Solution</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>Automatic stitching cannot recognize calibration cloth</td>
-                        <td>1. Calibration cloth not perpendicular to vehicle body; 2. Camera cannot see calibration cloth edge; 3. Light too dim</td>
-                        <td>1. Reposition calibration cloth, ensure parallel; 2. Adjust calibration cloth distance, let camera see edge; 3. Increase ambient light</td>
-                    </tr>
-                    <tr>
-                        <td>Obvious misalignment after stitching</td>
-                        <td>1. Vehicle parameters filled incorrectly; 2. Calibration cloth key point positioning inaccurate</td>
-                        <td>1. Remeasure and correct vehicle parameters; 2. Enter manual stitching interface, recalibrate key points</td>
-                    </tr>
-                    <tr>
-                        <td>Left/right image tilt inconsistent</td>
-                        <td>Left/right camera installation angle deviation</td>
-                        <td>Adjust left/right camera angles, ensure consistency, then re-stitch</td>
-                    </tr>
-                </tbody>
-            </table>
-        </section>
-    </div>
+            
+            <div class="copyright">
+                <p>&copy; 2025 LODARK. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
 
-    <!-- 公共底栏 -->
-    <div id="footer-container"></div>
-
-    <!-- 引入公共JavaScript文件 -->
-    <script src="js/load-components.js"></script>
-    <script src="js/common-functions.js"></script>
+    <script>
+        // Mobile menu toggle
+        document.querySelector('.mobile-menu-btn').addEventListener('click', function() {
+            const nav = document.querySelector('nav ul');
+            nav.style.display = nav.style.display === 'flex' ? 'none' : 'flex';
+        });
+        
+        // Responsive nav adjustment
+        window.addEventListener('resize', function() {
+            if (window.innerWidth > 992) {
+                document.querySelector('nav ul').style.display = 'flex';
+            } else {
+                document.querySelector('nav ul').style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
