@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How To's - LODARK</title>
+    <meta name="description" content="LODARK product installation, setup guides and troubleshooting">
+    
+    <!-- 优化的标签栏图标代码 -->
+    <link rel="icon" href="/favicon.ico" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="/favicon-192x192.png">
+    <link rel="icon" type="image/png" sizes="512x512" href="/favicon-512x512.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" href="/logo.svg" type="image/svg+xml">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#165DFF">
+    <meta name="msapplication-TileImage" content="/mstile-144x144.png">
+    <meta name="theme-color" content="#165DFF">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #165DFF;
+            --secondary: #363636;
+            --accent: #FF7D00;
+            --light: #F5F7FA;
+            --dark: #1a1a1a;
+            --text: #333333;
+            --text-light: #666666;
+            --border-color: #e2e8f0;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--text);
+            line-height: 1.6;
+            background-color: #fff;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Header Styles - Updated to match index.html */
+        header {
+            background: linear-gradient(135deg, #0e2b5c, #1a56db);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: #ff3a29;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav li {
+            margin-left: 1.5rem;
+            position: relative;
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            padding: 0.5rem 0.8rem;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+        }
+        
+        nav a:hover, nav a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+        
+        /* Dropdown Menu Styles */
+        .dropdown {
+            position: relative;
+        }
+        
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: white;
+            min-width: 220px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+            border-radius: 8px;
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(10px);
+            transition: all 0.3s ease;
+            z-index: 1000;
+            padding: 8px 0;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0);
+        }
+        
+        .dropdown-menu a {
+            color: var(--text);
+            padding: 12px 20px;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s ease;
+            border-radius: 0;
+        }
+        
+        .dropdown-menu a:hover {
+            background-color: var(--light);
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .dropdown-menu i {
+            margin-right: 10px;
+            width: 16px;
+            text-align: center;
+        }
+        
+        .dropdown-arrow {
+            margin-left: 5px;
+            transition: transform 0.3s ease;
+        }
+        
+        .dropdown:hover .dropdown-arrow {
+            transform: rotate(180deg);
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary), #0e2b5c);
+            color: white;
+            padding: 3rem 0;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto;
+            opacity: 0.9;
+        }
+        
+        /* Main Content Layout */
+        .main-content {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+        
+        /* Sidebar Navigation */
+        .sidebar {
+            flex: 0 0 280px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 25px;
+            position: sticky;
+            top: 120px;
+            height: fit-content;
+            max-height: calc(100vh - 150px);
+            overflow-y: auto;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 20px;
+            color: var(--secondary);
+            font-size: 22px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        .category-list {
+            list-style: none;
+        }
+        
+        .category-item {
+            margin-bottom: 8px;
+        }
+        
+        .category-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            text-decoration: none;
+            color: var(--text);
+            border-radius: 6px;
+            transition: all 0.3s ease;
+        }
+        
+        .category-link:hover, .category-link.active {
+            background-color: var(--primary);
+            color: white;
+        }
+        
+        .category-link i {
+            width: 20px;
+            text-align: center;
+        }
+        
+        /* Content Area */
+        .content-area {
+            flex: 1;
+        }
+        
+        .section-title {
+            font-size: 28px;
+            color: var(--dark);
+            margin-bottom: 30px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid var(--border-color);
+        }
+        
+        /* Search Section */
+        .search-section {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 15px 20px;
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            font-size: 16px;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+        }
+
+        .search-box:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(22, 93, 255, 0.2);
+        }
+
+        .search-icon {
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--text-light);
+        }
+        
+        /* Guide Content */
+        .guide-section {
+            background: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 30px;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+        
+        .guide-section:hover {
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .guide-header {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .guide-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(22, 93, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .guide-icon i {
+            font-size: 24px;
+            color: var(--primary);
+        }
+        
+        .guide-title {
+            font-size: 24px;
+            color: var(--dark);
+        }
+        
+        .guide-list {
+            list-style: none;
+            column-count: 2;
+            column-gap: 30px;
+        }
+        
+        .guide-item {
+            margin-bottom: 12px;
+            padding: 10px 0;
+            padding-left: 25px;
+            position: relative;
+            break-inside: avoid;
+            transition: all 0.3s ease;
+        }
+        
+        .guide-item:hover {
+            background-color: var(--light);
+            padding-left: 30px;
+        }
+        
+        .guide-item:before {
+            content: "›";
+            color: var(--primary);
+            position: absolute;
+            left: 10px;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        .guide-link {
+            text-decoration: none;
+            color: var(--text);
+            display: block;
+            transition: all 0.3s ease;
+        }
+        
+        .guide-link:hover {
+            color: var(--primary);
+        }
+        
+        /* Footer - Updated to match index.html */
+        footer {
+            background: #0e2b5c;
+            color: white;
+            padding: 3rem 0 2rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.2rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background: #ff3a29;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: #d1d5db;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #9ca3af;
+        }
+        
+        /* 社交媒体样式 */
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+        
+        .social-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-icon:hover {
+            background: #ff3a29;
+            transform: translateY(-3px);
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            nav ul {
+                display: none;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+            
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                flex: 1;
+                position: static;
+                max-height: none;
+            }
+            
+            .guide-list {
+                column-count: 1;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 1rem;
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav li {
+                margin: 0.5rem 0;
+            }
+            
+            .social-media {
+                flex-wrap: wrap;
+            }
+            
+            .guide-header {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Updated Header to match index.html -->
+    <header>
+        <div class="container header-content">
+            <div class="logo">LOD<span>ARK</span></div>
+            <nav>
+                <ul>
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="products.html" class="nav-link">Products</a></li>
+                    <li><a href="accessories.html" class="nav-link">Accessories</a></li>
+                    <li><a href="oem.html" class="nav-link">OEM/ODM</a></li>
+                    <li class="dropdown">
+                        <a href="Technology Portal.html" class="nav-link active">
+                            Technology Portal
+                            <i class="fas fa-chevron-down dropdown-arrow"></i>
+                        </a>
+                        <div class="dropdown-menu">
+                            <a href="guzhang.html">
+                                <i class="fas fa-tools"></i>
+                                Faults & Solutions
+                            </a>
+                            <a href="RFQ.html">
+                                <i class="fas fa-question-circle"></i>
+                                FAQ
+                            </a>
+                            <a href="How To's.html">
+                                <i class="fas fa-book"></i>
+                                How To's
+                            </a>
+                            <a href="3603.html">
+                                <i class="fas fa-camera-retro"></i>
+                                360 Camera Guide
+                            </a>
+                        </div>
+                    </li>
+                    <li><a href="Contact.html" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>How To's</h1>
+            <p>Find step-by-step guides for installing, configuring and troubleshooting your LODARK products</p>
+        </div>
+    </section>
+
+    <main class="container">
+        <div class="search-section">
+            <input type="text" class="search-box" placeholder="Search for guides...">
+            <i class="fas fa-search search-icon"></i>
+        </div>
+        
+        <div class="main-content">
+            <!-- Sidebar Navigation -->
+            <aside class="sidebar">
+                <h3>Categories</h3>
+                <ul class="category-list">
+                    <li class="category-item">
+                        <a href="#canbus" class="category-link active">
+                            <i class="fas fa-network-wired"></i>
+                            <span>Canbus</span>
+                        </a>
+                    </li>
+                    <li class="category-item">
+                        <a href="#reverse-camera" class="category-link">
+                            <i class="fas fa-camera"></i>
+                            <span>Reverse Camera</span>
+                        </a>
+                    </li>
+                    <li class="category-item">
+                        <a href="#dvr" class="category-link">
+                            <i class="fas fa-video"></i>
+                            <span>DVR</span>
+                        </a>
+                    </li>
+                    <li class="category-item">
+                        <a href="#obdii" class="category-link">
+                            <i class="fas fa-car-battery"></i>
+                            <span>OBDII</span>
+                        </a>
+                    </li>
+                    <li class="category-item">
+                        <a href="#bluetooth" class="category-link">
+                            <i class="fas fa-bluetooth"></i>
+                            <span>Bluetooth</span>
+                        </a>
+                    </li>
+                    <li class="category-item">
+                        <a href="#air-conditioner" class="category-link">
+                            <i class="fas fa-wind"></i>
+                            <span>Air Conditioner</span>
+                        </a>
+                    </li>
+                    <li class="category-item">
+                        <a href="#parking-sensors" class="category-link">
+                            <i class="fas fa-car"></i>
+                            <span>Parking Sensors</span>
+                        </a>
+                    </li>
+                    <li class="category-item">
+                        <a href="#microphone" class="category-link">
+                            <i class="fas fa-microphone"></i>
+                            <span>Microphone</span>
+                        </a>
+                    </li>
+                    <li class="category-item">
+                        <a href="#sim-cards" class="category-link">
+                            <i class="fas fa-sim-card"></i>
+                            <span>SIM Cards</span>
+                        </a>
+                    </li>
+                    <li class="category-item">
+                        <a href="#software" class="category-link">
+                            <i class="fas fa-code"></i>
+                            <span>Software</span>
+                        </a>
+                    </li>
+                    <li class="category-item">
+                        <a href="#hardware" class="category-link">
+                            <i class="fas fa-tools"></i>
+                            <span>Hardware</span>
+                        </a>
+                    </li>
+                    <li class="category-item">
+                        <a href="#360-system" class="category-link">
+                            <i class="fas fa-camera-retro"></i>
+                            <span>360 System</span>
+                        </a>
+                    </li>
+                    <li class="category-item">
+                        <a href="#luxone" class="category-link">
+                            <i class="fas fa-car-alt"></i>
+                            <span>LUXONE</span>
+                        </a>
+                    </li>
+                    <li class="category-item">
+                        <a href="#fault-finding" class="category-link">
+                            <i class="fas fa-wrench"></i>
+                            <span>Fault Finding</span>
+                        </a>
+                    </li>
+                </ul>
+            </aside>
+            
+            <!-- Content Area -->
+            <div class="content-area">
+                <h2 class="section-title">Technical Guides</h2>
+                
+                <!-- Canbus Section -->
+                <section class="guide-section" id="canbus">
+                    <div class="guide-header">
+                        <div class="guide-icon">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <h3 class="guide-title">Canbus</h3>
+                    </div>
+                    <ul class="guide-list">
+                        <li class="guide-item"><a href="How to setup canbus.html" class="guide-link">How to Install & Setup Canbus / Steering Controls</a></li>
+                        
+                        <li class="guide-item"><a href="#" class="guide-link">How to Check that the canbus is registering</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to Fault Find Canbus Issues</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to Test Power to the Unit</a></li>
+                    </ul>
+                </section>
+                
+                <!-- Reverse Camera Section -->
+                <section class="guide-section" id="reverse-camera">
+                    <div class="guide-header">
+                        <div class="guide-icon">
+                            <i class="fas fa-camera"></i>
+                        </div>
+                        <h3 class="guide-title">Reverse Camera</h3>
+                    </div>
+                    <ul class="guide-list">
+                        <li class="guide-item"><a href="#" class="guide-link">How to connect the a Reverse Camera</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">Reverse Parking Lines</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to Disable reverse mode</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to Flip Reverse Camera Image</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to mirror reverse camera image</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">Enabling Front Camera app (for reverse camera installed at the front)</a></li>
+                    </ul>
+                </section>
+                
+                <!-- DVR Section -->
+                <section class="guide-section" id="dvr">
+                    <div class="guide-header">
+                        <div class="guide-icon">
+                            <i class="fas fa-video"></i>
+                        </div>
+                        <h3 class="guide-title">LODARK DVR</h3>
+                    </div>
+                    <ul class="guide-list">
+                        <li class="guide-item"><a href="#" class="guide-link">How to connect the LODARK DVR</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">WARNING - Errors caused by damaging DVR connector</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">LODARK DVR Installation & Fault Finding</a></li>
+                    </ul>
+                </section>
+                
+                <!-- OBDII Section -->
+                <section class="guide-section" id="obdii">
+                    <div class="guide-header">
+                        <div class="guide-icon">
+                            <i class="fas fa-car-battery"></i>
+                        </div>
+                        <h3 class="guide-title">LODARK OBDII</h3>
+                    </div>
+                    <ul class="guide-list">
+                        <li class="guide-item"><a href="#" class="guide-link">How to connect the LODARK OBDII</a></li>
+                    </ul>
+                </section>
+                
+                <!-- Bluetooth Section -->
+                <section class="guide-section" id="bluetooth">
+                    <div class="guide-header">
+                        <div class="guide-icon">
+                            <i class="fas fa-bluetooth"></i>
+                        </div>
+                        <h3 class="guide-title">Bluetooth</h3>
+                    </div>
+                    <ul class="guide-list">
+                        <li class="guide-item"><a href="#" class="guide-link">How to access bluetooth</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to download phone contacts</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to Check Bluetooth Module is Registering</a></li>
+                    </ul>
+                </section>
+                
+                <!-- Air Conditioner Section -->
+                <section class="guide-section" id="air-conditioner">
+                    <div class="guide-header">
+                        <div class="guide-icon">
+                            <i class="fas fa-wind"></i>
+                        </div>
+                        <h3 class="guide-title">Air Conditioner</h3>
+                    </div>
+                    <ul class="guide-list">
+                        <li class="guide-item"><a href="#" class="guide-link">How to setup A/C display</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to swap Left & Right Air conditioner controls</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to change temperature units</a></li>
+                    </ul>
+                </section>
+                
+                <!-- Parking Sensors Section -->
+              <section class="guide-section" id="parking-sensors">
+                    <div class="guide-header">
+                        <div class="guide-icon">
+                            <i class="fas fa-car"></i>
+                        </div>
+                        <h3 class="guide-title">Parking Sensors</h3>
+                    </div>
+                    <ul class="guide-list">
+                        <li class="guide-item"><a href="#" class="guide-link">LODARK front parking sensors tutorial</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">LODARK front parking sensors preset</a></li>
+                    </ul>
+                </section>
+                
+                <!-- Microphone Section -->
+                <section class="guide-section" id="microphone">
+                    <div class="guide-header">
+                        <div class="guide-icon">
+                            <i class="fas fa-microphone"></i>
+                        </div>
+                        <h3 class="guide-title">Microphone</h3>
+                    </div>
+                    <ul class="guide-list">
+                        <li class="guide-item"><a href="#" class="guide-link">Switching between internal/external microphones</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to Connect Factory Microphone to the LODARK</a></li>
+                    </ul>
+                </section>
+                
+                <!-- SIM Cards Section -->
+                <section class="guide-section" id="sim-cards">
+                    <div class="guide-header">
+                        <div class="guide-icon">
+                            <i class="fas fa-sim-card"></i>
+                        </div>
+                        <h3 class="guide-title">SIM Cards</h3>
+                    </div>
+                    <ul class="guide-list">
+                        <li class="guide-item"><a href="#" class="guide-link">How to Fault Find SIM cards</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to modify device's IMEI Number</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to enter SIM card APN Settings</a></li>
+                    </ul>
+              </section>
+                
+                <!-- Software Section -->
+                <section class="guide-section" id="software">
+                    <div class="guide-header">
+                        <div class="guide-icon">
+                            <i class="fas fa-code"></i>
+                        </div>
+                        <h3 class="guide-title">Software</h3>
+                    </div>
+                    <ul class="guide-list">
+                        <li class="guide-item"><a href="#" class="guide-link">CarPlay Connection Issues</a></li>
+                        
+                        <li class="guide-item"><a href="#" class="guide-link">How to perform a factory reset</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to change languages</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to Copy files from USB to Internal Memory</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to change the floating control widget</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to enable gesture control</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to tether data via USB</a></li>
+                        
+                        <li class="guide-item"><a href="#" class="guide-link">How to adjust sound power conditioning - Sound Output Power</a></li>
+                        
+                        <li class="guide-item"><a href="#" class="guide-link">How to set custom boot logos</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to change system front size</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to change DPI setting</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to Reverse Car Door, Volume, Seek, Reverse, etc</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">Voice Control Commands</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to Access Cast Options to Monitors</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to calibrate non-2k screens</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to Map Capacitive Controls</a></li>
+                    </ul>
+                </section>
+                
+                <!-- Hardware Section -->
+              <section class="guide-section" id="hardware">
+                <div class="guide-header">
+                        <div class="guide-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3 class="guide-title">Hardware</h3>
+                  </div>
+                  <ul class="guide-list">
+                      <li class="guide-item"><a href="#" class="guide-link">How to change 2k Screens</a></li>
+                      <li class="guide-item"><a href="#" class="guide-link">How to convert to DIN1</a></li>
+                        
+                      <li class="guide-item"><a href="#" class="guide-link">How to Fault find GPS</a></li>
+                      <li class="guide-item"><a href="#" class="guide-link">How to Measure Screen Sizes</a></li>
+                  </ul>
+                </section>
+                
+                <!-- 360 System Section -->
+              <section class="guide-section" id="360-system">
+                    <div class="guide-header">
+                        <div class="guide-icon">
+                            <i class="fas fa-camera-retro"></i>
+                        </div>
+                        <h3 class="guide-title">LODARK 360 System</h3>
+                    </div>
+                    <ul class="guide-list">
+                        <li class="guide-item"><a href="#" class="guide-link">How to calibrate CC3 360 cameras</a></li>
+                    </ul>
+                </section>
+                
+                <!-- LUXONE Section -->
+                
+                <!-- Fault Finding Section -->
+                <section class="guide-section" id="fault-finding">
+                  <div class="guide-header">
+                        <div class="guide-icon">
+                            <i class="fas fa-wrench"></i>
+                        </div>
+                        <h3 class="guide-title">Fault Finding for Engineers</h3>
+                    </div>
+                    <ul class="guide-list">
+                        <li class="guide-item"><a href="#" class="guide-link">How to enable canbus log data</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to capture YLOG</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to Solve Touch Screen Problems</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to Update Canbus with Custom Software</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to Update Canbus APKs</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">Testing Page</a></li>
+                        <li class="guide-item"><a href="#" class="guide-link">How to adjust your backlight current</a></li>
+                        
+                        <li class="guide-item"><a href="#" class="guide-link">How to find your UUID</a></li>
+                        
+                        <li class="guide-item"><a href="#" class="guide-link">Solution to Screen Light Leakage</a></li>
+                    </ul>
+              </section>
+                
+            </div>
+        </div>
+    </main>
+
+    <!-- Updated Footer to match index.html -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>About Us</h3>
+                    <p>LODARK is a leading manufacturer of automotive navigation systems, committed to providing high-quality products and services to global customers.</p>
+                    <!-- 社交媒体链接 -->
+                    <div class="social-media">
+                        <a href="https://www.youtube.com/@Lodark18" class="social-icon" target="_blank" aria-label="YouTube">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                        <a href="https://www.facebook.com/profile.php?id=61573217336403" class="social-icon" target="_blank" aria-label="Facebook">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="https://www.instagram.com/lodark_car_player/" class="social-icon" target="_blank" aria-label="Instagram">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Product Series</h3
